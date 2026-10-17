@@ -46,23 +46,10 @@
 
     <main id="top">
         <section class="hero-band">
-        <!-- Watercolor wash: soft shapes whose edges are roughened by an SVG noise filter, then blurred. -->
-        <svg class="wash" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-            <defs>
-                <filter id="watercolor" x="-20%" y="-20%" width="140%" height="140%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="3" seed="7" result="noise"/>
-                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="140" xChannelSelector="R" yChannelSelector="G" result="rough"/>
-                    <feGaussianBlur in="rough" stdDeviation="7"/>
-                </filter>
-            </defs>
-            <g filter="url(#watercolor)">
-                <ellipse class="w1" cx="930" cy="150" rx="380" ry="210"/>
-                <ellipse class="w2" cx="1100" cy="400" rx="260" ry="190"/>
-                <ellipse class="w3" cx="700" cy="40" rx="300" ry="130"/>
-                <ellipse class="w4" cx="180" cy="520" rx="340" ry="150"/>
-                <ellipse class="w5" cx="820" cy="360" rx="200" ry="120"/>
-            </g>
-        </svg>
+        <!-- J.M.W. Turner, Rain, Steam and Speed (1844), public domain, given a watercolor treatment -->
+        <img class="hero-art" src="images/rain-steam-speed-watercolor-2000.jpg"
+             srcset="images/rain-steam-speed-watercolor-1000.jpg 1000w, images/rain-steam-speed-watercolor-2000.jpg 2000w"
+             sizes="100vw" alt="" width="2000" height="1493" fetchpriority="high">
         <div class="hero wrap">
             <p class="eyebrow">Proposed fellowship · Targeting Summer 2027</p>
             <h1>Societal Impacts Research on AI</h1>
@@ -221,6 +208,7 @@
     <footer class="site-footer">
         <div class="wrap footer-row">
             <span>SIRA · Societal Impacts Research on AI</span>
+            <span>Header art after J.M.W. Turner, <a href="https://www.nationalgallery.org.uk/paintings/joseph-mallord-william-turner-rain-steam-and-speed-the-great-western-railway">Rain, Steam and Speed</a> (1844), public domain</span>
             <span>Organized by <a href="https://emiliobarkett.github.io/">Emilio Barkett</a> · <a href="mailto:contact@sirafellowship.org">contact@sirafellowship.org</a></span>
         </div>
     </footer>
