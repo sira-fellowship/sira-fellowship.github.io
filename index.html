@@ -18,6 +18,9 @@
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,7 +45,16 @@
     </header>
 
     <main id="top">
-        <section class="hero wrap">
+        <section class="hero-band">
+        <!-- Vincent van Gogh, Factories at Asnières, Seen from the Quai de Clichy (1887), public domain. The edges are
+             feathered into the page, and a masked backdrop blur softens them. -->
+        <div class="hero-art-frame">
+            <img class="hero-art" src="images/factories-at-asnieres-2000.jpg"
+                 srcset="images/factories-at-asnieres-1000.jpg 1000w, images/factories-at-asnieres-2000.jpg 2000w"
+                 sizes="(max-width: 720px) 100vw, 64vw" alt="" width="2000" height="1493" fetchpriority="high">
+        </div>
+        <div class="hero-art-blur" aria-hidden="true"></div>
+        <div class="hero wrap">
             <p class="eyebrow">Proposed fellowship · Targeting Summer 2027</p>
             <h1>Societal Impacts Research on AI</h1>
             <p class="lede">A mentored research fellowship that gives social scientists a structured path into AI safety.</p>
@@ -50,13 +62,17 @@
                 <a class="button" href="#get-involved">Express interest</a>
                 <a class="text-link" href="#about">Learn more →</a>
             </div>
+        </div>
+        </section>
+
+        <div class="wrap">
             <dl class="stats">
                 <div><dt>10–12 weeks</dt><dd>Full-time, mentored research</dd></div>
                 <div><dt>15–20</dt><dd>Fellows in the first cohort</dd></div>
                 <div><dt>Undergrad to postdoc</dt><dd>Across career stages</dd></div>
                 <div><dt>Funded</dt><dd>Stipend, housing, travel, and research support</dd></div>
             </dl>
-        </section>
+        </div>
 
         <section class="intro wrap">
             <p>The social sciences emerged to make sense of the Industrial Revolution, but only after the fact. AI is reshaping work, institutions, and social life on a much faster timeline. <strong>Society needs people studying AI’s effects now, while there is still time to shape the transition.</strong></p>
@@ -199,6 +215,7 @@
     <footer class="site-footer">
         <div class="wrap footer-row">
             <span>SIRA · Societal Impacts Research on AI</span>
+            <span>Header art: Vincent van Gogh, <a href="https://www.slam.org/collection/objects/3652/">Factories at Asnières, Seen from the Quai de Clichy</a> (1887), Saint Louis Art Museum, public domain</span>
             <span>Organized by <a href="https://emiliobarkett.github.io/">Emilio Barkett</a> · <a href="mailto:contact@sirafellowship.org">contact@sirafellowship.org</a></span>
         </div>
     </footer>
