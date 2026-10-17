@@ -189,7 +189,7 @@ summary:focus-visible {
 
 .hero-art {
   object-fit: cover;
-  object-position: 62% 72%;
+  object-position: 50% 55%;
   opacity: var(--art-opacity);
   /* Feather every edge so the painting seeps into the page */
   -webkit-mask-image: radial-gradient(ellipse 50% 50% at 58% 50%, #000 55%, transparent 100%);
@@ -565,7 +565,7 @@ body::before {
   }
 
   .hero-art {
-    opacity: calc(var(--art-opacity) * 0.4);
+    opacity: calc(var(--art-opacity) * 0.3);
   }
 
   .hero h1 {
