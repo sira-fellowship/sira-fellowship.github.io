@@ -51,17 +51,19 @@ f = cv2.remap(f, gx + dx, gy + dy, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLE
 
 # 3. Pigment: richer color, then lift toward the paper so it reads as transparent.
 hsv = cv2.cvtColor(f, cv2.COLOR_BGR2HSV)
-hsv[..., 1] = np.clip(hsv[..., 1] * 1.55, 0, 1)
+hsv[..., 1] = np.clip(hsv[..., 1] * 1.9, 0, 1)
 f = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
 paper = np.array([0.90, 0.95, 0.98], np.float32)  # BGR: warm cream
-f = f * 0.72 + paper * 0.28
+f = f * 0.88 + paper * 0.12
+# A little more contrast so the darks (viaduct, engine) carry weight.
+f = np.clip((f - 0.5) * 1.15 + 0.5, 0, 1)
 
 # 4. Edge darkening only along real wash boundaries (strong, coarse edges).
 gray = cv2.cvtColor(f, cv2.COLOR_BGR2GRAY)
 band = np.abs(cv2.GaussianBlur(gray, (0, 0), 1.5) - cv2.GaussianBlur(gray, (0, 0), 6))
 band = np.clip((band - np.percentile(band, 80)) / (np.percentile(band, 99.5) + 1e-6), 0, 1)
 band = cv2.GaussianBlur(band, (0, 0), 1.0)
-f *= (1 - 0.18 * band)[..., None]
+f *= (1 - 0.24 * band)[..., None]
 
 # 5. Granulation, blotchy pigment density, and cold-press paper tooth.
 granulation = 1 - 0.045 * (noise(5, 2) - 0.5)
