@@ -201,8 +201,8 @@ summary:focus-visible {
   object-fit: cover;
   object-position: 50% 55%;
   opacity: var(--art-opacity);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 32%);
-  mask-image: linear-gradient(to right, transparent, #000 32%);
+  -webkit-mask-image: linear-gradient(to right, transparent 6%, #000 40%);
+  mask-image: linear-gradient(to right, transparent 6%, #000 40%);
 }
 
 /* Blur only the fading edges (left, top, bottom), so they go soft as they fade */
@@ -265,7 +265,9 @@ body::before {
   margin-top: 1rem;
   font-size: 1.15rem;
   color: var(--text-2);
-  max-width: 34rem;
+  /* Wrap before the painting begins */
+  max-width: 23rem;
+  text-wrap: balance;
 }
 
 .hero-actions {
