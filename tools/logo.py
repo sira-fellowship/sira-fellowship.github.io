@@ -1,19 +1,27 @@
-"""Draw the SIRA mark from Babbage's punched card and build the SVG logo kit.
+"""Draw the SIRA mark, the name in Morse code, and build the SVG logo kit.
 
     python3 tools/logo.py
 
-The mark is seven bars hanging from a rule. They are the table digits on the sample card
-Charles Babbage printed for his Analytical Engine in Passages from the Life of a Philosopher
-(1864, p. 121): the number 2303 and its logarithm, 3.3622939. Each digit was punched as that
-many holes in a column, so each bar is as long as its column of holes. The script checks that
-the card really holds log10(2303) before drawing anything.
+The mark spells SIRA in International Morse code, one letter per row:
 
-Writes brand/svg/: the mark in three colours (plus heavier -small versions for 16-48 px), the
-tile in three colourways, the mark beside the name, the mark beside the full name, and the
-stacked logo. Text is converted to outlines from Fraunces and Inter Tight (SIL Open Font
-License), downloaded to tools/.cache/fonts. Run tools/logo_png.sh afterwards for PNGs and icons.
+    S  · · ·
+    I  · ·
+    R  · – ·
+    A  · –
+
+It uses Morse's own timing: a dot is one unit, a dash three, and the gap between symbols one.
+Rows are half a unit apart. Before drawing, the script takes each letter from the full ITU
+alphabet, then decodes the drawn rectangles back into text and checks it reads "SIRA".
+
+Each letter has its own colour, sampled from the hero painting, Van Gogh's Factories at Asnieres
+(sage sky, wheat field, roof, slate), with a lighter
+set for dark backgrounds and one-colour ink and cream versions for places colour can't go.
+
+Writes brand/svg/: the mark, the tile (the mark on a square, for icons), the mark beside the
+name, beside the full name, and stacked above it. Text is converted to outlines from Fraunces
+and Inter Tight (SIL Open Font License), downloaded to tools/.cache/fonts. Run
+tools/logo_png.sh afterwards for PNGs and icons.
 """
-import math
 import pathlib
 import urllib.request
 
@@ -27,37 +35,54 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "tools" / ".cache"
 OUT = ROOT / "brand" / "svg"
 
-# Babbage's card: the number and its logarithm from the table, as printed.
-NUMBER, TABLE = "2303", "3622939"
+NAME = "SIRA"
+ITU = {  # International Morse code (ITU-R M.1677-1), letters
+    "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.", "G": "--.", "H": "....",
+    "I": "..", "J": ".---", "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---", "P": ".--.",
+    "Q": "--.-", "R": ".-.", "S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-",
+    "Y": "-.--", "Z": "--..",
+}
+DOT, DASH, GAP, ROW_GAP = 1, 3, 1, 0.5
 
-INK, TERRA, CREAM, NIGHT, GLOW = "#22313d", "#a9532f", "#f7f0e6", "#16222b", "#e39a74"
+INK, CREAM, NIGHT = "#22313d", "#f7f0e6", "#16222b"
+SOFT = ["#5f8a6c", "#c9a227", "#b8502f", "#3e6787"]        # sage, wheat, roof, slate (light grounds)
+SOFT_DARK = ["#9fc4a6", "#e8c65a", "#ec8d68", "#8fb3d1"]   # the same, lighter, for dark grounds
 FONTS = {
     "Fraunces.ttf": "https://github.com/google/fonts/raw/main/ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf",
     "InterTight.ttf": "https://github.com/google/fonts/raw/main/ofl/intertight/InterTight%5Bwght%5D.ttf",
 }
 
 
-def card_digits():
-    """The table digits, after checking the card holds log10(2303) to all seven printed places."""
-    characteristic = len(NUMBER) - 1
-    printed = characteristic + int(TABLE) / 10 ** len(TABLE)
-    true = math.log10(int(NUMBER))
-    assert abs(true - printed) < 0.5 / 10 ** len(TABLE), f"card says {printed}, log10({NUMBER}) is {true}"
-    print(f"Checked Babbage's card: log10({NUMBER}) = {true:.7f}, printed 3.{TABLE}")
-    return [int(c) for c in TABLE]
+def mark_rects():
+    """[(row, x, y, w, h)] in units, one row per letter. Returns (width, height, rects)."""
+    rects = []
+    for row, letter in enumerate(NAME):
+        x = 0
+        for sym in ITU[letter]:
+            w = DOT if sym == "." else DASH
+            rects.append((row, x, row * (1 + ROW_GAP), w, 1))
+            x += w + GAP
+    width = max(x + w for _, x, _, w, _ in rects)
+    height = len(NAME) + (len(NAME) - 1) * ROW_GAP
+    return width, height, rects
 
 
-def mark_rects(digits, bar=7.0, gap=4.0, rule=7.0, under=3.0):
-    """Seven bars hanging from a rule, proportioned to a square. Returns (size, rects)."""
-    w = len(digits) * bar + (len(digits) - 1) * gap
-    unit = (w - rule - under) / max(digits)       # one punched hole
-    rects = [(0, 0, w, rule)]
-    rects += [(i * (bar + gap), rule + under, bar, d * unit) for i, d in enumerate(digits)]
-    return w, rects
+def decode(rects):
+    """Read the drawing back: each row's rectangles left to right, 1 wide = dot, 3 wide = dash."""
+    by_row = {}
+    for row, x, _, w, _ in rects:
+        by_row.setdefault(row, []).append((x, "." if w == DOT else "-"))
+    back = {code: letter for letter, code in ITU.items()}
+    return "".join(back["".join(s for _, s in sorted(by_row[r]))] for r in sorted(by_row))
 
 
-def rects_path(rects, dx=0.0, dy=0.0, s=1.0):
-    return "".join(f"M{dx + x * s:.3f} {dy + y * s:.3f}h{w * s:.3f}v{h * s:.3f}h{-w * s:.3f}Z" for x, y, w, h in rects)
+def paths(rects, colours, dx=0.0, dy=0.0, s=1.0):
+    """One <path> per colour. colours: one per row, or a single colour."""
+    groups = {}
+    for row, x, y, w, h in rects:
+        c = colours[row] if isinstance(colours, list) else colours
+        groups.setdefault(c, []).append(f"M{dx + x * s:.3f} {dy + y * s:.3f}h{w * s:.3f}v{h * s:.3f}h{-w * s:.3f}Z")
+    return "".join(f'<path fill="{c}" d="{"".join(d)}"/>' for c, d in groups.items())
 
 
 def font(name, axes):
@@ -89,61 +114,63 @@ def svg(w, h, body, title="SIRA"):
 
 
 def main():
-    digits = card_digits()
-    size, regular = mark_rects(digits)
-    size_s, heavy = mark_rects(digits, bar=8.4, gap=2.6, rule=8.0, under=3.0)   # for 16-48 px
+    W, H, rects = mark_rects()
+    assert decode(rects) == NAME, decode(rects)
+    print(f"Checked the mark: it decodes to {decode(rects)} ({' '.join(ITU[c] for c in NAME)})")
 
     serif = font("Fraunces.ttf", {"opsz": 72, "wght": 500, "SOFT": 0, "WONK": 0})
     sans = font("InterTight.ttf", {"wght": 500})
-    word_d, word_w, cap = text_path(serif, "SIRA", 100, tracking=0.03)
-    caps_d, caps_w, caps_cap = text_path(sans, "SIRA", 40, tracking=0.6)
+    word_d, word_w, cap = text_path(serif, NAME, 100, tracking=0.03)
+    caps_d, caps_w, caps_cap = text_path(sans, NAME, 40, tracking=0.6)
     l1_d, l1_w, l_cap = text_path(sans, "Societal Impacts", 38)
     l2_d, l2_w, _ = text_path(sans, "Research on AI", 38)
 
     files = {}
-    # The mark alone, transparent background.
-    marks = {"ink": INK, "cream": CREAM, "terracotta": TERRA}
-    for name, colour in marks.items():
-        files[f"sira-mark-{name}.svg"] = svg(size, size, f'<path fill="{colour}" d="{rects_path(regular)}"/>')
-        files[f"sira-mark-{name}-small.svg"] = svg(size_s, size_s, f'<path fill="{colour}" d="{rects_path(heavy)}"/>')
+    U = 20  # one Morse unit in the standalone mark files
+    marks = {"soft": SOFT, "soft-dark": SOFT_DARK, "ink": INK, "cream": CREAM}
+    for name, colours in marks.items():
+        files[f"sira-mark-{name}.svg"] = svg(W * U, H * U, paths(rects, colours, s=U))
 
-    # The tile: the mark on a solid square, for avatars, app icons, and favicons.
-    tiles = {"ink": (INK, CREAM), "cream": (CREAM, INK), "terracotta": (TERRA, CREAM)}
-    for name, (bg, fg) in tiles.items():
-        for suffix, (sz, rects, pad) in {"": (size, regular, 0.22), "-small": (size_s, heavy, 0.14)}.items():
-            s = 140 * (1 - 2 * pad) / sz
-            body = f'<rect width="140" height="140" fill="{bg}"/><path fill="{fg}" d="{rects_path(rects, 140 * pad, 140 * pad, s)}"/>'
+    # Tiles: the mark centred on a square. -small has less padding, for 16-48 px.
+    tiles = {"night": (NIGHT, SOFT_DARK), "cream": (CREAM, SOFT), "ink": (INK, CREAM)}
+    for name, (bg, colours) in tiles.items():
+        for suffix, pad in {"": 0.2, "-small": 0.1}.items():
+            s = 140 * (1 - 2 * pad) / W
+            dy = (140 - H * s) / 2
+            body = f'<rect width="140" height="140" fill="{bg}"/>' + paths(rects, colours, 140 * pad, dy, s)
             files[f"sira-tile-{name}{suffix}.svg"] = svg(140, 140, body)
 
-    # Lockups. colourway: (mark, text, secondary text)
-    lockups = {"ink": (INK, INK, "#52606b"), "cream": (CREAM, CREAM, "#d4cec4"), "dark": (GLOW, CREAM, "#aea9a0")}
+    # Lockups. colourway: (mark colours, text, secondary text)
+    lockups = {"soft": (SOFT, INK, "#52606b"), "dark": (SOFT_DARK, CREAM, "#aea9a0"),
+               "ink": (INK, INK, INK), "cream": (CREAM, CREAM, CREAM)}
     for name, (mc, tc, sc) in lockups.items():
-        m = cap * 1.32                       # the mark a little taller than the capitals
-        gap = m * 0.30
-        y_mark = 0
-        base = m / 2 + cap / 2
-        body = (f'<path fill="{mc}" d="{rects_path(regular, 0, y_mark, m / size)}"/>'
-                f'<path transform="translate({m + gap:.1f} {base:.1f})" fill="{tc}" d="{word_d}"/>')
-        files[f"sira-logo-horizontal-{name}.svg"] = svg(m + gap + word_w + 4, m, body)
+        mh = cap * 1.18                      # the mark a little taller than the capitals
+        s = mh / H
+        mw = W * s
+        gap = mh * 0.42
+        base = mh / 2 + cap / 2
+        body = paths(rects, mc, 0, 0, s) + f'<path transform="translate({mw + gap:.1f} {base:.1f})" fill="{tc}" d="{word_d}"/>'
+        files[f"sira-logo-horizontal-{name}.svg"] = svg(mw + gap + word_w + 4, mh, body)
 
-        # Full name: mark, SIRA, a thin rule, then "Societal Impacts / Research on AI".
-        x_rule = m + gap + word_w + gap * 0.9
-        x_text = x_rule + 2 + gap * 0.9
+        x_rule = mw + gap + word_w + gap * 0.8
+        x_text = x_rule + 2 + gap * 0.8
         lh = l_cap * 1.75
-        y1 = m / 2 - lh / 2 + l_cap / 2
-        body_full = body + (f'<rect x="{x_rule:.1f}" y="{m * 0.08:.1f}" width="2.4" height="{m * 0.84:.1f}" fill="{sc}" opacity="0.6"/>'
+        y1 = mh / 2 - lh / 2 + l_cap / 2
+        body_full = body + (f'<rect x="{x_rule:.1f}" y="{mh * 0.06:.1f}" width="2.4" height="{mh * 0.88:.1f}" fill="{sc}" opacity="0.6"/>'
                             f'<path transform="translate({x_text:.1f} {y1:.1f})" fill="{sc}" d="{l1_d}"/>'
                             f'<path transform="translate({x_text:.1f} {y1 + lh:.1f})" fill="{sc}" d="{l2_d}"/>')
-        files[f"sira-logo-full-{name}.svg"] = svg(x_text + max(l1_w, l2_w) + 4, m, body_full)
+        files[f"sira-logo-full-{name}.svg"] = svg(x_text + max(l1_w, l2_w) + 4, mh, body_full)
 
-        # Stacked: the mark above SIRA in spaced capitals.
-        t = 240
+        t = 240                              # stacked: mark above SIRA in spaced capitals
+        th = t * H / W
         w = max(t, caps_w) + 40
-        body = (f'<path fill="{mc}" d="{rects_path(regular, (w - t) / 2, 0, t / size)}"/>'
-                f'<path transform="translate({(w - caps_w) / 2:.1f} {t + 60 + caps_cap:.1f})" fill="{tc}" d="{caps_d}"/>')
-        files[f"sira-logo-stacked-{name}.svg"] = svg(w, t + 60 + caps_cap + 6, body)
+        body = (paths(rects, mc, (w - t) / 2, 0, t / W)
+                + f'<path transform="translate({(w - caps_w) / 2:.1f} {th + 56 + caps_cap:.1f})" fill="{tc}" d="{caps_d}"/>')
+        files[f"sira-logo-stacked-{name}.svg"] = svg(w, th + 56 + caps_cap + 6, body)
 
     OUT.mkdir(parents=True, exist_ok=True)
+    for old in OUT.glob("*.svg"):
+        old.unlink()
     for fn, content in files.items():
         (OUT / fn).write_text(content)
     print(f"Wrote {len(files)} SVG files to brand/svg/.")

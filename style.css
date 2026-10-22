@@ -120,13 +120,26 @@ summary:focus-visible {
   border-bottom: none;
 }
 
-/* The SIRA mark (brand/README.md): drawn in the text colour, so it follows dark mode. */
+/* The SIRA mark (brand/README.md): SIRA in Morse code, one colour per letter,
+   sampled from the hero painting.
+   Lighter versions of the same colours in dark mode. */
 .mark {
   display: block;
   flex: none;
-  width: 1.55em;
-  height: 1.55em;
+  height: 1.3em;
+  width: auto;
+  aspect-ratio: 7 / 5.5;
 }
+
+.mark .m0 { fill: #5f8a6c; }
+.mark .m1 { fill: #c9a227; }
+.mark .m2 { fill: #b8502f; }
+.mark .m3 { fill: #3e6787; }
+
+:root[data-theme="dark"] .mark .m0 { fill: #9fc4a6; }
+:root[data-theme="dark"] .mark .m1 { fill: #e8c65a; }
+:root[data-theme="dark"] .mark .m2 { fill: #ec8d68; }
+:root[data-theme="dark"] .mark .m3 { fill: #8fb3d1; }
 
 .footer-mark {
   display: inline-flex;
@@ -135,8 +148,7 @@ summary:focus-visible {
 }
 
 .footer-mark .mark {
-  width: 1.3em;
-  height: 1.3em;
+  height: 1.05em;
 }
 
 .nav {
