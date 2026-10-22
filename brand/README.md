@@ -26,7 +26,7 @@ The card ties together the two things SIRA is about: the machines that started c
 | `svg/sira-logo-horizontal-{ink,cream,dark}.svg` | The mark beside "SIRA". Default for headers, documents, slides, and email signatures. |
 | `svg/sira-logo-full-{ink,cream,dark}.svg` | The mark, "SIRA", and "Societal Impacts Research on AI". For first mentions, title slides, and letterheads. |
 | `svg/sira-logo-stacked-{ink,cream,dark}.svg` | The mark above "SIRA" in spaced capitals. Posters, banners, merch. |
-| `png/` | The same as PNGs with transparent backgrounds (tiles are opaque). Marks and tiles at 512, 1024, and 2048 px; small tiles at 16–512 px; lockups at 1600 px wide (stacked at 1000). |
+| `png/` | The same as PNGs with transparent backgrounds (tiles are opaque). Marks and tiles have every edge snapped to a whole pixel (`tools/raster.py`), so they are pin-sharp; only the 16 px icons are anti-aliased. Marks and tiles at 512, 1024, and 2048 px; small tiles at 16–512 px; lockups at 1600 px wide (stacked at 1000). |
 | `png/og-image.png` | 1200 × 630 link-preview image, used by the website. |
 | `social/linkedin-banner-company.png` | LinkedIn company page banner (1128 × 191, rendered at 2×). Use `png/sira-tile-ink-1024.png` as the page logo. |
 | `../favicon.ico`, `../favicon.svg` | Browser tab icons: the ink tile, which turns cream in dark mode (SVG only). |

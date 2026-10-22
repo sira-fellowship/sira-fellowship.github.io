@@ -33,10 +33,11 @@ render() {
 # height for a given width, from the SVG's viewBox
 height() { $PY -c "import re,sys;w,h=map(float,re.search(r'viewBox=\"0 0 ([\d.]+) ([\d.]+)',open(sys.argv[1]).read()).groups());print(round(int(sys.argv[2])*h/w))" $1 $2; }
 
+# Marks and tiles are drawn edge-snapped by tools/raster.py, so they stay sharp at every size.
 for c in ink cream terracotta; do
     for s in 512 1024 2048; do
-        render $SVG/sira-mark-$c.svg $PNG/sira-mark-$c-$s.png $s $s
-        render $SVG/sira-tile-$c.svg $PNG/sira-tile-$c-$s.png $s $s
+        $PY tools/raster.py $SVG/sira-mark-$c.svg $PNG/sira-mark-$c-$s.png $s
+        $PY tools/raster.py $SVG/sira-tile-$c.svg $PNG/sira-tile-$c-$s.png $s
     done
 done
 for c in ink cream dark; do
@@ -45,10 +46,14 @@ for c in ink cream dark; do
         render $SVG/sira-logo-$kind-$c.svg $PNG/sira-logo-$kind-$c.png $w $(height $SVG/sira-logo-$kind-$c.svg $w)
     done
 done
-for s in 16 32 48 180 192 512; do
-    render $SVG/sira-tile-ink-small.svg $PNG/sira-tile-ink-small-$s.png $s $s
-    render $SVG/sira-tile-terracotta-small.svg $PNG/sira-tile-terracotta-small-$s.png $s $s
+# From 32 px up, edge-snapped. At 16 px the gaps between bars are under a pixel, so snapping
+# would merge bars; the browser's smooth rendering keeps the rhythm there.
+for s in 32 48 180 192 512; do
+    $PY tools/raster.py $SVG/sira-tile-ink-small.svg $PNG/sira-tile-ink-small-$s.png $s
+    $PY tools/raster.py $SVG/sira-tile-terracotta-small.svg $PNG/sira-tile-terracotta-small-$s.png $s
 done
+render $SVG/sira-tile-ink-small.svg $PNG/sira-tile-ink-small-16.png 16 16
+render $SVG/sira-tile-terracotta-small.svg $PNG/sira-tile-terracotta-small-16.png 16 16
 
 # Shared styles for the link-preview image and the banner: the site's cream, ink, and fonts.
 STYLE="@font-face{font-family:Fraunces;src:url('file://$FONTS/Fraunces.ttf')}
