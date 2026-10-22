@@ -77,21 +77,10 @@ p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 shot $html $PNG/og-image.png 1200 630
 rm -f $html
 
-# LinkedIn company banner: 1128 x 191, rendered at 2x. Type only: LinkedIn shows the logo
-# separately and overlaps the bottom-left corner with it, so the text is centred, clear of it.
-html=$(mktemp -t banner).html
-print -r -- "<!doctype html><html><head><style>$STYLE
-.c{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:52px}
-.w{font:500 150px/1 Fraunces,serif;letter-spacing:.03em;color:#22313d}
-.r{width:3px;height:150px;background:#c9bba7}
-.t{display:flex;flex-direction:column;gap:12px}
-.t b{font:500 46px/1.1 Fraunces,serif;color:#22313d}
-.t span{font-size:28px;color:#52606b}</style></head><body style=\"width:2256px;height:382px\">
-<div class=\"c\"><div class=\"w\">SIRA</div><div class=\"r\"></div>
-<div class=\"t\"><b>Societal Impacts Research on AI</b><span>A research fellowship for social scientists in AI safety &middot; sirafellowship.org</span></div></div>
-</body></html>" > $html
-shot $html $SOCIAL/linkedin-banner-company.png 2256 382
-rm -f $html
+# LinkedIn company banners (1128 x 191 at 2x): a soft gradient with square dots, drawn by
+# tools/banner.py. The -morse version spells SIRA in Morse along the middle row.
+$PY tools/banner.py $SOCIAL/linkedin-banner-company.png
+$PY tools/banner.py --morse $SOCIAL/linkedin-banner-company-morse.png
 
 # Site icons: the night tile with the soft colours reads on light and dark browser tabs and
 # phone wallpapers alike, so one version serves everywhere.

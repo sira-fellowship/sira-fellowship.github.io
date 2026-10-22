@@ -45,7 +45,8 @@ The roof colour sits close to the site's terracotta, so the logo and buttons rea
 | `svg/sira-logo-stacked-*.svg` | The mark above "SIRA" in spaced capitals. Posters, banners, merch. |
 | `png/` | The same as PNGs with transparent backgrounds (tiles are opaque). Marks and tiles have every edge snapped to a whole pixel (`tools/raster.py`), so they are pin-sharp; only the 16 px icons are anti-aliased. Marks and tiles at 512, 1024, and 2048 px; small tiles at 16–512 px; lockups 1600 px wide (stacked 1000). |
 | `png/og-image.png` | 1200 × 630 link-preview image, used by the website. |
-| `social/linkedin-banner-company.png` | LinkedIn company page banner (1128 × 191, rendered at 2×). Use `png/sira-tile-night-1024.png` as the page logo. |
+| `social/linkedin-banner-company.png` | LinkedIn company page banner (1128 × 191, rendered at 2×): a soft sage-to-wheat gradient with a grid of square dots, no text (LinkedIn shows the logo over its corner). Use `png/sira-tile-night-1024.png` as the page logo. |
+| `social/linkedin-banner-company-morse.png` | The same, with the middle row of dots spelling SIRA in Morse, in the mark's colours. |
 | `../favicon.ico`, `../favicon.svg`, `../apple-touch-icon.png` | Browser and phone icons used by the website: the night tile. |
 | `contact-sheet.png`, `mockups.png` | Every file at a glance, and the logo in use. |
 
