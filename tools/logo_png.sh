@@ -77,15 +77,18 @@ p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 shot $html $PNG/og-image.png 1200 630
 rm -f $html
 
-# LinkedIn company banner: 1128 x 191, rendered at 2x. LinkedIn places the page's logo over the
-# bottom-left corner, so the text starts about a fifth of the way in, clear of it.
+# LinkedIn company banner: 1128 x 191, rendered at 2x. Type only: LinkedIn shows the logo
+# separately and overlaps the bottom-left corner with it, so the text is centred, clear of it.
 html=$(mktemp -t banner).html
 print -r -- "<!doctype html><html><head><style>$STYLE
-.t{position:absolute;left:430px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
-h1{font:500 64px/1.1 Fraunces,serif;margin:0}
-p{font-size:30px;color:#52606b;margin:14px 0 0}</style></head><body style=\"width:2256px;height:382px\">
-<div class=\"art\" style=\"width:760px\"></div>
-<div class=\"t\"><h1>Societal Impacts Research on AI</h1><p>A research fellowship for social scientists in AI safety &middot; sirafellowship.org</p></div>
+.c{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:52px}
+.w{font:500 150px/1 Fraunces,serif;letter-spacing:.03em;color:#22313d}
+.r{width:3px;height:150px;background:#c9bba7}
+.t{display:flex;flex-direction:column;gap:12px}
+.t b{font:500 46px/1.1 Fraunces,serif;color:#22313d}
+.t span{font-size:28px;color:#52606b}</style></head><body style=\"width:2256px;height:382px\">
+<div class=\"c\"><div class=\"w\">SIRA</div><div class=\"r\"></div>
+<div class=\"t\"><b>Societal Impacts Research on AI</b><span>A research fellowship for social scientists in AI safety &middot; sirafellowship.org</span></div></div>
 </body></html>" > $html
 shot $html $SOCIAL/linkedin-banner-company.png 2256 382
 rm -f $html
