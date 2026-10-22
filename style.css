@@ -110,11 +110,33 @@ summary:focus-visible {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   border-bottom: none;
+}
+
+/* The SIRA mark (brand/README.md): drawn in the text colour, so it follows dark mode. */
+.mark {
+  display: block;
+  flex: none;
+  width: 1.55em;
+  height: 1.55em;
+}
+
+.footer-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.footer-mark .mark {
+  width: 1.3em;
+  height: 1.3em;
 }
 
 .nav {
