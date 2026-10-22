@@ -15,20 +15,20 @@ The telegraph was one of the first technologies to reshape society in real time,
 
 ## Colours
 
-The "soft" palette, one colour per letter:
+The Van Gogh palette, one colour per letter, sampled from the site's hero painting, *Factories at Asnières* (1887):
 
 | Letter | On light | On dark |
 |---|---|---|
-| S | Sage `#7fae86` | `#a7d0ad` |
-| I | Butter `#e0bd4c` | `#f1d97e` |
-| R | Salmon `#e98670` | `#f6a896` |
-| A | Sky `#6e9cc4` | `#a6c8e6` |
+| S | Sage (the sky) `#5f8a6c` | `#9fc4a6` |
+| I | Wheat (the field) `#c9a227` | `#e8c65a` |
+| R | Roof (the brick roofs) `#b8502f` | `#ec8d68` |
+| A | Slate (the far roofs) `#3e6787` | `#8fb3d1` |
 
 With: ink `#22313d` (text, one-colour mark), cream `#f7f0e6` (page background), night `#16222b` (dark backgrounds and the icon tile). The website keeps terracotta `#a9532f` for buttons and links.
 
-The butter row is the lightest on cream. On white or cream it reads well from about 24 px up; below that, prefer the night tile.
+The roof colour sits close to the site's terracotta, so the logo and buttons read as one system.
 
-**Stored alternate palettes (not in use):** Van Gogh (sage `#5f8a6c`, wheat `#c9a227`, roof `#b8502f`, slate `#3e6787`, sampled from the hero painting) and blueprint ramp (`#0d2b4a`, `#1d4f80`, `#2f74b5`, `#5a9bd8`). An earlier two-colour scheme, Van Gogh brick `#7e381d` with sage `#4f6b5a`, is also kept for reference.
+**Stored alternate palettes (not in use):** soft (sage `#7fae86`, butter `#e0bd4c`, salmon `#e98670`, sky `#6e9cc4`; on dark `#a7d0ad` `#f1d97e` `#f6a896` `#a6c8e6`) and blueprint ramp (`#0d2b4a`, `#1d4f80`, `#2f74b5`, `#5a9bd8`). An earlier two-colour scheme, Van Gogh brick `#7e381d` with sage `#4f6b5a`, is also kept for reference.
 
 ## Files
 
@@ -49,7 +49,7 @@ The butter row is the lightest on cream. On white or cream it reads well from ab
 | `../favicon.ico`, `../favicon.svg`, `../apple-touch-icon.png` | Browser and phone icons used by the website: the night tile. |
 | `contact-sheet.png`, `mockups.png` | Every file at a glance, and the logo in use. |
 
-Lockup colourways: `soft` (colour mark, ink text) for light backgrounds, `dark` (light colours, cream text) for dark backgrounds, `ink` and `cream` for one colour. Prefer the SVGs. Text is converted to outlines; the fonts are Fraunces ("SIRA") and Inter Tight (spaced capitals and the full name), both under the SIL Open Font License.
+Lockup colourways: `soft` (colour mark, ink text; the name is historical, the colours are Van Gogh) for light backgrounds, `dark` (light colours, cream text) for dark backgrounds, `ink` and `cream` for one colour. Prefer the SVGs. Text is converted to outlines; the fonts are Fraunces ("SIRA") and Inter Tight (spaced capitals and the full name), both under the SIL Open Font License.
 
 ## Guidelines
 

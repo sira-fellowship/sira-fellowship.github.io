@@ -129,7 +129,7 @@ def mockups():
 .sg-role{{font-size:12px;color:#666}} .sg-logo{{margin:8px 0 4px}} .sg-links{{font-size:12px;color:{TERRA}}}
 .slack{{width:100%;font-size:13px}} .slack .t{{color:#888;font-size:11px}} .slack a{{color:#1264a3}} .unfurl{{border-left:4px solid #ddd;padding-left:12px;margin-top:8px}}
 .uf-site{{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12px}} .uf-title{{color:#1264a3;font-weight:600}}</style></head><body>
-<h1>SIRA in use</h1><p class="sub">The kit's own files in context: the soft palette (sage, butter, salmon, sky) with ink {INK} and cream {CREAM}.</p>
+<h1>SIRA in use</h1><p class="sub">The kit's own files in context: the Van Gogh palette (sage, wheat, roof, slate) with ink {INK} and cream {CREAM}.</p>
 <div class="wall">{"".join(f'<figure><div class="stage">{inner}</div><figcaption>{t}</figcaption></figure>' for t, inner in cards)}</div></body></html>"""
     shoot(html, B / "mockups.png", 1500)
 

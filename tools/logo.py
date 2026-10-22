@@ -13,7 +13,8 @@ It uses Morse's own timing: a dot is one unit, a dash three, and the gap between
 Rows are half a unit apart. Before drawing, the script takes each letter from the full ITU
 alphabet, then decodes the drawn rectangles back into text and checks it reads "SIRA".
 
-Each letter has its own colour (the "soft" palette: sage, butter, salmon, sky), with a lighter
+Each letter has its own colour, sampled from the hero painting, Van Gogh's Factories at Asnieres
+(sage sky, wheat field, roof, slate), with a lighter
 set for dark backgrounds and one-colour ink and cream versions for places colour can't go.
 
 Writes brand/svg/: the mark, the tile (the mark on a square, for icons), the mark beside the
@@ -44,8 +45,8 @@ ITU = {  # International Morse code (ITU-R M.1677-1), letters
 DOT, DASH, GAP, ROW_GAP = 1, 3, 1, 0.5
 
 INK, CREAM, NIGHT = "#22313d", "#f7f0e6", "#16222b"
-SOFT = ["#7fae86", "#e0bd4c", "#e98670", "#6e9cc4"]        # sage, butter, salmon, sky (light grounds)
-SOFT_DARK = ["#a7d0ad", "#f1d97e", "#f6a896", "#a6c8e6"]   # the same, lighter, for dark grounds
+SOFT = ["#5f8a6c", "#c9a227", "#b8502f", "#3e6787"]        # sage, wheat, roof, slate (light grounds)
+SOFT_DARK = ["#9fc4a6", "#e8c65a", "#ec8d68", "#8fb3d1"]   # the same, lighter, for dark grounds
 FONTS = {
     "Fraunces.ttf": "https://github.com/google/fonts/raw/main/ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf",
     "InterTight.ttf": "https://github.com/google/fonts/raw/main/ofl/intertight/InterTight%5Bwght%5D.ttf",
