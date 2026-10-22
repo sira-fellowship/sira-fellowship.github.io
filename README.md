@@ -8,4 +8,4 @@ The site is plain HTML and CSS (`index.html`, `style.css`) with no build step. G
 
 ## Logo
 
-The logo kit is in `brand/` (see `brand/README.md`): the mark is drawn from a punched card Charles Babbage printed in 1864. `tools/logo.py`, `tools/logo_png.sh`, and `tools/contact_sheet.py` regenerate every logo file, the favicons, and the link-preview image.
+The logo kit is in `brand/` (see `brand/README.md`): the mark spells SIRA in Morse code. `tools/logo.py`, `tools/logo_png.sh`, and `tools/contact_sheet.py` regenerate every logo file, the favicons, and the link-preview image.

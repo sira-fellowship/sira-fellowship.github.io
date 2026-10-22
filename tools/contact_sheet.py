@@ -67,7 +67,7 @@ def contact_sheet():
     html = f"""<!doctype html><html><head><meta charset="utf-8"><style>{STYLE}
 .grid{{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}} .grid3{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}}
 .icons{{display:flex;gap:16px}} ul{{columns:3;font-size:12px;padding-left:18px}} li span{{color:#7f8a91}}</style></head><body>
-<h1>SIRA logo kit</h1><p class="sub">Every file in brand/, on the background it is made for. Mark: Babbage's 1864 card, log₁₀ 2303 = 3.3622939.</p>
+<h1>SIRA logo kit</h1><p class="sub">Every file in brand/, on the background it is made for. Mark: SIRA in International Morse code (· · ·  · ·  · – ·  · –).</p>
 <h2>Marks and tiles</h2><div class="grid">{marks}</div>
 <h2>Lockups</h2><div class="grid3">{logos}</div>
 <h2>Site icons</h2><div class="icons">{icons}</div>
@@ -79,9 +79,9 @@ def contact_sheet():
 
 
 def mockups():
-    tile = lambda size, c="ink", small=True: f'<img src="file://{SVG}/sira-tile-{c}{"-small" if small else ""}.svg" width="{size}" height="{size}" style="display:block">'
-    logo = lambda h, c="ink", kind="horizontal": f'<img src="file://{SVG}/sira-logo-{kind}-{c}.svg" style="height:{h}px;display:block">'
-    mark = lambda h, c="ink": f'<img src="file://{SVG}/sira-mark-{c}.svg" style="height:{h}px;display:block">'
+    tile = lambda size, c="night", small=True: f'<img src="file://{SVG}/sira-tile-{c}{"-small" if small else ""}.svg" width="{size}" height="{size}" style="display:block">'
+    logo = lambda h, c="soft", kind="horizontal": f'<img src="file://{SVG}/sira-logo-{kind}-{c}.svg" style="height:{h}px;display:block">'
+    mark = lambda h, c="soft": f'<img src="file://{SVG}/sira-mark-{c}.svg" style="height:{h}px;display:block">'
     painting = ROOT / "images" / "factories-at-asnieres-1000.jpg"
     cards = [
         ("Browser tab", f'''<div class="browser"><div class="tabs"><div class="tab on">{tile(16)}<span>SIRA · Societal Impacts Research on AI</span></div>
@@ -93,11 +93,11 @@ def mockups():
         ("Phone home screen (light and dark)", f'''<div class="phones">{"".join(f"""<div class="phone" style="background:{bg}"><div class="grid">{"".join(f'<div class="app"><div class="ic" style="background:{c}"></div><span style="color:{fc}">{n}</span></div>' for n, c in [("Mail", "#3b82f6"), ("Calendar", "#ef4444"), ("Notes", "#f59e0b"), ("Maps", "#10b981"), ("Photos", "#f472b6"), ("Docs", "#2563eb"), ("Slack", "#4a154b")])}<div class="app"><img src="file://{ROOT}/apple-touch-icon.png" class="ic"><span style="color:{fc}">SIRA</span></div></div></div>""" for bg, fc in [("linear-gradient(160deg,#c9d8e4,#e9d9c7)", "#1d1d1f"), ("linear-gradient(160deg,#1c2833,#0b1118)", "#f2f2f2")])}</div>'''),
         ("Presentation slide", f'''<div class="slide">{logo(30)}<div class="sl-title">Social scientists are AI safety's most underused talent.</div>
 <div class="sl-rule"></div><div class="sl-sub">A 10–12 week mentored research fellowship · Summer 2027</div></div>'''),
-        ("Poster", f'''<div class="poster">{mark(48, "cream")}<div class="ps-kick">Proposed fellowship · Summer 2027</div>
+        ("Poster", f'''<div class="poster">{mark(30, "soft-dark")}<div class="ps-kick">Proposed fellowship · Summer 2027</div>
 <div class="ps-title">Societal Impacts Research on AI</div><div class="ps-img" style="background-image:url('file://{painting}')"></div>
 <div class="ps-foot">Express interest at <b>sirafellowship.org</b></div></div>'''),
-        ("Name badge", f'''<div class="badge"><div class="bd-top">{logo(26, "cream")}</div><div class="bd-name">Emilio Barkett</div><div class="bd-role">Organizer</div><div class="bd-strip"></div></div>'''),
-        ("Stickers", f'''<div class="stickers"><div class="stk r1">{tile(120, small=False)}</div><div class="stk r2">{tile(120, "terracotta", False)}</div><div class="stk ci">{tile(120, "cream", False)}</div></div>'''),
+        ("Name badge", f'''<div class="badge"><div class="bd-top">{logo(26, "dark")}</div><div class="bd-name">Emilio Barkett</div><div class="bd-role">Organizer</div><div class="bd-strip"></div></div>'''),
+        ("Stickers", f'''<div class="stickers"><div class="stk r1">{tile(120, small=False)}</div><div class="stk r2">{tile(120, "ink", False)}</div><div class="stk ci">{tile(120, "cream", False)}</div></div>'''),
         ("Email signature", f'''<div class="mail"><p>Thanks for your interest. I'd love to set up a call next week.</p><p>Best,</p>
 <div class="sig"><b>Emilio Barkett</b><div class="sg-role">Organizer, SIRA</div><div class="sg-logo">{logo(22, kind="full")}</div>
 <div class="sg-links">sirafellowship.org · contact@sirafellowship.org</div></div></div>'''),
@@ -115,8 +115,8 @@ def mockups():
 .av{{position:absolute;top:20px;left:14px;border:4px solid #fff;overflow:hidden;line-height:0}} .av.circle{{border-radius:50%}}
 .pinfo{{padding:56px 14px 14px}} .pinfo b{{display:block}} .pinfo span{{font-size:12px;color:#666}}
 .phones{{display:flex;gap:12px}} .phone{{width:128px;height:236px;border-radius:24px;padding:26px 10px;box-sizing:border-box}}
-.grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 4px}} .app{{display:flex;flex-direction:column;align-items:center;gap:3px}}
-.ic{{width:28px;height:28px;border-radius:7px;display:block}} .app span{{font-size:7px}}
+.grid{{display:grid;grid-template-columns:repeat(4,24px);justify-content:space-between;gap:12px 4px}} .app{{display:flex;flex-direction:column;align-items:center;gap:3px}}
+.ic{{width:24px;height:24px;border-radius:6px;display:block}} .app span{{font-size:7px}}
 .slide{{width:100%;height:240px;background:{CREAM};padding:22px 26px;box-sizing:border-box}} .sl-title{{font:500 26px/1.15 Fraunces,serif;margin-top:34px}}
 .sl-rule{{width:48px;height:4px;background:{TERRA};margin:14px 0 10px}} .sl-sub{{font-size:13px;color:#52606b}}
 .poster{{width:200px;height:290px;background:{INK};color:{CREAM};padding:18px;box-sizing:border-box;display:flex;flex-direction:column;gap:7px}}
@@ -129,7 +129,7 @@ def mockups():
 .sg-role{{font-size:12px;color:#666}} .sg-logo{{margin:8px 0 4px}} .sg-links{{font-size:12px;color:{TERRA}}}
 .slack{{width:100%;font-size:13px}} .slack .t{{color:#888;font-size:11px}} .slack a{{color:#1264a3}} .unfurl{{border-left:4px solid #ddd;padding-left:12px;margin-top:8px}}
 .uf-site{{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12px}} .uf-title{{color:#1264a3;font-weight:600}}</style></head><body>
-<h1>SIRA in use</h1><p class="sub">The kit's own files in context: ink {INK}, terracotta {TERRA}, cream {CREAM}.</p>
+<h1>SIRA in use</h1><p class="sub">The kit's own files in context: the soft palette (sage, butter, salmon, sky) with ink {INK} and cream {CREAM}.</p>
 <div class="wall">{"".join(f'<figure><div class="stage">{inner}</div><figcaption>{t}</figcaption></figure>' for t, inner in cards)}</div></body></html>"""
     shoot(html, B / "mockups.png", 1500)
 

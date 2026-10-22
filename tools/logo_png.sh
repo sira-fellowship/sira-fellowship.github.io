@@ -34,26 +34,24 @@ render() {
 height() { $PY -c "import re,sys;w,h=map(float,re.search(r'viewBox=\"0 0 ([\d.]+) ([\d.]+)',open(sys.argv[1]).read()).groups());print(round(int(sys.argv[2])*h/w))" $1 $2; }
 
 # Marks and tiles are drawn edge-snapped by tools/raster.py, so they stay sharp at every size.
-for c in ink cream terracotta; do
-    for s in 512 1024 2048; do
-        $PY tools/raster.py $SVG/sira-mark-$c.svg $PNG/sira-mark-$c-$s.png $s
-        $PY tools/raster.py $SVG/sira-tile-$c.svg $PNG/sira-tile-$c-$s.png $s
-    done
+for c in soft soft-dark ink cream; do
+    for s in 512 1024 2048; do $PY tools/raster.py $SVG/sira-mark-$c.svg $PNG/sira-mark-$c-$s.png $s; done
 done
-for c in ink cream dark; do
+for c in night cream ink; do
+    for s in 512 1024 2048; do $PY tools/raster.py $SVG/sira-tile-$c.svg $PNG/sira-tile-$c-$s.png $s; done
+done
+for c in soft dark ink cream; do
     for kind in horizontal full stacked; do
         w=1600; [[ $kind == stacked ]] && w=1000
         render $SVG/sira-logo-$kind-$c.svg $PNG/sira-logo-$kind-$c.png $w $(height $SVG/sira-logo-$kind-$c.svg $w)
     done
 done
-# From 32 px up, edge-snapped. At 16 px the gaps between bars are under a pixel, so snapping
-# would merge bars; the browser's smooth rendering keeps the rhythm there.
-for s in 32 48 180 192 512; do
-    $PY tools/raster.py $SVG/sira-tile-ink-small.svg $PNG/sira-tile-ink-small-$s.png $s
-    $PY tools/raster.py $SVG/sira-tile-terracotta-small.svg $PNG/sira-tile-terracotta-small-$s.png $s
+# Icon sizes. From 32 px up, edge-snapped. At 16 px the half-unit gaps between rows are under a
+# pixel, so snapping would merge rows; the browser's smooth rendering keeps them apart there.
+for c in night cream; do
+    for s in 32 48 180 192 512; do $PY tools/raster.py $SVG/sira-tile-$c-small.svg $PNG/sira-tile-$c-small-$s.png $s; done
+    render $SVG/sira-tile-$c-small.svg $PNG/sira-tile-$c-small-16.png 16 16
 done
-render $SVG/sira-tile-ink-small.svg $PNG/sira-tile-ink-small-16.png 16 16
-render $SVG/sira-tile-terracotta-small.svg $PNG/sira-tile-terracotta-small-16.png 16 16
 
 # Shared styles for the link-preview image and the banner: the site's cream, ink, and fonts.
 STYLE="@font-face{font-family:Fraunces;src:url('file://$FONTS/Fraunces.ttf')}
@@ -72,7 +70,7 @@ h1{font:500 72px/1.06 Fraunces,serif;margin:0;letter-spacing:-.01em}
 p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 .url{position:absolute;left:76px;bottom:52px;font-size:20px;font-weight:500}</style></head><body style=\"width:1200px;height:630px\">
 <div class=\"art\" style=\"width:640px\"></div>
-<div class=\"l\"><img src=\"file://$SVG/sira-logo-horizontal-ink.svg\" style=\"height:58px;align-self:flex-start\">
+<div class=\"l\"><img src=\"file://$SVG/sira-logo-horizontal-soft.svg\" style=\"height:58px;align-self:flex-start\">
 <div class=\"kick\">Proposed fellowship &middot; Summer 2027</div><h1>Societal Impacts Research on AI</h1>
 <p>A mentored research fellowship giving social scientists a structured path into AI safety.</p></div>
 <div class=\"url\">sirafellowship.org</div></body></html>" > $html
@@ -92,23 +90,15 @@ p{font-size:30px;color:#52606b;margin:14px 0 0}</style></head><body style=\"widt
 shot $html $SOCIAL/linkedin-banner-company.png 2256 382
 rm -f $html
 
-# Site icons. The SVG favicon switches to a cream tile when the browser is in dark mode;
-# the phone icon uses the terracotta tile so it stands out on light and dark wallpapers.
-$PY - "$SVG" "$ROOT/favicon.svg" <<'PY'
-import re, sys
-svg, out = sys.argv[1], sys.argv[2]
-src = open(f"{svg}/sira-tile-ink-small.svg").read()
-body = re.search(r"</title>(.*)</svg>", src, re.S).group(1)
-body = body.replace('fill="#22313d"', 'class="bg" fill="#22313d"', 1).replace('fill="#f7f0e6"', 'class="fg" fill="#f7f0e6"', 1)
-style = "<style>@media (prefers-color-scheme: dark){.bg{fill:#f7f0e6}.fg{fill:#22313d}}</style>"
-open(out, "w").write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><title>SIRA</title>{style}{body}</svg>\n')
-PY
-cp $PNG/sira-tile-terracotta-small-180.png $ROOT/apple-touch-icon.png
+# Site icons: the night tile with the soft colours reads on light and dark browser tabs and
+# phone wallpapers alike, so one version serves everywhere.
+cp $SVG/sira-tile-night-small.svg $ROOT/favicon.svg
+cp $PNG/sira-tile-night-small-180.png $ROOT/apple-touch-icon.png
 $PY - "$PNG" "$ROOT/favicon.ico" <<'PY'
 import sys
 from PIL import Image
 png, out = sys.argv[1], sys.argv[2]
-imgs = [Image.open(f"{png}/sira-tile-ink-small-{s}.png").convert("RGBA") for s in (16, 32, 48)]
+imgs = [Image.open(f"{png}/sira-tile-night-small-{s}.png").convert("RGBA") for s in (16, 32, 48)]
 imgs[2].save(out, sizes=[(16, 16), (32, 32), (48, 48)], append_images=imgs[:2])
 PY
 echo "Rendered PNGs, social images, and icons."
