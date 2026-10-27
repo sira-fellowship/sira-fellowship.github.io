@@ -91,6 +91,47 @@ summary:focus-visible {
   padding: 0.4rem 0.6rem;
 }
 
+/* Announcement bar, above the header */
+.announce {
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.85rem;
+}
+
+.announce-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem 0.7rem;
+  padding: 0.5rem 2rem;
+  text-align: center;
+}
+
+.announce-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.1rem 0.45rem;
+}
+
+:root[data-theme="dark"] .announce-tag {
+  color: var(--bg);
+}
+
+.announce a {
+  color: var(--bg);
+  border-bottom-color: color-mix(in srgb, var(--bg) 45%, transparent);
+  font-weight: 500;
+}
+
+.announce a:hover {
+  border-bottom-color: var(--bg);
+}
+
 /* Header */
 .site-header {
   position: sticky;
