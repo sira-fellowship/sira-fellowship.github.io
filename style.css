@@ -722,3 +722,7 @@ body::before {
     gap: 0.25rem;
   }
 }
+
+.nowrap {
+  white-space: nowrap;
+}
