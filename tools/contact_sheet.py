@@ -89,17 +89,17 @@ def mockups():
 <div class="page"><div class="pghdr">{logo(26)}<span class="nav">About · Program · <b>Get involved</b></span></div></div></div>'''),
         ("Social profiles: circle and square crops", f'''<div class="social">
 <div class="prof"><div class="banner" style="background:{INK}"></div><div class="av circle">{tile(84, small=False)}</div><div class="pinfo"><b>SIRA</b><span>Societal Impacts Research on AI</span></div></div>
-<div class="prof"><div class="banner" style="background:{TERRA}"></div><div class="av">{tile(84, small=False)}</div><div class="pinfo"><b>SIRA Fellowship</b><span>Research fellowship</span></div></div></div>'''),
+<div class="prof"><div class="banner" style="background:{TERRA}"></div><div class="av">{tile(84, small=False)}</div><div class="pinfo"><b>SIRA</b><span>Fellowship · Workshop · Course</span></div></div></div>'''),
         ("Phone home screen (light and dark)", f'''<div class="phones">{"".join(f"""<div class="phone" style="background:{bg}"><div class="grid">{"".join(f'<div class="app"><div class="ic" style="background:{c}"></div><span style="color:{fc}">{n}</span></div>' for n, c in [("Mail", "#3b82f6"), ("Calendar", "#ef4444"), ("Notes", "#f59e0b"), ("Maps", "#10b981"), ("Photos", "#f472b6"), ("Docs", "#2563eb"), ("Slack", "#4a154b")])}<div class="app"><img src="file://{ROOT}/apple-touch-icon.png" class="ic"><span style="color:{fc}">SIRA</span></div></div></div>""" for bg, fc in [("linear-gradient(160deg,#c9d8e4,#e9d9c7)", "#1d1d1f"), ("linear-gradient(160deg,#1c2833,#0b1118)", "#f2f2f2")])}</div>'''),
         ("Presentation slide", f'''<div class="slide">{logo(30)}<div class="sl-title">Social scientists are AI safety's most underused talent.</div>
-<div class="sl-rule"></div><div class="sl-sub">A 10–12 week mentored research fellowship · Summer 2027</div></div>'''),
-        ("Poster", f'''<div class="poster">{mark(30, "soft-dark")}<div class="ps-kick">Proposed fellowship · Summer 2027</div>
+<div class="sl-rule"></div><div class="sl-sub">A pathway for social scientists into AI safety</div></div>'''),
+        ("Poster", f'''<div class="poster">{mark(30, "soft-dark")}<div class="ps-kick">Research fellowship · Summer 2027</div>
 <div class="ps-title">Societal Impacts Research on AI</div><div class="ps-img" style="background-image:url('file://{painting}')"></div>
 <div class="ps-foot">Express interest at <b>sira-project.org</b></div></div>'''),
-        ("Name badge", f'''<div class="badge"><div class="bd-top">{logo(26, "dark")}</div><div class="bd-name">Emilio Barkett</div><div class="bd-role">Organizer</div><div class="bd-strip"></div></div>'''),
+        ("Name badge", f'''<div class="badge"><div class="bd-top">{logo(26, "dark")}</div><div class="bd-name">Emilio Barkett</div><div class="bd-role">Founder</div><div class="bd-strip"></div></div>'''),
         ("Stickers", f'''<div class="stickers"><div class="stk r1">{tile(120, small=False)}</div><div class="stk r2">{tile(120, "ink", False)}</div><div class="stk ci">{tile(120, "cream", False)}</div></div>'''),
         ("Email signature", f'''<div class="mail"><p>Thanks for your interest. I'd love to set up a call next week.</p><p>Best,</p>
-<div class="sig"><b>Emilio Barkett</b><div class="sg-role">Organizer, SIRA</div><div class="sg-logo">{logo(22, kind="full")}</div>
+<div class="sig"><b>Emilio Barkett</b><div class="sg-role">Founder, SIRA</div><div class="sg-logo">{logo(22, kind="full")}</div>
 <div class="sg-links">sira-project.org · contact@sira-project.org</div></div></div>'''),
         ("Link preview", f'''<div class="slack"><b>Emilio</b> <span class="t">10:42 AM</span><div>Here's the fellowship proposal: <a>https://sira-project.org</a></div>
 <div class="unfurl"><div class="uf-site">{tile(16)} SIRA</div><div class="uf-title">Societal Impacts Research on AI (SIRA)</div>
