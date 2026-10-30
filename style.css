@@ -1406,3 +1406,37 @@ body::before {
   height: 0.55rem;
   background: var(--accent);
 }
+
+/* The fellowship summary on the home page */
+.feature-body {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.feature-body > p {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.feature-actions .landing-button {
+  margin-top: 0;
+}
+
+.feature-actions .landing-button:hover {
+  border-bottom: 1.5px solid var(--text);
+}
+
+.faq-more {
+  margin-top: 1.25rem;
+}
