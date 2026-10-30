@@ -1458,18 +1458,40 @@ body::before {
   margin-top: 1.25rem;
 }
 
-/* Fellowship page: the logo's colours used as accents */
-.fellowship-hero {
+/* Project pages and the home page's fellowship band: the logo's colours used as accents.
+   Each project has its own pair: fellowship sage to wheat, workshop slate to roof,
+   course wheat to slate. */
+.project-hero,
+.project-band {
+  --from: var(--sage);
+  --to: var(--wheat);
   background:
     linear-gradient(100deg,
-      color-mix(in srgb, var(--sage) 16%, var(--bg)) 0%,
+      color-mix(in srgb, var(--from) 16%, var(--bg)) 0%,
       var(--bg) 55%,
-      color-mix(in srgb, var(--wheat) 20%, var(--bg)) 100%);
+      color-mix(in srgb, var(--to) 20%, var(--bg)) 100%);
   border-bottom: 1px solid var(--rule);
 }
 
-.fellowship-hero .about-hero {
+.hero-workshop { --from: var(--slate); --to: var(--roof); }
+.hero-course { --from: var(--wheat); --to: var(--slate); }
+
+.project-hero .about-hero {
   padding-bottom: 3.5rem;
+}
+
+.project-band {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.project-band .feature-head {
+  padding-top: 4rem;
+}
+
+.project-band .feature-actions .hero-button {
+  margin-top: 0;
 }
 
 .hero-actions {
@@ -1513,7 +1535,8 @@ body::before {
 }
 
 /* A Morse-style mark above each figure, one colour each */
-.fellowship-page .stats > div::before {
+.project-page .stats > div::before,
+.project-band .stats > div::before {
   content: "";
   display: block;
   width: 1.6rem;
@@ -1522,24 +1545,27 @@ body::before {
   background: var(--sage);
 }
 
-.fellowship-page .stats > div:nth-child(2)::before { background: var(--wheat); width: 0.5rem; }
-.fellowship-page .stats > div:nth-child(3)::before { background: var(--roof); }
-.fellowship-page .stats > div:nth-child(4)::before { background: var(--slate); width: 0.5rem; }
+.project-page .stats > div:nth-child(2)::before,
+.project-band .stats > div:nth-child(2)::before { background: var(--wheat); width: 0.5rem; }
+.project-page .stats > div:nth-child(3)::before,
+.project-band .stats > div:nth-child(3)::before { background: var(--roof); }
+.project-page .stats > div:nth-child(4)::before,
+.project-band .stats > div:nth-child(4)::before { background: var(--slate); width: 0.5rem; }
 
-.fellowship-page .cards.two .card {
+.project-page .cards.two .card {
   border-top: 4px solid var(--sage);
 }
 
-.fellowship-page .cards.two .card + .card {
+.project-page .cards.two .card + .card {
   border-top-color: var(--slate);
 }
 
-.fellowship-page .offer li {
+.project-page .offer li {
   position: relative;
   padding-left: 1.4rem;
 }
 
-.fellowship-page .offer li::before {
+.project-page .offer li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -1549,9 +1575,9 @@ body::before {
   background: var(--sage);
 }
 
-.fellowship-page .offer li:nth-child(4n + 2)::before { background: var(--wheat); }
-.fellowship-page .offer li:nth-child(4n + 3)::before { background: var(--roof); }
-.fellowship-page .offer li:nth-child(4n + 4)::before { background: var(--slate); }
+.project-page .offer li:nth-child(4n + 2)::before { background: var(--wheat); }
+.project-page .offer li:nth-child(4n + 3)::before { background: var(--roof); }
+.project-page .offer li:nth-child(4n + 4)::before { background: var(--slate); }
 
 .questions .tag-sage,
 .questions .tag-wheat,
@@ -1569,9 +1595,28 @@ body::before {
 .questions .tag-roof { color: var(--roof-ink); background: color-mix(in srgb, var(--roof) 14%, transparent); }
 .questions .tag-slate { color: var(--slate-ink); background: color-mix(in srgb, var(--slate) 16%, transparent); }
 
-.fellowship-page .timeline li { border-top: 3px solid var(--sage); }
-.fellowship-page .timeline li:nth-child(2) { border-top-color: var(--wheat); }
-.fellowship-page .timeline li:nth-child(3) { border-top-color: var(--roof); }
-.fellowship-page .timeline li .phase { color: var(--sage-ink); }
-.fellowship-page .timeline li:nth-child(2) .phase { color: var(--wheat-ink); }
-.fellowship-page .timeline li:nth-child(3) .phase { color: var(--roof-ink); }
+.project-page .timeline li { border-top: 3px solid var(--sage); }
+.project-page .timeline li:nth-child(2) { border-top-color: var(--wheat); }
+.project-page .timeline li:nth-child(3) { border-top-color: var(--roof); }
+.project-page .timeline li .phase { color: var(--sage-ink); }
+.project-page .timeline li:nth-child(2) .phase { color: var(--wheat-ink); }
+.project-page .timeline li:nth-child(3) .phase { color: var(--roof-ink); }
+
+/* Workshop page: programme cards and fit list in its colours */
+.project-page .cards.two .card:only-child,
+.hero-workshop ~ section .cards.two .card { border-top-color: var(--slate); }
+.hero-workshop ~ section .cards.two .card + .card { border-top-color: var(--roof); }
+
+.project-page .fit li::before { background: var(--slate); }
+.project-page .fit li:nth-child(4n + 2)::before { background: var(--roof); }
+.project-page .fit li:nth-child(4n + 3)::before { background: var(--wheat); }
+.project-page .fit li:nth-child(4n + 4)::before { background: var(--sage); }
+
+/* The two ideas on the home page carry their project's colour */
+.idea { border-top: 3px solid var(--line); }
+.idea-workshop { border-top: 3px solid var(--slate); }
+.idea-course { border-top: 3px solid var(--wheat); }
+
+.project-hero .event-meta {
+  margin-top: 1.2rem;
+}
