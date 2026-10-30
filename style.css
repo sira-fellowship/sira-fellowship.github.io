@@ -767,3 +767,259 @@ body::before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* About page (about/index.html), after kairos-project.org/about */
+.about-hero {
+  padding-top: 4.5rem;
+  padding-bottom: 1rem;
+}
+
+.about-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.about-hero p {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--text-2);
+  margin-top: 1rem;
+  max-width: 36rem;
+}
+
+.about-points {
+  list-style: none;
+  counter-reset: point;
+}
+
+.about-points li {
+  counter-increment: point;
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.about-points li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.about-points h2 {
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.section .about-points h2::before {
+  content: counter(point, decimal-leading-zero);
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.about-points p {
+  font-size: 0.98rem;
+  color: var(--text-2);
+}
+
+/* Team: square photo cards; each opens a bio dialog */
+.team {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--line-2);
+  background: var(--note-bg);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.team-card:hover {
+  border-color: var(--text-4);
+}
+
+.team-card img,
+.team-open-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.team-role {
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.team-open {
+  border-style: dashed;
+}
+
+.team-open-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--text-4);
+  background: var(--bg);
+}
+
+.bio {
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  width: min(780px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  background: var(--note-bg);
+  color: var(--text);
+}
+
+.bio::backdrop {
+  background: color-mix(in srgb, #f7f0e6 60%, transparent);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+:root[data-theme="dark"] .bio::backdrop {
+  background: color-mix(in srgb, #161b21 70%, transparent);
+}
+
+.bio-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  padding: 2.5rem;
+}
+
+.bio-panel > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.bio-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.bio-text p {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  margin-top: 0.9rem;
+}
+
+.bio-text .team-role {
+  margin-top: 0.2rem;
+  color: var(--accent);
+}
+
+.bio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bio-links a {
+  font-size: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+
+.bio-links a:hover {
+  border-color: var(--text);
+}
+
+.bio-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.about-button {
+  margin-top: 0.5rem;
+}
+
+.about-button:hover {
+  border-bottom: 1.5px solid var(--text);
+}
+
+.nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .nav a.nav-page {
+    display: inline;
+  }
+
+  .about-points li {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .team-card {
+    padding: 0.6rem;
+  }
+
+  .team-name {
+    font-size: 1rem;
+  }
+
+  .bio-panel {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .bio-panel > img {
+    width: 9rem;
+  }
+}
