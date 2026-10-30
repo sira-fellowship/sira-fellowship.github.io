@@ -16,6 +16,7 @@
   --note-bg: #fbf7f1;
   --accent: #a9532f;
   --accent-soft: #f1dccd;
+  --footer-bg: #efe6d8;
   --art-opacity: 1;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
 }
@@ -33,6 +34,7 @@
   --note-bg: #1d232b;
   --accent: #e39a74;
   --accent-soft: #3a2a24;
+  --footer-bg: #1b2128;
   --art-opacity: 0.75;
 }
 
@@ -181,16 +183,6 @@ summary:focus-visible {
 :root[data-theme="dark"] .mark .m1 { fill: #e8c65a; }
 :root[data-theme="dark"] .mark .m2 { fill: #ec8d68; }
 :root[data-theme="dark"] .mark .m3 { fill: #8fb3d1; }
-
-.footer-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.footer-mark .mark {
-  height: 1.05em;
-}
 
 .nav {
   display: flex;
@@ -545,25 +537,177 @@ body::before {
   }
 }
 
-/* Footer */
+/* Footer, after kairos-project.org */
 .site-footer {
+  position: relative;
+  overflow: hidden;
   margin-top: 5rem;
   border-top: 1px solid var(--rule);
-  padding: 1.5rem 0 2.5rem;
-  font-size: 0.85rem;
-  color: var(--text-4);
+  background: var(--footer-bg);
+  padding: 3.5rem 0 3rem;
+  font-size: 0.92rem;
 }
 
-.footer-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+.footer-art {
+  position: absolute;
+  left: -3rem;
+  bottom: -5rem;
+  width: 18rem;
+  height: auto;
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 0.35;
+  pointer-events: none;
+}
+
+.footer-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0 2rem;
+}
+
+.footer-brand {
+  grid-row: span 2;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  border-bottom: none;
+  margin-bottom: 1.4rem;
+}
+
+.footer-logo .mark {
+  height: 0.85em;
+}
+
+.footer-brand p {
+  margin-top: 0.2rem;
+}
+
+.footer-brand .footer-social {
+  margin-top: 1.2rem;
 }
 
 .site-footer a {
+  border-bottom: none;
+}
+
+.site-footer a:hover {
+  border-bottom: 1px solid var(--text);
+}
+
+.footer-col h2 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li + li {
+  margin-top: 0.6rem;
+}
+
+.footer-legal {
+  grid-column: 2 / 4;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-2);
+  font-size: 0.8rem;
   color: var(--text-3);
-  border-bottom-color: var(--line-2);
+}
+
+.footer-legal a {
+  border-bottom: 1px solid var(--line);
+}
+
+/* Call-to-action strip, after Kairos's "We're hiring" banner */
+.cta-wrap {
+  padding-top: 4rem;
+}
+
+.cta-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding: 1.1rem 1.25rem 1.1rem 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), color-mix(in srgb, var(--accent) 30%, transparent) 50%, transparent calc(50% + 0.5px)) right 0 top 0 / 6.5rem 100% no-repeat,
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), color-mix(in srgb, var(--accent) 30%, transparent) 50%, transparent calc(50% + 0.5px)) right 0 top 0 / 6.5rem 100% no-repeat,
+    linear-gradient(color-mix(in srgb, var(--accent) 30%, transparent), color-mix(in srgb, var(--accent) 30%, transparent)) 50% 0 / 1px 100% no-repeat,
+    var(--accent-soft);
+}
+
+.cta-strip p {
+  position: relative;
+  font-size: 1.15rem;
+  background: var(--accent-soft);
+  padding-right: 0.5rem;
+}
+
+.cta-strip strong {
+  font-weight: 600;
+  margin-right: 0.6rem;
+}
+
+.cta-button {
+  position: relative;
+  flex: none;
+  font-size: 0.88rem;
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+}
+
+.cta-button:hover {
+  border-color: var(--text);
+}
+
+@media (max-width: 1000px) {
+  .footer-art {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1.5rem;
+  }
+
+  .footer-brand,
+  .footer-legal {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .footer-legal {
+    margin-top: 0;
+  }
+
+  .cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--accent-soft);
+  }
+
+  .cta-strip strong {
+    display: block;
+  }
 }
 
 /* Small screens */
