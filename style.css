@@ -1148,3 +1148,261 @@ body::before {
     width: 9rem;
   }
 }
+
+/* Projects menu in the header */
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--text-3);
+  cursor: pointer;
+}
+
+.nav-menu-button:hover,
+.nav-menu-button[data-current],
+.nav-menu.open .nav-menu-button {
+  color: var(--text);
+}
+
+.nav-drop {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 15rem;
+  padding: 0.4rem;
+  background: var(--note-bg);
+  border: 1px solid var(--line-2);
+  box-shadow: 0 10px 30px rgba(34, 49, 61, 0.1);
+  display: none;
+  z-index: 20;
+}
+
+/* An invisible bridge, so the menu stays open while the pointer moves down to it */
+.nav-drop::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -0.9rem;
+  height: 0.9rem;
+}
+
+.nav-menu.open .nav-drop {
+  display: block;
+}
+
+@media (hover: hover) {
+  .nav-menu:hover .nav-drop {
+    display: block;
+  }
+}
+
+.nav .nav-drop a {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.75rem;
+  color: var(--text);
+}
+
+.nav .nav-drop a:hover,
+.nav .nav-drop a[aria-current="page"] {
+  background: var(--bg);
+}
+
+.nav-drop strong {
+  font-weight: 500;
+}
+
+.nav-drop span {
+  font-size: 0.75rem;
+  color: var(--text-4);
+}
+
+.kicker {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.about-hero .kicker {
+  margin-bottom: 0.9rem;
+}
+
+/* The fellowship's heading on the home page */
+.feature-head {
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.feature-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0.6rem 0 0.8rem;
+}
+
+.feature-head p {
+  font-size: 1.1rem;
+  color: var(--text-2);
+  max-width: 34rem;
+  margin: 0 auto 1rem;
+}
+
+/* The two projects in development, side by side */
+.ideas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.idea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px dashed var(--line);
+  transition: border-color 0.2s;
+}
+
+.idea:hover {
+  border-color: var(--text-4);
+}
+
+.idea h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.idea p {
+  font-size: 0.9rem;
+  color: var(--text-3);
+}
+
+.idea-more {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text-2);
+}
+
+.page-text {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  max-width: 40rem;
+}
+
+.section > p.page-text {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 720px) {
+  .nav .nav-menu {
+    display: block;
+  }
+
+  .nav a[href$="#faq"] {
+    display: none;
+  }
+
+  .nav {
+    gap: 0.9rem;
+  }
+
+  .nav-drop {
+    left: auto;
+    right: -4rem;
+    transform: none;
+  }
+
+  .ideas {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nav a,
+.nav-menu-button {
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .header-row {
+    gap: 0.6rem;
+  }
+
+  .nav {
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .nav .nav-cta {
+    padding: 0.2rem 0.55rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .wordmark span {
+    display: none;
+  }
+}
+
+/* Event details under a page title (workshop page) */
+.about-hero .event-meta {
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-3);
+  margin-top: 1.2rem;
+}
+
+.event-meta span {
+  margin: 0 0.4rem;
+}
+
+.event-button {
+  margin-top: 1.5rem;
+}
+
+.event-button:hover {
+  border-bottom: 1.5px solid var(--text);
+}
+
+.section > p.page-text {
+  color: var(--text-2);
+  max-width: 42rem;
+}
+
+.fit {
+  list-style: none;
+  margin-bottom: 1.2rem;
+}
+
+.fit li {
+  position: relative;
+  padding: 0.65rem 0 0.65rem 1.6rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+  color: var(--text-2);
+}
+
+.fit li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 1.1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--accent);
+}
