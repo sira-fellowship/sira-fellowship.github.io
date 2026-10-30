@@ -593,6 +593,8 @@ body::before {
 }
 
 .footer-brand .footer-social {
+  display: flex;
+  gap: 1.4rem;
   margin-top: 1.2rem;
 }
 
