@@ -16,6 +16,15 @@
   --note-bg: #fbf7f1;
   --accent: #a9532f;
   --accent-soft: #f1dccd;
+  /* The logo's Van Gogh colours (brand/README.md), with darker versions for text */
+  --sage: #5f8a6c;
+  --wheat: #c9a227;
+  --roof: #b8502f;
+  --slate: #3e6787;
+  --sage-ink: #446b51;
+  --wheat-ink: #7d6210;
+  --roof-ink: #9a4325;
+  --slate-ink: #345a78;
   --footer-bg: #efe6d8;
   --art-opacity: 1;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -34,6 +43,14 @@
   --note-bg: #1d232b;
   --accent: #e39a74;
   --accent-soft: #3a2a24;
+  --sage: #9fc4a6;
+  --wheat: #e8c65a;
+  --roof: #ec8d68;
+  --slate: #8fb3d1;
+  --sage-ink: #9fc4a6;
+  --wheat-ink: #e8c65a;
+  --roof-ink: #ec8d68;
+  --slate-ink: #8fb3d1;
   --footer-bg: #1b2128;
   --art-opacity: 0.75;
 }
@@ -1440,3 +1457,121 @@ body::before {
 .faq-more {
   margin-top: 1.25rem;
 }
+
+/* Fellowship page: the logo's colours used as accents */
+.fellowship-hero {
+  background:
+    linear-gradient(100deg,
+      color-mix(in srgb, var(--sage) 16%, var(--bg)) 0%,
+      var(--bg) 55%,
+      color-mix(in srgb, var(--wheat) 20%, var(--bg)) 100%);
+  border-bottom: 1px solid var(--rule);
+}
+
+.fellowship-hero .about-hero {
+  padding-bottom: 3.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border: 1.5px solid var(--text);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hero-button:hover {
+  background: var(--text);
+  color: var(--bg);
+  border-bottom: 1.5px solid var(--text);
+}
+
+.hero-button-fill {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.hero-button-fill:hover {
+  background: color-mix(in srgb, var(--accent) 85%, #000);
+  border-color: color-mix(in srgb, var(--accent) 85%, #000);
+  border-bottom-color: color-mix(in srgb, var(--accent) 85%, #000);
+  color: #fff;
+}
+
+:root[data-theme="dark"] .hero-button-fill,
+:root[data-theme="dark"] .hero-button-fill:hover {
+  color: var(--bg);
+}
+
+/* A Morse-style mark above each figure, one colour each */
+.fellowship-page .stats > div::before {
+  content: "";
+  display: block;
+  width: 1.6rem;
+  height: 0.5rem;
+  margin: 0 auto 1rem;
+  background: var(--sage);
+}
+
+.fellowship-page .stats > div:nth-child(2)::before { background: var(--wheat); width: 0.5rem; }
+.fellowship-page .stats > div:nth-child(3)::before { background: var(--roof); }
+.fellowship-page .stats > div:nth-child(4)::before { background: var(--slate); width: 0.5rem; }
+
+.fellowship-page .cards.two .card {
+  border-top: 4px solid var(--sage);
+}
+
+.fellowship-page .cards.two .card + .card {
+  border-top-color: var(--slate);
+}
+
+.fellowship-page .offer li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.fellowship-page .offer li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.15rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--sage);
+}
+
+.fellowship-page .offer li:nth-child(4n + 2)::before { background: var(--wheat); }
+.fellowship-page .offer li:nth-child(4n + 3)::before { background: var(--roof); }
+.fellowship-page .offer li:nth-child(4n + 4)::before { background: var(--slate); }
+
+.questions .tag-sage,
+.questions .tag-wheat,
+.questions .tag-roof,
+.questions .tag-slate {
+  justify-self: start;
+  align-self: start;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.questions .tag-sage { color: var(--sage-ink); background: color-mix(in srgb, var(--sage) 16%, transparent); }
+.questions .tag-wheat { color: var(--wheat-ink); background: color-mix(in srgb, var(--wheat) 20%, transparent); }
+.questions .tag-roof { color: var(--roof-ink); background: color-mix(in srgb, var(--roof) 14%, transparent); }
+.questions .tag-slate { color: var(--slate-ink); background: color-mix(in srgb, var(--slate) 16%, transparent); }
+
+.fellowship-page .timeline li { border-top: 3px solid var(--sage); }
+.fellowship-page .timeline li:nth-child(2) { border-top-color: var(--wheat); }
+.fellowship-page .timeline li:nth-child(3) { border-top-color: var(--roof); }
+.fellowship-page .timeline li .phase { color: var(--sage-ink); }
+.fellowship-page .timeline li:nth-child(2) .phase { color: var(--wheat-ink); }
+.fellowship-page .timeline li:nth-child(3) .phase { color: var(--roof-ink); }
