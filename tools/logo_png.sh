@@ -71,9 +71,9 @@ p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 .url{position:absolute;left:76px;bottom:52px;font-size:20px;font-weight:500}</style></head><body style=\"width:1200px;height:630px\">
 <div class=\"art\" style=\"width:640px\"></div>
 <div class=\"l\"><img src=\"file://$SVG/sira-logo-horizontal-soft.svg\" style=\"height:58px;align-self:flex-start\">
-<div class=\"kick\">Proposed fellowship &middot; Summer 2027</div><h1>Societal Impacts Research on AI</h1>
-<p>A mentored research fellowship giving social scientists a structured path into AI safety.</p></div>
-<div class=\"url\">sirafellowship.org</div></body></html>" > $html
+<div class=\"kick\">Fellowship &middot; Workshop &middot; Course</div><h1>Societal Impacts Research on AI</h1>
+<p>A pathway for social scientists into AI safety, starting with a 12-week mentored research fellowship.</p></div>
+<div class=\"url\">sira-project.org</div></body></html>" > $html
 shot $html $PNG/og-image.png 1200 630
 rm -f $html
 

@@ -85,7 +85,7 @@ def mockups():
     painting = ROOT / "images" / "factories-at-asnieres-1000.jpg"
     cards = [
         ("Browser tab", f'''<div class="browser"><div class="tabs"><div class="tab on">{tile(16)}<span>SIRA · Societal Impacts Research on AI</span></div>
-<div class="tab">Inbox</div></div><div class="url">sirafellowship.org</div>
+<div class="tab">Inbox</div></div><div class="url">sira-project.org</div>
 <div class="page"><div class="pghdr">{logo(26)}<span class="nav">About · Program · <b>Get involved</b></span></div></div></div>'''),
         ("Social profiles: circle and square crops", f'''<div class="social">
 <div class="prof"><div class="banner" style="background:{INK}"></div><div class="av circle">{tile(84, small=False)}</div><div class="pinfo"><b>SIRA</b><span>Societal Impacts Research on AI</span></div></div>
@@ -95,13 +95,13 @@ def mockups():
 <div class="sl-rule"></div><div class="sl-sub">A 10–12 week mentored research fellowship · Summer 2027</div></div>'''),
         ("Poster", f'''<div class="poster">{mark(30, "soft-dark")}<div class="ps-kick">Proposed fellowship · Summer 2027</div>
 <div class="ps-title">Societal Impacts Research on AI</div><div class="ps-img" style="background-image:url('file://{painting}')"></div>
-<div class="ps-foot">Express interest at <b>sirafellowship.org</b></div></div>'''),
+<div class="ps-foot">Express interest at <b>sira-project.org</b></div></div>'''),
         ("Name badge", f'''<div class="badge"><div class="bd-top">{logo(26, "dark")}</div><div class="bd-name">Emilio Barkett</div><div class="bd-role">Organizer</div><div class="bd-strip"></div></div>'''),
         ("Stickers", f'''<div class="stickers"><div class="stk r1">{tile(120, small=False)}</div><div class="stk r2">{tile(120, "ink", False)}</div><div class="stk ci">{tile(120, "cream", False)}</div></div>'''),
         ("Email signature", f'''<div class="mail"><p>Thanks for your interest. I'd love to set up a call next week.</p><p>Best,</p>
 <div class="sig"><b>Emilio Barkett</b><div class="sg-role">Organizer, SIRA</div><div class="sg-logo">{logo(22, kind="full")}</div>
-<div class="sg-links">sirafellowship.org · contact@sirafellowship.org</div></div></div>'''),
-        ("Link preview", f'''<div class="slack"><b>Emilio</b> <span class="t">10:42 AM</span><div>Here's the fellowship proposal: <a>https://sirafellowship.org</a></div>
+<div class="sg-links">sira-project.org · contact@sira-project.org</div></div></div>'''),
+        ("Link preview", f'''<div class="slack"><b>Emilio</b> <span class="t">10:42 AM</span><div>Here's the fellowship proposal: <a>https://sira-project.org</a></div>
 <div class="unfurl"><div class="uf-site">{tile(16)} SIRA</div><div class="uf-title">Societal Impacts Research on AI (SIRA)</div>
 <img src="file://{PNG}/og-image.png" style="width:340px;display:block;margin-top:8px"></div></div>'''),
     ]
