@@ -852,8 +852,7 @@ body::before {
   border-color: var(--text-4);
 }
 
-.team-card img,
-.team-open-art {
+.team-card img {
   display: block;
   width: 100%;
   height: auto;
@@ -870,20 +869,6 @@ body::before {
 .team-role {
   font-size: 0.85rem;
   color: var(--accent);
-}
-
-.team-open {
-  border-style: dashed;
-}
-
-.team-open-art {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 4rem;
-  color: var(--text-4);
-  background: var(--bg);
 }
 
 .bio {
