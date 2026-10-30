@@ -47,6 +47,7 @@ The roof colour sits close to the site's terracotta, so the logo and buttons rea
 | `png/og-image.png` | 1200 × 630 link-preview image, used by the website. |
 | `social/linkedin-banner-company.png` | LinkedIn company page banner (1128 × 191, rendered at 2×): a soft sage-to-wheat gradient with a grid of square dots, no text (LinkedIn shows the logo over its corner). Use `png/sira-tile-night-1024.png` as the page logo. |
 | `social/linkedin-banner-company-morse.png` | The same, with the middle row of dots spelling SIRA in Morse, in the mark's colours. |
+| `social/linkedin-banner-company-fellowship.png`, `social/linkedin-banner-personal-fellowship.png` | The fellowship page's title band (sage to cream to wheat, with the site's paper grain), at LinkedIn's company-page size (1128 × 191) and personal-profile size (1584 × 396), both rendered at 2×. No text, since LinkedIn places the logo or photo over it. |
 | `../favicon.ico`, `../favicon.svg`, `../apple-touch-icon.png` | Browser and phone icons used by the website: the night tile. |
 | `email-signature.html` | Email signature with the logo. Open it in a browser, copy the white box, and paste it into Gmail's signature settings. |
 | `contact-sheet.png`, `mockups.png` | Every file at a glance, and the logo in use. |
