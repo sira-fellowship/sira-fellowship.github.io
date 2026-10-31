@@ -1620,3 +1620,365 @@ body::before {
 .project-hero .event-meta {
   margin-top: 1.2rem;
 }
+
+/* Evidence page (evidence/index.html): sage to slate, with each threat model in one logo colour. */
+.hero-evidence { --from: var(--sage); --to: var(--slate); }
+.hero-evidence-demand { --from: var(--slate); --to: var(--wheat); padding-bottom: 3rem; }
+.hero-evidence-demand .section { padding-top: 4rem; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cards.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.evidence-page .families .card { border-top: 4px solid var(--line); }
+.evidence-page .families .family-in { border-top-color: var(--sage); }
+.evidence-page .families .family-in + .family-in { border-top-color: var(--slate); }
+.evidence-page .families .family-out {
+  background: color-mix(in srgb, var(--text-4) 9%, var(--bg));
+  border-color: color-mix(in srgb, var(--text-4) 35%, transparent);
+  border-top-color: var(--text-4);
+}
+.evidence-page .families .family-out .card-sub { color: var(--text-3); font-weight: 500; }
+.evidence-page .families .family-in .card-sub { color: var(--sage-ink); font-weight: 500; }
+
+.scope-note {
+  margin-top: 1.25rem;
+}
+
+/* Growth chart: plain columns, the partial year lighter */
+.growth {
+  max-width: 44rem;
+}
+
+.growth-chart {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+  height: 14rem;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+}
+
+.bar-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.bar {
+  width: 100%;
+  min-height: 2px;
+  background: var(--sage);
+}
+
+.bar-col.partial .bar {
+  background: repeating-linear-gradient(135deg, var(--sage) 0 6px, color-mix(in srgb, var(--sage) 45%, var(--bg)) 6px 12px);
+}
+
+.bar-n {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.bar-y {
+  position: absolute;
+  bottom: -1.6rem;
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+
+.growth figcaption {
+  margin-top: 2.4rem;
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+
+/* Threat model blocks */
+.tm {
+  --tm: var(--sage);
+  --tm-ink: var(--sage-ink);
+  border-top: 3px solid var(--tm);
+  padding: 1.5rem 0 2rem;
+  margin-top: 1.5rem;
+}
+
+.tm-2 { --tm: var(--roof); --tm-ink: var(--roof-ink); }
+.tm-3 { --tm: var(--wheat); --tm-ink: var(--wheat-ink); }
+.tm-4 { --tm: var(--slate); --tm-ink: var(--slate-ink); }
+
+.tm-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  color: var(--tm-ink);
+  background: color-mix(in srgb, var(--tm) 16%, transparent);
+}
+
+.section .tm-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0.6rem 0 0.3rem;
+}
+
+.tm-head p {
+  font-size: 0.92rem;
+  color: var(--text-3);
+  max-width: 44rem;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.example {
+  border-left: 3px solid var(--tm);
+  background: var(--note-bg);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.example .q {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.example .study {
+  font-size: 0.82rem;
+  color: var(--text-4);
+}
+
+.example .study a {
+  color: var(--tm-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--tm) 50%, transparent);
+}
+
+.example p:last-child {
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+button.text-link {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line-2);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Searchable lists */
+.db {
+  margin-top: 1rem;
+}
+
+.db-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.8rem;
+  align-items: center;
+}
+
+.db-controls input[type="search"],
+.db-controls select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--note-bg);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  max-width: 100%;
+}
+
+.db-search {
+  flex: 1 1 18rem;
+}
+
+.db-search input {
+  width: 100%;
+}
+
+.db-check {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.db-count {
+  font-size: 0.85rem;
+  color: var(--text-4);
+  margin: 1rem 0 0.25rem;
+}
+
+.db-list {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.db-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.db-title {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.db-title:hover {
+  border-bottom: 1px solid var(--text);
+}
+
+.db-meta {
+  font-size: 0.84rem;
+  color: var(--text-3);
+  margin-top: 0.15rem;
+}
+
+.db-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+.db-tags span {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+}
+
+.db-tag {
+  color: var(--text-3);
+  border: 1px solid var(--rule);
+}
+
+.db-tm { --tm: var(--sage); --tm-ink: var(--sage-ink); color: var(--tm-ink); background: color-mix(in srgb, var(--tm) 16%, transparent); font-weight: 500; }
+.db-tm-2 { --tm: var(--roof); --tm-ink: var(--roof-ink); }
+.db-tm-3 { --tm: var(--wheat); --tm-ink: var(--wheat-ink); }
+.db-tm-4, .db-kind { --tm: var(--slate); --tm-ink: var(--slate-ink); }
+
+.db-gold {
+  color: var(--wheat-ink);
+  border: 1px solid var(--wheat);
+  font-weight: 500;
+}
+
+.db-more {
+  margin-top: 1.25rem;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.db-more[hidden] {
+  display: none;
+}
+
+.db-download {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-3);
+}
+
+.section > p.section-lede a,
+.db-download a,
+.scope-note a {
+  border-bottom: 1px solid var(--line-2);
+}
+
+.demand-points {
+  margin-bottom: 2rem;
+}
+
+.evidence-page .demand-points li::before { background: var(--slate); }
+.evidence-page .demand-points li:nth-child(2)::before { background: var(--wheat); }
+.evidence-page .demand-points li:nth-child(3)::before { background: var(--sage); }
+
+@media (max-width: 720px) {
+  .cards.three,
+  .examples {
+    grid-template-columns: 1fr;
+  }
+
+  .growth-chart {
+    gap: 0.3rem;
+    height: 11rem;
+  }
+
+  .db-controls label:not(.db-search) {
+    flex: 1 1 auto;
+  }
+
+  .db-controls select {
+    width: 100%;
+  }
+}
+
+/* Evidence page: quotes from the AI safety community */
+.voices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.voice {
+  border-left: 3px solid var(--slate);
+  background: var(--note-bg);
+  padding: 1.1rem 1.25rem;
+}
+
+.voice:nth-child(2) { border-left-color: var(--wheat); }
+.voice:nth-child(3) { border-left-color: var(--sage); }
+.voice:nth-child(4) { border-left-color: var(--roof); }
+
+.voice blockquote {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.voice figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.voice cite {
+  font-style: normal;
+}
+
+.evidence-page .demand-points li:nth-child(4)::before { background: var(--roof); }
+
+@media (max-width: 720px) {
+  .voices {
+    grid-template-columns: 1fr;
+  }
+}
