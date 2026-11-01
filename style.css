@@ -2134,3 +2134,188 @@ button.text-link {
 .db-check {
   cursor: pointer;
 }
+
+/* Evidence page: growth chart split by method. Empirical work in the accent, the rest in a
+   recessive grey; a 2px gap between segments; a hover/focus label on every bar. */
+.evidence-page {
+  --chart-emp: var(--accent);
+  --chart-other: #a8a091;
+}
+
+:root[data-theme="dark"] .evidence-page {
+  --chart-other: #6b737d;
+}
+
+.chart-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-2);
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sw {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 2px;
+  flex: none;
+}
+
+.sw-emp { background: var(--chart-emp); }
+.sw-other { background: var(--chart-other); }
+
+.growth-chart {
+  position: relative;
+}
+
+.growth-chart .bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: none;
+}
+
+.growth-chart .bar-col.partial .bar {
+  background: none;
+}
+
+.seg {
+  min-height: 1px;
+  flex-basis: 0;
+}
+
+.seg-other {
+  background: var(--chart-other);
+  border-radius: 3px 3px 0 0;
+}
+
+.seg-emp {
+  background: var(--chart-emp);
+}
+
+.bar-col.partial .seg-other {
+  background: repeating-linear-gradient(135deg, var(--chart-other) 0 6px, color-mix(in srgb, var(--chart-other) 45%, var(--bg)) 6px 12px);
+}
+
+.bar-col.partial .seg-emp {
+  background: repeating-linear-gradient(135deg, var(--chart-emp) 0 6px, color-mix(in srgb, var(--chart-emp) 45%, var(--bg)) 6px 12px);
+}
+
+.bar-y small {
+  display: block;
+  font-size: 0.68rem;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bar-col {
+  outline: none;
+}
+
+.bar-col:focus-visible .bar {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.bar-tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  min-width: 9.5rem;
+  padding: 0.5rem 0.65rem;
+  background: var(--note-bg);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(34, 49, 61, 0.12);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-2);
+  white-space: nowrap;
+  text-align: left;
+}
+
+.bar-tip strong,
+.bar-tip span {
+  display: block;
+}
+
+.bar-tip strong {
+  color: var(--text);
+}
+
+.bar-col.tip-left .bar-tip {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.bar-col:hover .bar-tip,
+.bar-col:focus-visible .bar-tip {
+  display: block;
+}
+
+.chart-note {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed var(--text-4);
+  pointer-events: none;
+}
+
+.chart-note span {
+  position: absolute;
+  right: 0.45rem;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  text-align: right;
+}
+
+.chart-note span:first-child { top: 0.1rem; }
+.chart-note span:last-child { top: 1.1rem; }
+
+.chart-source {
+  margin-top: 2.6rem;
+  font-size: 0.78rem;
+  color: var(--text-4);
+}
+
+.growth .chart-source + figcaption {
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .bar-y small {
+    font-size: 0.55rem;
+  }
+
+  .chart-note span {
+    font-size: 0.65rem;
+  }
+
+  .chart-legend {
+    font-size: 0.78rem;
+  }
+}
+
+.growth-chart .bar-y {
+  bottom: auto;
+  top: calc(100% + 0.35rem);
+  line-height: 1.2;
+}
+
+.growth .chart-source {
+  margin-top: 2.9rem;
+}

@@ -19,39 +19,73 @@
         return out;
     }
 
-    // Growth chart: papers per year from the literature census (census.js), falling back to the
-    // database's own items per year. The current year is partial and drawn lighter.
+    // Growth chart: papers per year from the literature census (census.js), each bar split into
+    // empirical work (accent) and everything else (grey). Falls back to the database's own items per
+    // year without a split. The current year is partial and drawn hatched.
     (function chart() {
         var host = document.getElementById('growth-chart');
         if (!host) return;
-        var census = window.SIRA_CENSUS, years, values, partial;
+        var census = window.SIRA_CENSUS, years, totals, empirical, partial;
         if (census) {
             years = census.years;
-            values = census.papers;
+            totals = census.papers;
+            empirical = census.empiricalByYear;
             partial = census.partialYear;
         } else {
             var byYear = count(data.research, 'yn');
             years = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
-            values = years.map(function (y) { return byYear[y] || 0; });
+            totals = years.map(function (y) { return byYear[y] || 0; });
+            empirical = null;
             partial = 2026;
         }
         function short(n) { return n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k' : String(n); }
-        var max = Math.max.apply(null, values);
+        function full(n) { return n.toLocaleString('en-US'); }
+        var max = Math.max.apply(null, totals);
         host.style.gridTemplateColumns = 'repeat(' + years.length + ', 1fr)';
-        host.setAttribute('role', 'img');
+        host.setAttribute('role', 'group');
         host.setAttribute('aria-label', 'Papers per year: ' + years.map(function (y, i) {
-            return y + ', ' + values[i].toLocaleString('en-US');
-        }).join('; ') + ' (' + partial + ' through October).');
+            return y + ', ' + full(totals[i]) + (empirical ? ' (' + Math.round(empirical[i] / totals[i] * 100) + '% empirical)' : '');
+        }).join('; ') + ' (' + partial + ' January to October).');
+
         years.forEach(function (y, i) {
-            var col = el('div', 'bar-col' + (y === partial ? ' partial' : ''));
-            col.setAttribute('aria-hidden', 'true');
-            col.appendChild(el('span', 'bar-n', short(values[i])));
+            var col = el('div', 'bar-col' + (y === partial ? ' partial' : '') + (i >= years.length - 3 ? ' tip-left' : ''));
+            col.tabIndex = 0;
+            var share = empirical ? Math.round(empirical[i] / totals[i] * 100) : null;
+            col.setAttribute('aria-label', y + (y === partial ? ' (January to October)' : '') + ': ' + full(totals[i]) +
+                ' papers' + (empirical ? ', ' + full(empirical[i]) + ' empirical (' + share + '%)' : ''));
+            col.appendChild(el('span', 'bar-n', short(totals[i])));
             var bar = el('div', 'bar');
-            bar.style.height = (values[i] / max * 100) + '%';
+            bar.style.height = (totals[i] / max * 100) + '%';
+            if (empirical) {
+                var other = el('div', 'seg seg-other');
+                other.style.flexGrow = totals[i] - empirical[i];
+                var emp = el('div', 'seg seg-emp');
+                emp.style.flexGrow = empirical[i];
+                bar.appendChild(other);
+                bar.appendChild(emp);
+            }
             col.appendChild(bar);
-            col.appendChild(el('span', 'bar-y', y === partial ? y + '*' : y));
+            var label = el('span', 'bar-y', String(y));
+            if (y === partial) label.appendChild(el('small', null, 'Jan–Oct'));
+            col.appendChild(label);
+            var tip = el('span', 'bar-tip');
+            tip.appendChild(el('strong', null, y + (y === partial ? ', Jan–Oct' : '')));
+            tip.appendChild(el('span', null, full(totals[i]) + ' papers'));
+            if (empirical) tip.appendChild(el('span', null, full(empirical[i]) + ' empirical (' + share + '%)'));
+            col.appendChild(tip);
             host.appendChild(col);
         });
+
+        // Annotation at the turn of 2022-23, where the curve bends.
+        var at = years.indexOf(2023);
+        if (at > 0) {
+            var note = el('div', 'chart-note');
+            note.setAttribute('aria-hidden', 'true');
+            note.style.left = (at / years.length * 100) + '%';
+            note.appendChild(el('span', null, 'ChatGPT released'));
+            note.appendChild(el('span', null, 'Nov 2022'));
+            host.appendChild(note);
+        }
     })();
 
     function setup(root, list, opts) {

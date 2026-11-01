@@ -19,6 +19,7 @@ def main(src):
     out = {
         "years": [int(y) for y in years],
         "papers": [a["by_year"][y] for y in years],
+        "empiricalByYear": [a["empirical_by_year"][y] for y in years],
         "empiricalShare": [a["empirical_share_by_year"][y] for y in years],
         "meets": a["meets"],
         "classified": a["classified"],
