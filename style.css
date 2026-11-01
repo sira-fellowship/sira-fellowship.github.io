@@ -2412,3 +2412,24 @@ button.text-link {
     padding-left: 0.5rem;
   }
 }
+
+/* Evidence page: the "In short" summary under the stats row */
+.summary {
+  padding-top: 1rem;
+}
+
+.key-points li a {
+  white-space: nowrap;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--line-2);
+  margin-left: 0.2rem;
+}
+
+.key-points li a::after {
+  content: " →";
+}
+
+.key-points li a:hover {
+  color: var(--text);
+}

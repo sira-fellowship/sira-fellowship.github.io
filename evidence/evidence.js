@@ -72,6 +72,9 @@
             tip.appendChild(el('strong', null, y + (y === partial ? ', Jan–Oct' : '')));
             tip.appendChild(el('span', null, full(totals[i]) + ' papers'));
             if (empirical) tip.appendChild(el('span', null, full(empirical[i]) + ' empirical (' + share + '%)'));
+            if (census && census.oneInN && census.oneInN[i]) {
+                tip.appendChild(el('span', null, '1 in ' + full(census.oneInN[i]) + ' social science papers'));
+            }
             col.appendChild(tip);
             host.appendChild(col);
         });

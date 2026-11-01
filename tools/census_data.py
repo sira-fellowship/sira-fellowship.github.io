@@ -37,6 +37,7 @@ def main(src):
             }
             for k, n in a["threat_model_total"].items() if k != "not_applicable"
         },
+        "oneInN": [a.get("one_in_n_by_year", {}).get(y) for y in years],
         "partialYear": 2026,
     }
     (ROOT / "evidence" / "census.js").write_text(
