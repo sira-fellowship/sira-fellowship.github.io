@@ -19,26 +19,37 @@
         return out;
     }
 
-    // Growth chart: research items per year, 2020 on. The current year is partial and drawn lighter.
+    // Growth chart: papers per year from the literature census (census.js), falling back to the
+    // database's own items per year. The current year is partial and drawn lighter.
     (function chart() {
         var host = document.getElementById('growth-chart');
         if (!host) return;
-        var byYear = count(data.research, 'yn');
-        var years = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
-        var max = Math.max.apply(null, years.map(function (y) { return byYear[y] || 0; }));
+        var census = window.SIRA_CENSUS, years, values, partial;
+        if (census) {
+            years = census.years;
+            values = census.papers;
+            partial = census.partialYear;
+        } else {
+            var byYear = count(data.research, 'yn');
+            years = [2020, 2021, 2022, 2023, 2024, 2025, 2026];
+            values = years.map(function (y) { return byYear[y] || 0; });
+            partial = 2026;
+        }
+        function short(n) { return n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k' : String(n); }
+        var max = Math.max.apply(null, values);
+        host.style.gridTemplateColumns = 'repeat(' + years.length + ', 1fr)';
         host.setAttribute('role', 'img');
-        host.setAttribute('aria-label', 'Items per year: ' + years.map(function (y) {
-            return y + ', ' + (byYear[y] || 0);
-        }).join('; ') + ' (2026 through October).');
-        years.forEach(function (y) {
-            var n = byYear[y] || 0;
-            var col = el('div', 'bar-col' + (y === 2026 ? ' partial' : ''));
+        host.setAttribute('aria-label', 'Papers per year: ' + years.map(function (y, i) {
+            return y + ', ' + values[i].toLocaleString('en-US');
+        }).join('; ') + ' (' + partial + ' through October).');
+        years.forEach(function (y, i) {
+            var col = el('div', 'bar-col' + (y === partial ? ' partial' : ''));
             col.setAttribute('aria-hidden', 'true');
-            col.appendChild(el('span', 'bar-n', n));
+            col.appendChild(el('span', 'bar-n', short(values[i])));
             var bar = el('div', 'bar');
-            bar.style.height = (n / max * 100) + '%';
+            bar.style.height = (values[i] / max * 100) + '%';
             col.appendChild(bar);
-            col.appendChild(el('span', 'bar-y', y === 2026 ? '2026*' : y));
+            col.appendChild(el('span', 'bar-y', y === partial ? y + '*' : y));
             host.appendChild(col);
         });
     })();

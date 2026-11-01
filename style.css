@@ -2104,3 +2104,22 @@ button.text-link {
     display: block;
   }
 }
+
+/* Evidence page: census growth chart (12 years) and the note under it */
+.growth-note {
+  max-width: 44rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-2);
+}
+
+.growth figcaption a {
+  border-bottom: 1px solid var(--line-2);
+}
+
+@media (max-width: 720px) {
+  .bar-n,
+  .bar-y {
+    font-size: 0.68rem;
+  }
+}
