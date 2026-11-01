@@ -25,6 +25,7 @@ def main(src):
         "classified": a["classified"],
         "empirical": a["empirical_total"],
         "experiments": a["experiment_total"],
+        "threatModels": {k: v for k, v in a["threat_model_total"].items() if k != "not_applicable"},
         "partialYear": 2026,
     }
     (ROOT / "evidence" / "census.js").write_text(

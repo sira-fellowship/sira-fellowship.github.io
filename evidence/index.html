@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The evidence · SIRA</title>
-    <meta name="description" content="About 100,000 social science papers on AI’s societal effects since 2015, up 17-fold from 2019 to 2025. Browse the research and see who is asking for more.">
+    <meta name="description" content="More than 100,000 social science papers on AI’s societal effects since 2015, up 17-fold from 2019 to 2025. Browse the research and see who is asking for more.">
     <meta property="og:title" content="The evidence · SIRA">
-    <meta property="og:description" content="About 100,000 social science papers on AI’s societal effects since 2015, up 17-fold from 2019 to 2025. Browse the research and see who is asking for more.">
+    <meta property="og:description" content="More than 100,000 social science papers on AI’s societal effects since 2015, up 17-fold from 2019 to 2025. Browse the research and see who is asking for more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sira-project.org/evidence/">
     <meta property="og:site_name" content="SIRA">
@@ -78,7 +78,7 @@
 
         <div class="wrap stats-wrap">
             <dl class="stats">
-                <div><dt>~100,000</dt><dd>Social science papers on AI’s societal effects since 2015</dd></div>
+                <div><dt>100,000+</dt><dd>Social science papers on AI’s societal effects since 2015</dd></div>
                 <div><dt>17×</dt><dd>More papers in 2025 than in 2019</dd></div>
                 <div><dt>43%</dt><dd>Of 2025 papers are empirical, up from 19% in 2019</dd></div>
                 <div><dt>75</dt><dd>Signals that labs, governments, and researchers want this work</dd></div>
@@ -126,7 +126,7 @@
                 <p class="chart-source">Source: SIRA census of Semantic Scholar, 2015 to October 2026 · sira-project.org/evidence</p>
                 <figcaption>A lower bound: keyword search misses papers indexed without an abstract. See <a href="#method">how we counted</a>.</figcaption>
             </figure>
-            <p class="growth-note">Our census finds about <strong>100,000</strong> such papers since 2015, rising from 1,740 in 2019 to 30,176 in 2025. The work is also becoming more empirical: the share using experiments, surveys, observational data, or qualitative fieldwork rose from 19% in 2019 to 43% in 2025.</p>
+            <p class="growth-note">Our census finds more than <strong>100,000</strong> such papers since 2015, rising from 1,837 in 2019 to 31,151 in 2025. The work is also becoming more empirical: the share using experiments, surveys, observational data, or qualitative fieldwork rose from 19% in 2019 to 43% in 2025.</p>
         </section>
 
         <section id="threat-models" class="section wrap">
@@ -151,6 +151,7 @@
                         <p>Across nine studies with 6,282 participants, identical empathic replies were rated as less caring and supportive once people learned an AI had written them. Given the choice, people preferred to wait for a human reply over getting an immediate AI one.</p>
                     </div>
                 </div>
+                <p class="tm-count" data-census-tm="human_ai_interaction" hidden></p>
                 <button class="text-link see-all" type="button" data-tm="1">See all human-AI interaction research →</button>
             </article>
 
@@ -172,6 +173,7 @@
                         <p>Across four studies with 1,788 participants, messages that ChatGPT tailored to people’s psychological profiles were significantly more persuasive than generic ones. Personalized persuasion, once costly, can now be automated.</p>
                     </div>
                 </div>
+                <p class="tm-count" data-census-tm="persuasion_manipulation" hidden></p>
                 <button class="text-link see-all" type="button" data-tm="2">See all persuasion and manipulation research →</button>
             </article>
 
@@ -193,6 +195,7 @@
                         <p>Open-ended responses from about 80,500 Claude users. About one in five raised concerns about losing work, and that concern rose with how exposed a person’s occupation is to AI; early-career workers worried most. Respondents chose to take part, so they are not representative of all workers.</p>
                     </div>
                 </div>
+                <p class="tm-count" data-census-tm="economic_labor" hidden></p>
                 <button class="text-link see-all" type="button" data-tm="3">See all economic and labor research →</button>
             </article>
 
@@ -214,13 +217,14 @@
                         <p>In a randomized experiment with 758 Boston Consulting Group consultants, those given GPT-4 completed 12.2% more tasks, 25.1% faster, at 40% higher quality on tasks within the AI’s abilities. On a task just beyond them, consultants using AI got the right answer less often than those without it: 60–70% against 84%.</p>
                     </div>
                 </div>
+                <p class="tm-count" data-census-tm="institutional_organizational" hidden></p>
                 <button class="text-link see-all" type="button" data-tm="4">See all institutional and organizational research →</button>
             </article>
         </section>
 
         <section id="gaps" class="section wrap">
             <h2>Where the evidence is thin</h2>
-            <p>Persuasion and manipulation has the least work so far: 36 of the 268 items, even though it is among the risks most directly measurable by experiment. Economics also dominates the database, with 99 items, against 54 from psychology and 41 from sociology. These gaps are where new researchers can add the most.</p>
+            <p>Persuasion and manipulation has the least work so far: about 2,300 of the 104,000 papers in our census, or 2%, even though it is among the risks most directly measurable by experiment. Institutional and organizational channels have about 48,900, human-AI interaction about 17,100, and economic and labor channels about 14,100. Among our selected studies, economics dominates, with 99 items against 54 from psychology and 41 from sociology. These gaps are where new researchers can add the most.</p>
         </section>
 
         <section id="database" class="section wrap">
@@ -285,7 +289,7 @@
             <h2>How we built this</h2>
             <p>We searched the publication pages of AI labs, government institutes, academic centers, and individual researchers, and checked the authorship and relevance of each item before adding it. Each item is tagged by threat model and discipline. Studies with large samples or randomized designs are flagged as large-N or RCT. Press releases and short news items are left out of the research list.</p>
             <p>This is a documented floor, not a census: there is certainly relevant work we have not found yet.</p>
-            <p><strong>The census behind the growth figures.</strong> We searched Semantic Scholar for papers in the social sciences (including economics, psychology, sociology, political science, business, law, and education) that pair AI terms with societal-impact terms, from 2015 through October 2026: about 134,000 candidates. Claude Haiku then classified each paper’s title and abstract against our definition: research on how AI affects people, organizations, institutions, economies, or politics, or how they perceive, use, or govern it, excluding papers that only use AI as a research tool. On a random sample of 183 papers, its labels agreed with a researcher’s hand labels 85% of the time (Cohen’s kappa 0.61). About 100,600 papers met the definition; adjusting for measured precision and recall gives about 97,600. Because keyword search misses papers indexed without an abstract, treat these figures as a lower bound. An expanded search is underway, and we will update these numbers when it finishes.</p>
+            <p><strong>The census behind the growth figures.</strong> We searched Semantic Scholar for papers in the social sciences (including economics, psychology, sociology, political science, business, law, and education) that pair AI terms with societal-impact terms, from 2015 through October 2026: about 139,000 candidates. Claude Haiku then classified each paper’s title and abstract against our definition: research on how AI affects people, organizations, institutions, economies, or politics, or how they perceive, use, or govern it, excluding papers that only use AI as a research tool. On a random sample of 183 papers, its labels agreed with a researcher’s hand labels 85% of the time (Cohen’s kappa 0.61). About 104,300 papers met the definition; adjusting for measured precision and recall gives about 101,200. As a check, the census found about a third of the academic papers in our selected studies; most of the rest are working papers or are indexed without an abstract, which keyword search cannot reach. Treat these figures as a lower bound.</p>
             <p>Last updated November 2026. If you know of work we have missed, email <a href="mailto:contact@sira-project.org?subject=Evidence%20database">contact@sira-project.org</a>.</p>
         </section>
 

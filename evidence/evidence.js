@@ -88,6 +88,18 @@
         }
     })();
 
+    // Census paper counts under each threat model's examples.
+    if (window.SIRA_CENSUS && window.SIRA_CENSUS.threatModels) {
+        document.querySelectorAll('[data-census-tm]').forEach(function (p) {
+            var n = window.SIRA_CENSUS.threatModels[p.getAttribute('data-census-tm')];
+            if (!n) return;
+            p.textContent = '';
+            p.appendChild(el('strong', null, n.toLocaleString('en-US')));
+            p.appendChild(document.createTextNode(' papers in our census of the literature'));
+            p.hidden = false;
+        });
+    }
+
     function setup(root, list, opts) {
         var controls = {};
         root.querySelectorAll('[data-filter]').forEach(function (c) { controls[c.getAttribute('data-filter')] = c; });

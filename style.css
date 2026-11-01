@@ -2319,3 +2319,14 @@ button.text-link {
 .growth .chart-source {
   margin-top: 2.9rem;
 }
+
+.tm-count {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin: -0.25rem 0 0.75rem;
+}
+
+.tm-count strong {
+  color: var(--tm-ink);
+  font-weight: 600;
+}
