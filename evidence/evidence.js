@@ -100,8 +100,8 @@
             if (!t) return;
             p.textContent = '';
             p.appendChild(el('strong', null, t.papers.toLocaleString('en-US')));
-            p.appendChild(document.createTextNode(' papers in our census of the literature, ' +
-                pct(t.experiments, t.papers) + ' of them experiments'));
+            p.appendChild(document.createTextNode(' papers in our census of the literature: ' +
+                pct(t.empirical, t.papers) + ' empirical, ' + pct(t.experiments, t.papers) + ' experiments'));
             p.hidden = false;
         });
 
