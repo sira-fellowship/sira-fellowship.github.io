@@ -2433,3 +2433,8 @@ button.text-link {
 .key-points li a:hover {
   color: var(--text);
 }
+
+.chart-source a {
+  color: inherit;
+  border-bottom: 1px solid var(--line-2);
+}
