@@ -125,6 +125,8 @@
 
     var research = document.querySelector('.db[data-set="research"]');
     if (research) {
+        // Newest first; within a year, data.js order (strongest studies first) is kept.
+        data.research.sort(function (a, b) { return (b.yn || 0) - (a.yn || 0); });
         var r = setup(research, data.research, {
             text: function (x) { return [x.t, x.a, x.o, x.s, x.d, x.d2].join(' '); },
             selects: {

@@ -2123,3 +2123,14 @@ button.text-link {
     font-size: 0.68rem;
   }
 }
+
+.db-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.db-check {
+  cursor: pointer;
+}
