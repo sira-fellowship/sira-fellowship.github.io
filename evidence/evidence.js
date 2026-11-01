@@ -88,16 +88,48 @@
         }
     })();
 
-    // Census paper counts under each threat model's examples.
-    if (window.SIRA_CENSUS && window.SIRA_CENSUS.threatModels) {
+    // Census figures for each threat model: a line under its examples, and the summary table.
+    var CENSUS_TM = window.SIRA_CENSUS && window.SIRA_CENSUS.threatModelStats;
+    function pct(n, d) { return Math.round(n / d * 100) + '%'; }
+    if (CENSUS_TM) {
         document.querySelectorAll('[data-census-tm]').forEach(function (p) {
-            var n = window.SIRA_CENSUS.threatModels[p.getAttribute('data-census-tm')];
-            if (!n) return;
+            var t = CENSUS_TM[p.getAttribute('data-census-tm')];
+            if (!t) return;
             p.textContent = '';
-            p.appendChild(el('strong', null, n.toLocaleString('en-US')));
-            p.appendChild(document.createTextNode(' papers in our census of the literature'));
+            p.appendChild(el('strong', null, t.papers.toLocaleString('en-US')));
+            p.appendChild(document.createTextNode(' papers in our census of the literature, ' +
+                pct(t.experiments, t.papers) + ' of them experiments'));
             p.hidden = false;
         });
+
+        var table = document.getElementById('tm-table');
+        if (table) {
+            var rows = [
+                ['human_ai_interaction', 'Human-AI interaction'],
+                ['persuasion_manipulation', 'Persuasion and manipulation'],
+                ['economic_labor', 'Economic and labor'],
+                ['institutional_organizational', 'Institutional and organizational'],
+                ['governance_policy', 'Governance and policy'],
+                ['other_societal', 'Other societal effects']
+            ];
+            var total = window.SIRA_CENSUS.meets;
+            var body = table.querySelector('tbody');
+            rows.forEach(function (r, i) {
+                var t = CENSUS_TM[r[0]];
+                if (!t) return;
+                var tr = el('tr', (i >= 4 ? 'outside' : '') + (r[0] === 'persuasion_manipulation' ? ' hl' : ''));
+                var name = el('td');
+                name.appendChild(document.createTextNode(r[1]));
+                if (i >= 4) name.appendChild(el('span', 'tm-table-tag', 'outside our four'));
+                tr.appendChild(name);
+                [t.papers.toLocaleString('en-US'), pct(t.papers, total), Math.round(t.y2025 / t.y2019) + '×',
+                 pct(t.empirical, t.papers), pct(t.experiments, t.papers)].forEach(function (v) {
+                    tr.appendChild(el('td', null, v));
+                });
+                body.appendChild(tr);
+            });
+            table.closest('.tm-summary').hidden = false;
+        }
     }
 
     function setup(root, list, opts) {

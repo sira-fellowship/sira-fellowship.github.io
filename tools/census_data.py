@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+EMPIRICAL = {"experiment", "survey", "observational_data", "qualitative"}
 
 
 def main(src):
@@ -26,6 +27,16 @@ def main(src):
         "empirical": a["empirical_total"],
         "experiments": a["experiment_total"],
         "threatModels": {k: v for k, v in a["threat_model_total"].items() if k != "not_applicable"},
+        "threatModelStats": {
+            k: {
+                "papers": n,
+                "y2019": a["threat_model_by_year"][k]["2019"],
+                "y2025": a["threat_model_by_year"][k]["2025"],
+                "empirical": sum(c for m, c in a["method_by_threat_model"][k].items() if m in EMPIRICAL),
+                "experiments": a["method_by_threat_model"][k].get("experiment", 0),
+            }
+            for k, n in a["threat_model_total"].items() if k != "not_applicable"
+        },
         "partialYear": 2026,
     }
     (ROOT / "evidence" / "census.js").write_text(

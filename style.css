@@ -2330,3 +2330,85 @@ button.text-link {
   color: var(--tm-ink);
   font-weight: 600;
 }
+
+/* Evidence page: threat-model summary table (numbers right-aligned, no grid, one row highlighted) */
+.table-wrap {
+  overflow-x: auto;
+  max-width: 52rem;
+}
+
+.tm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tm-table th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-3);
+  text-align: right;
+  vertical-align: bottom;
+  padding: 0 0 0.5rem 0.9rem;
+  border-bottom: 1.5px solid var(--text);
+  line-height: 1.25;
+}
+
+.tm-table td {
+  text-align: right;
+  padding: 0.6rem 0 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+  color: var(--text-2);
+}
+
+.tm-table th:first-child,
+.tm-table td:first-child {
+  text-align: left;
+  padding-left: 0;
+  white-space: normal;
+}
+
+.tm-table td:first-child {
+  color: var(--text);
+}
+
+.tm-table tr.hl td {
+  background: var(--accent-soft);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tm-table tr.outside td {
+  color: var(--text-4);
+}
+
+.tm-table-tag {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-4);
+}
+
+.section > p.table-note {
+  max-width: 44rem;
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text-4);
+}
+
+@media (max-width: 720px) {
+  .tm-table {
+    font-size: 0.8rem;
+  }
+
+  .tm-table th:nth-child(3),
+  .tm-table td:nth-child(3) {
+    display: none;
+  }
+
+  .tm-table th,
+  .tm-table td {
+    padding-left: 0.5rem;
+  }
+}
