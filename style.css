@@ -2375,7 +2375,7 @@ button.text-link {
 }
 
 .tm-table tr.hl td {
-  background: var(--accent-soft);
+  background: color-mix(in srgb, var(--text) 7%, var(--bg));
   font-weight: 600;
   color: var(--text);
 }
