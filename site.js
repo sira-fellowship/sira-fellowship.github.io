@@ -1,4 +1,5 @@
-// Shared behavior for every page: the theme toggle, the phone menu, the Projects menu, and team bio dialogs.
+// Shared behavior for every page: the theme toggle, the phone menu, the Projects menu, team bio dialogs,
+// and the scrolling strip of institution names on the home page.
 
 document.getElementById('theme-toggle').addEventListener('click', function () {
     var current = document.documentElement.getAttribute('data-theme');
@@ -49,4 +50,26 @@ document.querySelectorAll('[data-bio]').forEach(function (card) {
     card.addEventListener('click', function () { dialog.showModal(); });
     dialog.querySelector('.bio-close').addEventListener('click', function () { dialog.close(); });
     dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+});
+
+// Institution strip: repeat each row's names until it is wider than the screen, then add one hidden
+// copy so the animation (translate by -50%) loops without a jump. Speed is constant across rows.
+document.querySelectorAll('.orgs-track').forEach(function (track) {
+    var names = Array.prototype.slice.call(track.children);
+    function append(hidden) {
+        names.forEach(function (li) {
+            var copy = li.cloneNode(true);
+            if (hidden) copy.setAttribute('aria-hidden', 'true');
+            track.appendChild(copy);
+        });
+    }
+    while (track.scrollWidth < window.innerWidth * 1.2) append(true);
+    var set = Array.prototype.slice.call(track.children);
+    set.forEach(function (li) {
+        var copy = li.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        track.appendChild(copy);
+    });
+    var pxPerSecond = track.closest('.orgs-row-slow') ? 22 : 32;
+    track.style.setProperty('--orgs-duration', (track.scrollWidth / 2 / pxPerSecond) + 's');
 });

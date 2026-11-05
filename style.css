@@ -2438,3 +2438,98 @@ button.text-link {
   color: inherit;
   border-bottom: 1px solid var(--line-2);
 }
+
+/* Home page: where interest has come from. A slow strip of institution names, moving right to left,
+   with a Morse square between names. Static and wrapped for reduced motion. */
+.orgs-band {
+  padding: 2.25rem 0 2rem;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.orgs-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.orgs-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.orgs-row + .orgs-row {
+  margin-top: 0.6rem;
+}
+
+.orgs-track {
+  list-style: none;
+  display: flex;
+  width: max-content;
+  animation: orgs-scroll var(--orgs-duration, 120s) linear infinite;
+}
+
+.orgs-track li {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-2);
+}
+
+.orgs-row-slow .orgs-track li {
+  font-size: 1rem;
+  color: var(--text-3);
+}
+
+.orgs-track li::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  margin: 0 1.4rem;
+  background: var(--sage);
+}
+
+.orgs-track li:nth-child(4n + 2)::after { background: var(--wheat); }
+.orgs-track li:nth-child(4n + 3)::after { background: var(--roof); }
+.orgs-track li:nth-child(4n + 4)::after { background: var(--slate); }
+
+@keyframes orgs-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orgs-row {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .orgs-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.4rem;
+    padding: 0 1rem;
+  }
+
+  .orgs-track li[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .orgs-track li {
+    font-size: 1rem;
+  }
+
+  .orgs-track li::after {
+    margin: 0 1rem;
+  }
+}
