@@ -52,24 +52,29 @@ document.querySelectorAll('[data-bio]').forEach(function (card) {
     dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
 });
 
-// Institution strip: repeat each row's names until it is wider than the screen, then add one hidden
+// Institution strip: repeat each row's names enough times to fill the screen, then add one hidden
 // copy so the animation (translate by -50%) loops without a jump. Speed is constant across rows.
-document.querySelectorAll('.orgs-track').forEach(function (track) {
-    var names = Array.prototype.slice.call(track.children);
-    function append(hidden) {
-        names.forEach(function (li) {
+// Skipped for reduced motion, where the strip is a static wrapped list. The copy count is computed
+// up front and capped, so a row that cannot be measured never loops forever.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.orgs-track').forEach(function (track) {
+        var names = Array.prototype.slice.call(track.children);
+        var setWidth = track.scrollWidth;
+        if (!names.length || !setWidth) return;
+        var copies = Math.min(20, Math.ceil(window.innerWidth * 1.2 / setWidth));
+        for (var i = 1; i < copies; i++) {
+            names.forEach(function (li) {
+                var copy = li.cloneNode(true);
+                copy.setAttribute('aria-hidden', 'true');
+                track.appendChild(copy);
+            });
+        }
+        Array.prototype.slice.call(track.children).forEach(function (li) {
             var copy = li.cloneNode(true);
-            if (hidden) copy.setAttribute('aria-hidden', 'true');
+            copy.setAttribute('aria-hidden', 'true');
             track.appendChild(copy);
         });
-    }
-    while (track.scrollWidth < window.innerWidth * 1.2) append(true);
-    var set = Array.prototype.slice.call(track.children);
-    set.forEach(function (li) {
-        var copy = li.cloneNode(true);
-        copy.setAttribute('aria-hidden', 'true');
-        track.appendChild(copy);
+        var pxPerSecond = track.closest('.orgs-row-slow') ? 22 : 32;
+        track.style.setProperty('--orgs-duration', (track.scrollWidth / 2 / pxPerSecond) + 's');
     });
-    var pxPerSecond = track.closest('.orgs-row-slow') ? 22 : 32;
-    track.style.setProperty('--orgs-duration', (track.scrollWidth / 2 / pxPerSecond) + 's');
-});
+}
