@@ -1,2 +1,4 @@
 tools/.cache/
 .DS_Store
+tools/mentors-pending.csv
+tools/mentors-pending/

@@ -2533,3 +2533,442 @@ button.text-link {
     margin: 0 1rem;
   }
 }
+
+/* Mentors page, after pivotal-research.org/people: a wide page, open cards (no box) with an
+   edge-to-edge square photo, centred text, rows aligned across each line with subgrid,
+   square uppercase discipline tags, cohorts labelled down the left edge, and a toolbar with a
+   count, search, a discipline filter, and the last-updated date. */
+.page-wide .wrap {
+  max-width: 1240px;
+}
+
+.mentor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mentor-count {
+  font-size: 0.95rem;
+  color: var(--text-3);
+}
+
+.mentor-count strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-right: 0.3rem;
+}
+
+.mentor-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mentor-search,
+.mentor-discipline {
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--text);
+  background: var(--note-bg);
+  border: 1px solid var(--line-2);
+  padding: 0.6rem 0.8rem;
+  min-width: 13rem;
+}
+
+.mentor-search:hover,
+.mentor-discipline:hover {
+  border-color: var(--text-4);
+}
+
+.mentor-updated {
+  margin-left: auto;
+  font-size: 0.82rem;
+  color: var(--text-4);
+}
+
+.mentor-group {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.section .mentor-cohort {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  align-self: start;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+
+.section .mentor-cohort::before {
+  content: none;
+}
+
+.mentors {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 1.75rem;
+}
+
+.mentor {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 3.25rem;
+}
+
+.mentor[hidden],
+.mentor-group[hidden] {
+  display: none;
+}
+
+.mentor-card {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+}
+
+
+.mentor-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--sage) 10%, var(--note-bg));
+}
+
+.mentor-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mentor-initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--tone-ink);
+  background: color-mix(in srgb, var(--tone) 18%, var(--note-bg));
+}
+
+.tone-sage { --tone: var(--sage); --tone-ink: var(--sage-ink); }
+.tone-wheat { --tone: var(--wheat); --tone-ink: var(--wheat-ink); }
+.tone-roof { --tone: var(--roof); --tone-ink: var(--roof-ink); }
+.tone-slate { --tone: var(--slate); --tone-ink: var(--slate-ink); }
+
+.mentor-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.72rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--text);
+}
+
+.mentor-hover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  transform: translateY(100%);
+  transition: transform 0.2s ease-out;
+}
+
+.mentor-card:hover .mentor-hover,
+.mentor-card:focus-visible .mentor-hover {
+  transform: translateY(0);
+}
+
+.mentor-card:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+.mentor-name {
+  padding-top: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.mentor-card:hover .mentor-name {
+  text-decoration: underline;
+}
+
+.mentor-role {
+  padding-top: 0.35rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
+.mentor-tags {
+  padding-top: 0.7rem;
+}
+
+.mentor-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--tone);
+  background: color-mix(in srgb, var(--tone) 18%, var(--bg));
+  color: var(--tone-ink);
+}
+
+.mentor-tag.tag-sage { --tone: var(--sage); --tone-ink: var(--sage-ink); }
+.mentor-tag.tag-wheat { --tone: var(--wheat); --tone-ink: var(--wheat-ink); }
+.mentor-tag.tag-roof { --tone: var(--roof); --tone-ink: var(--roof-ink); }
+.mentor-tag.tag-slate { --tone: var(--slate); --tone-ink: var(--slate-ink); }
+
+.bio-text .mentor-tags {
+  padding: 0 0 0.75rem;
+}
+
+.mentor-empty {
+  color: var(--text-3);
+}
+
+:root[data-theme="dark"] .mentor-hover {
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mentor-hover {
+    transition: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .mentors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .mentor-group {
+    grid-template-columns: 1fr;
+  }
+
+  .section .mentor-cohort {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .mentors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+  }
+
+  .mentor {
+    padding-bottom: 2.25rem;
+  }
+
+  .mentor-name {
+    font-size: 1.1rem;
+  }
+
+  .mentor-updated {
+    margin-left: 0;
+  }
+
+  .mentor-search,
+  .mentor-discipline {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .mentor-controls,
+  .mentor-controls label {
+    width: 100%;
+  }
+}
+
+
+/* Mentor profile pages (mentors/profile/<slug>/), after pivotal-research.org/mentors/profile:
+   photo, links, and a call to action on the left; name, role, tag, and sections on the right;
+   more mentors below. */
+.mentor-profile .wrap {
+  padding-top: 2.5rem;
+}
+
+.profile-back a {
+  font-size: 0.9rem;
+  color: var(--text-3);
+  border-bottom: none;
+}
+
+.profile-back a:hover {
+  color: var(--text);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 3.5rem;
+  margin-top: 1.75rem;
+  align-items: start;
+}
+
+.profile-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.profile-side .hero-button {
+  text-align: center;
+}
+
+.profile-side .bio-links {
+  margin: 0;
+}
+
+.profile-cohort {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.profile-main h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.profile-role {
+  font-size: 1.05rem;
+  color: var(--text-2);
+}
+
+.profile-main .mentor-tags {
+  padding-top: 0.9rem;
+}
+
+.profile-body {
+  max-width: 40rem;
+  margin-top: 1.25rem;
+}
+
+.profile-body h2 {
+  margin: 2rem 0 0.6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.profile-body p,
+.profile-body li {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+.profile-body .profile-note {
+  font-size: 0.82rem;
+  color: var(--text-4);
+  margin-bottom: 0.4rem;
+}
+
+.profile-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.profile-list li + li {
+  margin-top: 0.4rem;
+}
+
+.profile-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.profile-body .profile-chips li {
+  padding: 0.2rem 0.65rem;
+  font-size: 0.85rem;
+  border: 1px solid var(--line-2);
+}
+
+.profile-body .profile-updated {
+  margin-top: 2.25rem;
+  font-size: 0.82rem;
+  color: var(--text-4);
+}
+
+.profile-more {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.profile-more h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 720px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .profile-side {
+    position: static;
+    max-width: 22rem;
+  }
+}
