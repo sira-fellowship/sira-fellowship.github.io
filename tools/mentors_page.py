@@ -10,7 +10,8 @@ CSV columns (one row per mentor; only name, title, and discipline are required):
     name, title, affiliation, discipline, photo, bio, website, linkedin, scholar, cohort, badge,
     directions, example_project, methods, recent_work, looking_for, mentoring_style, profile_updated
 
-- discipline: one of DISCIPLINES below (it sets the tag colour and the filter).
+- discipline: one or more of DISCIPLINES below, separated by commas (each gets a tag and appears in
+  the filter; the first sets the colour of the initials when there is no photo).
 - photo: a file in images/mentors/source/ (any size; it is centre-cropped to a square and
   saved as images/mentors/<slug>-480.jpg and -960.jpg). Leave blank to show initials.
 - bio: a few sentences. Blank lines are not supported.
@@ -98,9 +99,12 @@ def role(m):
     return ", ".join(x for x in (e(m, "title"), e(m, "affiliation")) if x)
 
 
+def discs(m):
+    return [d.strip() for d in g(m, "discipline").split(",") if d.strip()]
+
+
 def tag(m):
-    disc = g(m, "discipline")
-    return f'<span class="mentor-tag tag-{DISCIPLINES[disc]}">{html.escape(disc)}</span>'
+    return "".join(f'<span class="mentor-tag tag-{DISCIPLINES[d]}">{html.escape(d)}</span>' for d in discs(m))
 
 
 def photo(m, root, size_hint):
@@ -109,14 +113,14 @@ def photo(m, root, size_hint):
     if g(m, "photo"):
         return (f'<img src="{root}images/mentors/{s}-480.jpg" srcset="{root}images/mentors/{s}-480.jpg 480w, '
                 f'{root}images/mentors/{s}-960.jpg 960w" sizes="{size_hint}" alt="" width="480" height="480" loading="lazy">')
-    return f'<span class="mentor-initials tone-{DISCIPLINES[g(m, "discipline")]}" aria-hidden="true">{initials(m["name"])}</span>'
+    return f'<span class="mentor-initials tone-{DISCIPLINES[discs(m)[0]]}" aria-hidden="true">{initials(m["name"])}</span>'
 
 
 def card(m, root, href):
     """One card in a grid of mentors: photo and name link to the profile page."""
     badge = f'<span class="mentor-badge">{e(m, "badge")}</span>' if g(m, "badge") else ""
     search = html.escape(" ".join(g(m, k) for k in ("name", "title", "affiliation", "discipline")).lower())
-    return f'''                    <li class="mentor" data-discipline="{e(m, "discipline")}" data-search="{search}">
+    return f'''                    <li class="mentor" data-discipline="{html.escape("|".join(discs(m)))}" data-search="{search}">
                         <a class="mentor-card" href="{href}">
                             <span class="mentor-photo">{photo(m, root, "(min-width: 1000px) 25vw, (min-width: 720px) 33vw, 50vw")}{badge}<span class="mentor-hover" aria-hidden="true">View profile</span></span>
                             <span class="mentor-name">{e(m, "name")}</span>
@@ -218,14 +222,14 @@ def profile_page(m, others, head, footer):
 def main(src):
     mentors = list(csv.DictReader(open(src, newline="", encoding="utf-8-sig")))
     for m in mentors:
-        if g(m, "discipline") not in DISCIPLINES:
+        if not discs(m) or any(d not in DISCIPLINES for d in discs(m)):
             sys.exit(f"{m.get('name')}: discipline must be one of {', '.join(DISCIPLINES)}")
         m["cohort"] = g(m, "cohort") or "Summer 2027"
         if g(m, "photo"):
             crop(PHOTOS / "source" / g(m, "photo"), slug(m["name"]))
     by_last = lambda m: m["name"].split()[-1].lower()
     cohorts = list(dict.fromkeys(m["cohort"] for m in mentors))
-    used = [d for d in DISCIPLINES if any(g(m, "discipline") == d for m in mentors)]
+    used = [d for d in DISCIPLINES if any(d in discs(m) for m in mentors)]
     options = "".join(f'<option value="{html.escape(d)}">{html.escape(d)}</option>' for d in used)
     today = datetime.date.today()
     groups = []

@@ -2740,6 +2740,12 @@ button.text-link {
 }
 
 .mentor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 0.35rem;
   padding-top: 0.7rem;
 }
 
@@ -2888,6 +2894,7 @@ button.text-link {
 }
 
 .profile-main .mentor-tags {
+  justify-content: flex-start;
   padding-top: 0.9rem;
 }
 
