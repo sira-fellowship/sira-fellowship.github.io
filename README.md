@@ -1,6 +1,6 @@
 # SIRA: Societal Impacts Research on AI
 
-Website for SIRA, a proposed mentored research fellowship that gives social scientists a structured path into AI safety.
+Website for SIRA, a proposed mentored research fellowship that gives social scientists a structured path into AI resilience and safety.
 
 Live at https://sira-project.org
 
