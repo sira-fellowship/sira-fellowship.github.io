@@ -19,7 +19,7 @@ CSV columns (one row per mentor; only name, title, and discipline are required):
 - Profile fields, all optional, shown on the profile page under the bio:
     directions       research questions, separated by " | "
     example_project  one paragraph, shown as an illustrative example, not a commitment
-    methods          methods the mentor can supervise, separated by ", "
+    methods          methods the mentor can supervise, separated by ", " (or " | " if an item has commas)
     recent_work      "Title :: URL" items separated by " | " (URL optional)
     looking_for      who the mentor would like to work with
     mentoring_style  how the mentor works with fellows
@@ -139,7 +139,7 @@ def sections(m):
         out.append('<h2>Example project</h2><p class="profile-note">Illustrative. Final projects are confirmed '
                    f'before applications open.</p><p>{e(m, "example_project")}</p>')
     if g(m, "methods"):
-        chips = "".join(f"<li>{html.escape(x.strip())}</li>" for x in g(m, "methods").split(", ") if x.strip())
+        chips = "".join(f"<li>{html.escape(x.strip())}</li>" for x in re.split(r" \| " if " | " in g(m, "methods") else ", ", g(m, "methods")) if x.strip())
         out.append(f'<h2>Methods they can supervise</h2><ul class="profile-chips">{chips}</ul>')
     if g(m, "recent_work"):
         items = []
