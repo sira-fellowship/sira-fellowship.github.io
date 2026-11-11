@@ -2984,3 +2984,27 @@ button.text-link {
     max-width: 22rem;
   }
 }
+
+/* ------------------------------------------------------------------
+   Spacious layout (2026-11): more white space, fewer boxes, quieter tags.
+   Placed last so it overrides the earlier rules above.
+   ------------------------------------------------------------------ */
+.section { padding-top: 6.5rem; padding-bottom: 2rem; }
+.section h2 { margin-bottom: 1.25rem; }
+.section-lede { max-width: 40rem; line-height: 1.7; }
+.feature-head { padding-top: 9rem; }
+.stats { gap: 2.5rem; padding-top: 2.25rem; }
+.rows { margin-top: 2.5rem; }
+.rows .row { padding: 2rem 0; gap: 3.5rem; border-color: color-mix(in srgb, var(--rule) 60%, transparent); }
+.rows .row:last-child { border-bottom-color: color-mix(in srgb, var(--rule) 60%, transparent); }
+.cards { gap: 3rem 2.5rem; margin-top: 2.5rem; }
+@media (min-width: 900px) { .cards.four { grid-template-columns: repeat(4, 1fr); } }
+.card { border: 0; border-top: 1px solid var(--rule); border-radius: 0; background: none; padding: 1.5rem 0 0; }
+.ideas { gap: 3rem; margin-top: 2rem; }
+.idea, .idea-workshop, .idea-course { border: 0; border-top: 1px solid var(--rule); padding: 1.5rem 0 0; }
+.mentor-tag,
+.questions .tag-sage, .questions .tag-wheat, .questions .tag-roof, .questions .tag-slate {
+  background: none; border: 0; border-radius: 0; padding: 0; color: var(--text-3); letter-spacing: 0.1em;
+}
+.mentor-tags { gap: 0.25rem 0.9rem; }
+details { padding-top: 0.4rem; padding-bottom: 0.4rem; }
