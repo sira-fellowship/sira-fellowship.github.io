@@ -1278,6 +1278,11 @@ body::before {
   margin: 0 auto 1rem;
 }
 
+/* Kept to one line on wide screens; wraps normally on narrow ones. */
+.feature-head p.one-line {
+  max-width: none;
+}
+
 /* The two projects in development, side by side */
 .ideas {
   display: grid;
