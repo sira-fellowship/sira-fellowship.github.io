@@ -53,6 +53,7 @@ FELLOW_FORM = "https://airtable.com/appjnZXuP3QQHiV6X/pagdpah3mjgyQ4jzf/form"
 DISCIPLINES = {
     "Psychology": "sage",
     "Cognitive science": "sage",
+    "Computational neuroscience": "sage",
     "Economics": "wheat",
     "Political science": "wheat",
     "Sociology": "roof",
