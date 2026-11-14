@@ -177,7 +177,7 @@ def profile_page(m, others, head, footer):
     s = slug(m["name"])
     first = re.split(r"(?<=\.)\s", g(m, "bio"))[0] if g(m, "bio") else f"{g(m, 'name')}, mentor for SIRA’s fellowship."
     desc = html.escape(first)
-    title = f"{e(m, 'name')} · Mentors · SIRA"
+    title = f"{e(m, 'name')} - SIRA"
     url = f"{SITE}/mentors/profile/{s}/"
     h = re.sub(r"<title>[^<]*</title>", f"<title>{title}</title>", head)
     h = re.sub(r'(<meta property="og:title" content=")[^"]*"', lambda x: x.group(1) + title + '"', h)
