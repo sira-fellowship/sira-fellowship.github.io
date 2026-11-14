@@ -3217,3 +3217,30 @@ body { font-size: var(--t-body); line-height: 1.56; }
 :root:not([data-theme="dark"]) .project-hero, :root:not([data-theme="dark"]) .project-band {
   background: linear-gradient(100deg, color-mix(in srgb, var(--from) 9%, #fff) 0%, #fff 55%, color-mix(in srgb, var(--to) 12%, #fff) 100%);
 }
+
+/* Buttons after metr.org's "About METR": rounded, thin border, and on hover the border firms up
+   while a soft tint fades in (0.2s), instead of flipping to a solid fill. */
+.hero-button, .landing-button, .cta-button {
+  border-radius: 6px;
+  border-width: 1px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.hero-button:not(.hero-button-fill), .landing-button {
+  border-color: color-mix(in srgb, var(--text) 40%, transparent);
+  background: transparent;
+  color: var(--text);
+}
+.hero-button:not(.hero-button-fill):hover, .landing-button:hover {
+  border-color: var(--text);
+  border-bottom-color: var(--text);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  color: var(--text);
+}
+.hero-button-fill:hover {
+  background: color-mix(in srgb, var(--accent) 88%, #000);
+  border-color: color-mix(in srgb, var(--accent) 88%, #000);
+}
+.cta-button { border-color: color-mix(in srgb, var(--text) 20%, transparent); }
+.cta-button:hover { border-color: var(--text); background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
+.hero-button:focus-visible, .landing-button:focus-visible, .cta-button:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .hero-button, .landing-button, .cta-button { transition: none; } }
