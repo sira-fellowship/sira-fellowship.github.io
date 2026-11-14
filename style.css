@@ -2543,9 +2543,7 @@ button.text-link {
    edge-to-edge square photo, centred text, rows aligned across each line with subgrid,
    square uppercase discipline tags, cohorts labelled down the left edge, and a toolbar with a
    count, search, a discipline filter, and the last-updated date. */
-.page-wide .wrap {
-  max-width: 1240px;
-}
+/* (.page-wide used to set 1240px; every page now shares the 1320px .wrap.) */
 
 .mentor-toolbar {
   display: flex;
