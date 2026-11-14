@@ -3315,3 +3315,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 }
 .person { max-width: 1320px; grid-template-columns: minmax(0, 36rem) minmax(0, 26rem); justify-content: start; gap: 6rem; padding-top: 1rem; }
 @media (max-width: 900px) { .person { grid-template-columns: 1fr; gap: 2rem; } .person-photo { order: -1; max-width: 22rem; } }
+/* Team profile: METR's narrower centred block (about 850px), text and photo in equal halves. */
+.person.wrap { max-width: calc(53rem + 6rem); margin: 0 auto; padding-top: 6rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); justify-content: center; gap: 3rem; }
+.section .person-head h1 { margin: 0; font-size: var(--t-section); font-weight: 500; line-height: 1.25; letter-spacing: 0; }
+@media (max-width: 900px) { .person.wrap { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; } }
