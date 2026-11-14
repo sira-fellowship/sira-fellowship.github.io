@@ -3404,3 +3404,10 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .compare td:nth-of-type(1)::before { content: "Early-career"; }
   .compare td:nth-of-type(2)::before { content: "Senior"; }
 }
+
+/* Fellowship timeline: five steps in one row on wide screens, one colour each. */
+@media (min-width: 1100px) { .project-page .timeline { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.project-page .timeline li:nth-child(4) { border-top-color: var(--slate); }
+.project-page .timeline li:nth-child(4) .phase { color: var(--slate-ink); }
+.project-page .timeline li:nth-child(5) { border-top-color: var(--teal); }
+.project-page .timeline li:nth-child(5) .phase { color: var(--teal-ink); }
