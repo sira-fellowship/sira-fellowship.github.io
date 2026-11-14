@@ -3322,3 +3322,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 
 /* Home page: no dash before section headings. */
 .home .section h2::before { content: none; }
+
+/* Mentors: name, role and discipline tags left-aligned under the photo, as on the About team. */
+.mentor, .mentor-card { justify-items: stretch; text-align: left; }
+.mentor-tags { justify-content: flex-start; }
