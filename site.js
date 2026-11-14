@@ -1,12 +1,5 @@
-// Shared behavior for every page: the theme toggle, the phone menu, the Projects menu, team bio dialogs,
+// Shared behavior for every page: the phone menu, the Projects menu, team bio dialogs,
 // and the scrolling strip of institution names on the home page.
-
-document.getElementById('theme-toggle').addEventListener('click', function () {
-    var current = document.documentElement.getAttribute('data-theme');
-    var next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-});
 
 // Phone menu: the three-line button opens the nav as a panel; a link, Escape, or a click outside closes it.
 (function () {

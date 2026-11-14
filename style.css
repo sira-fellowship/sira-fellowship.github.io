@@ -3348,3 +3348,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .tag-ochre, .tone-ochre { --tone: var(--ochre); --tone-ink: var(--ochre-ink); }
 .tag-rose, .tone-rose { --tone: var(--rose); --tone-ink: var(--rose-ink); }
 .tag-sky, .tone-sky { --tone: var(--sky); --tone-ink: var(--sky-ink); }
+
+/* Mentors: no dash before "What mentoring involves". */
+#mentoring h2::before { content: none; }
