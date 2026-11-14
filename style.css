@@ -3376,3 +3376,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 
 /* About: section headings (What we do, Our mission, Our team) in the text colour, not terracotta. */
 .about-points h2, #team.section > h2 { color: var(--text); }
+
+/* No dash before section headings anywhere (was home page only). */
+.section h2::before { content: none; }
