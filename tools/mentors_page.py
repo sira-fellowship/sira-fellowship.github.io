@@ -49,18 +49,19 @@ START, END = "<!-- MENTORS:START -->", "<!-- MENTORS:END -->"
 SITE = "https://sira-project.org"
 FELLOW_FORM = "https://airtable.com/appjnZXuP3QQHiV6X/pagdpah3mjgyQ4jzf/form"
 
-# Discipline -> tag colour (the logo palette, as used for research-question tags).
+# Discipline -> tag colour, one per discipline: the logo palette (sage, wheat, roof, slate) plus
+# six muted companions in the same range (teal, olive, plum, ochre, rose, sky), defined in style.css.
 DISCIPLINES = {
     "Psychology": "sage",
-    "Cognitive science": "sage",
-    "Computational neuroscience": "sage",
-    "Economics": "wheat",
-    "Political science": "wheat",
+    "Cognitive science": "wheat",
+    "Computational neuroscience": "teal",
+    "Economics": "olive",
+    "Political science": "slate",
     "Sociology": "roof",
-    "Organizational behavior": "roof",
-    "Anthropology": "roof",
-    "Communication": "slate",
-    "AI safety research": "slate",
+    "Organizational behavior": "plum",
+    "Anthropology": "ochre",
+    "Communication": "rose",
+    "AI safety research": "sky",
 }
 
 

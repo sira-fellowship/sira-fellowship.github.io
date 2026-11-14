@@ -3336,3 +3336,15 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .mentor-tag { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-3); }
 .mentor-tag::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--tone, var(--text-4)); }
 @media (prefers-reduced-motion: reduce) { .mentor-name { transition: none; } }
+
+/* Discipline colours for mentor tags and initials: the logo palette plus six muted companions. */
+:root { --teal: #3d8486; --olive: #7f8436; --plum: #7a5a86; --ochre: #9c6b34; --rose: #b8607a; --sky: #5b8fbf;
+        --teal-ink: #2f6668; --olive-ink: #5f6327; --plum-ink: #5e4468; --ochre-ink: #7a5226; --rose-ink: #94485f; --sky-ink: #3f7099; }
+:root[data-theme="dark"] { --teal: #7cc2c3; --olive: #c2c77a; --plum: #c0a3cc; --ochre: #d9a86e; --rose: #e9a0b4; --sky: #9cc3e6;
+        --teal-ink: #7cc2c3; --olive-ink: #c2c77a; --plum-ink: #c0a3cc; --ochre-ink: #d9a86e; --rose-ink: #e9a0b4; --sky-ink: #9cc3e6; }
+.tag-teal, .tone-teal { --tone: var(--teal); --tone-ink: var(--teal-ink); }
+.tag-olive, .tone-olive { --tone: var(--olive); --tone-ink: var(--olive-ink); }
+.tag-plum, .tone-plum { --tone: var(--plum); --tone-ink: var(--plum-ink); }
+.tag-ochre, .tone-ochre { --tone: var(--ochre); --tone-ink: var(--ochre-ink); }
+.tag-rose, .tone-rose { --tone: var(--rose); --tone-ink: var(--rose-ink); }
+.tag-sky, .tone-sky { --tone: var(--sky); --tone-ink: var(--sky-ink); }
