@@ -3124,3 +3124,19 @@ body { font-size: var(--t-body); line-height: 1.56; }
 /* Inner-page titles after metr.org/about: 52px medium title, 18px subtitle. */
 .about-hero h1, .profile-main h1 { font-size: clamp(2.5rem, 5vw, 3.25rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
 .about-hero p { font-size: var(--t-body); line-height: 1.56; }
+
+/* Footer after metr.org (2026-11): description on the left, three link columns on the right, small print below. */
+.footer-grid { grid-template-columns: 5fr 7fr; gap: 2.5rem 4rem; align-items: start; }
+.footer-brand { grid-row: auto; }
+.footer-about { margin-top: 1rem; max-width: 26rem; color: var(--text-2); }
+.footer-cta { display: inline-block; margin-top: 1.25rem; font-weight: 600; }
+.footer-links { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 2rem; }
+.footer-col h2 { font-size: var(--t-label); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
+.footer-col li + li { margin-top: 0.7rem; }
+.footer-legal { grid-column: 1 / -1; margin-top: 1rem; }
+.cards.one { grid-template-columns: 1fr; max-width: 40rem; }
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-links { grid-template-columns: 1fr 1fr; justify-content: start; }
+}
+.footer-logo { font-weight: 600; font-size: 2.25rem; letter-spacing: 0.01em; }
