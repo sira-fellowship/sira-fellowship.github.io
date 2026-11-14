@@ -3379,3 +3379,10 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 
 /* No dash before section headings anywhere (was home page only). */
 .section h2::before { content: none; }
+
+/* Fellowship: the two research streams. */
+.cards.streams .card-sub { color: var(--accent); }
+.stream-topics { font-size: var(--t-small); color: var(--text-3); margin-top: 0.75rem; }
+.stream-topics strong { color: var(--text-2); font-weight: 600; }
+#research .sub-h { margin-top: 2.5rem; }
+#research .sub-h:first-of-type { margin-top: 2rem; }
