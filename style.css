@@ -3349,3 +3349,19 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 
 /* Mentors: no dash before "What mentoring involves". */
 #mentoring h2::before { content: none; }
+
+/* Home: the fellowship band, left-aligned to match the rest of the page (was centred).
+   Heading block, then the stats with their coloured dashes, then buttons beside the summary
+   in the same 1fr / 2fr columns as "What we do". */
+.home .project-band .feature-head { text-align: left; }
+.home .project-band .feature-head p, .home .project-band .feature-head p.one-line { margin-left: 0; margin-right: 0; }
+.home .project-band .stats { text-align: left; justify-items: start; }
+.home .project-band .stats > div { text-align: left; align-items: flex-start; }
+.home .project-band .stats > div::before { margin-left: 0; margin-right: auto; }
+.home .project-band .feature-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2.5rem; align-items: start; text-align: left; }
+.home .project-band .feature-body > p { grid-column: 2; grid-row: 1; margin: 0; max-width: 49rem; text-align: left; }
+.home .project-band .feature-actions { grid-column: 1; grid-row: 1; justify-content: flex-start; margin: 0; flex-wrap: wrap; }
+@media (max-width: 720px) {
+  .home .project-band .feature-body { grid-template-columns: 1fr; gap: 1.5rem; }
+  .home .project-band .feature-body > p, .home .project-band .feature-actions { grid-column: 1; grid-row: auto; }
+}
