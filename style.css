@@ -3326,3 +3326,13 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 /* Mentors: name, role and discipline tags left-aligned under the photo, as on the About team. */
 .mentor, .mentor-card { justify-items: stretch; text-align: left; }
 .mentor-tags { justify-content: flex-start; }
+
+/* Mentors, after the About team cards: dark name that fades on hover, affiliation in terracotta,
+   and disciplines as small sentence-case labels, each led by a square "Morse dot" in its colour. */
+.mentor-name { font-size: 1.125rem; font-weight: 500; line-height: 1.35; padding-top: 0.75rem; color: var(--text); transition: opacity 0.3s ease; }
+.mentor-card:hover .mentor-name { text-decoration: none; opacity: 0.65; }
+.mentor-role { color: var(--accent); font-size: 0.875rem; padding-top: 0.15rem; }
+.mentor-tags { gap: 0.3rem 0.9rem; padding-top: 0.6rem; }
+.mentor-tag { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--text-3); }
+.mentor-tag::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--tone, var(--text-4)); }
+@media (prefers-reduced-motion: reduce) { .mentor-name { transition: none; } }
