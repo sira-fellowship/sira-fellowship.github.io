@@ -3028,3 +3028,7 @@ details { padding-top: 0.4rem; padding-bottom: 0.4rem; }
 /* Instrument Sans everywhere (2026-11): large headings in medium weight, like METR. */
 h1, h2, .landing-logo span, .feature-head h2, .stats dt, .about-points h2 { font-weight: 500; }
 h1, .feature-head h2, .landing-logo span { letter-spacing: -0.02em; }
+
+/* About page sizes, matched to metr.org/about: 36px headings, 18px body. */
+.about-points h2 { font-size: 2.25rem; line-height: 1.4; font-weight: 500; }
+.about-points p { font-size: 1.125rem; line-height: 1.56; }
