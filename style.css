@@ -3023,8 +3023,8 @@ details { padding-top: 0.4rem; padding-bottom: 0.4rem; }
 
 /* About page: several paragraphs per point, with a lead statement */
 .about-body { display: grid; gap: 1rem; min-width: 0; }
-.about-points .about-lead { font-family: var(--font-display); font-size: 1.2rem; line-height: 1.5; color: var(--text); }
+.about-points .about-lead { font-weight: 600; color: var(--text); }
 
 /* Instrument Sans everywhere (2026-11): large headings in medium weight, like METR. */
-h1, h2, .landing-logo span, .feature-head h2, .stats dt, .about-points h2, .about-points .about-lead { font-weight: 500; }
+h1, h2, .landing-logo span, .feature-head h2, .stats dt, .about-points h2 { font-weight: 500; }
 h1, .feature-head h2, .landing-logo span { letter-spacing: -0.02em; }
