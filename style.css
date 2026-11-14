@@ -3140,3 +3140,18 @@ body { font-size: var(--t-body); line-height: 1.56; }
   .footer-links { grid-template-columns: 1fr 1fr; justify-content: start; }
 }
 .footer-logo { font-weight: 600; font-size: 2.25rem; letter-spacing: 0.01em; }
+
+/* Footer link hover after metr.org: an underline grows from the centre and the link takes the accent colour. */
+.site-footer a:not(.footer-logo) { position: relative; border-bottom: none; transition: color 0.3s ease; }
+.site-footer a:not(.footer-logo)::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px;
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  transform: scaleX(0); transition: transform 0.3s ease;
+}
+.site-footer a:not(.footer-logo):hover, .site-footer a:not(.footer-logo):focus-visible { color: var(--accent); border-bottom: none; }
+.site-footer a:not(.footer-logo):hover::after, .site-footer a:not(.footer-logo):focus-visible::after { transform: scaleX(1); }
+.footer-legal a { border-bottom: none; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+.footer-legal a:hover { text-decoration-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  .site-footer a:not(.footer-logo), .site-footer a:not(.footer-logo)::after { transition: none; }
+}
