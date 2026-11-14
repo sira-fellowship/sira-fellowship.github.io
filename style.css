@@ -3373,3 +3373,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .project-band .stats > div:nth-child(n)::before { width: 0.5rem; height: 0.5rem; }
 /* Stats: no marks above the numbers (home and Fellowship page). */
 .project-page .stats > div::before, .project-band .stats > div::before { display: none; }
+
+/* About: section headings (What we do, Our mission, Our team) in the text colour, not terracotta. */
+.about-points h2, #team.section > h2 { color: var(--text); }
