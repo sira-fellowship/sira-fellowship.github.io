@@ -24,7 +24,7 @@ The Van Gogh palette, one colour per letter, sampled from the site's hero painti
 | R | Roof (the brick roofs) `#b8502f` | `#ec8d68` |
 | A | Slate (the far roofs) `#3e6787` | `#8fb3d1` |
 
-With: ink `#22313d` (text, one-colour mark), cream `#f7f0e6` (page background), night `#16222b` (dark backgrounds and the icon tile). The website keeps terracotta `#a9532f` for buttons and links.
+With: ink `#22313d` (text, one-colour mark), cream `#f7f0e6` (one-colour mark on dark grounds; the website itself is now white `#ffffff`), night `#16222b` (dark backgrounds and the icon tile). The website keeps terracotta `#a9532f` for buttons and links.
 
 The roof colour sits close to the site's terracotta, so the logo and buttons read as one system.
 
@@ -52,7 +52,7 @@ The roof colour sits close to the site's terracotta, so the logo and buttons rea
 | `email-signature.html` | Email signature with the logo. Open it in a browser, copy the white box, and paste it into Gmail's signature settings. |
 | `contact-sheet.png`, `mockups.png` | Every file at a glance, and the logo in use. |
 
-Lockup colourways: `soft` (colour mark, ink text; the name is historical, the colours are Van Gogh) for light backgrounds, `dark` (light colours, cream text) for dark backgrounds, `ink` and `cream` for one colour. Prefer the SVGs. Text is converted to outlines; the fonts are Fraunces ("SIRA") and Inter Tight (spaced capitals and the full name), both under the SIL Open Font License.
+Lockup colourways: `soft` (colour mark, ink text; the name is historical, the colours are Van Gogh) for light backgrounds, `dark` (light colours, cream text) for dark backgrounds, `ink` and `cream` for one colour. Prefer the SVGs. Text is converted to outlines in Instrument Sans, the website's typeface: "SIRA" at weight 600, as in the site header, and the spaced capitals and full name at 500. It is under the SIL Open Font License.
 
 ## Guidelines
 

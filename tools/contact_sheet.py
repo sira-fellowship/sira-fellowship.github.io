@@ -19,11 +19,11 @@ FONTS = ROOT / "tools" / ".cache" / "fonts"
 CHROME = os.environ.get("CHROME", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 INK, TERRA, CREAM, NIGHT = "#22313d", "#a9532f", "#f7f0e6", "#16222b"
 
-STYLE = f"""@font-face{{font-family:Fraunces;src:url('file://{FONTS}/Fraunces.ttf')}}
-@font-face{{font-family:InterTight;src:url('file://{FONTS}/InterTight.ttf')}}
-body{{margin:0;padding:40px;background:#eceae6;font:15px/1.45 InterTight,sans-serif;color:{INK}}}
-h1{{font:500 34px Fraunces,serif;margin:0 0 4px}} .sub{{color:#52606b;margin:0 0 26px}}
-h2{{font:500 21px Fraunces,serif;margin:30px 0 12px}} figure{{margin:0}} figcaption{{font-size:12px;color:#52606b;margin-top:6px;word-break:break-all}}"""
+STYLE = f"""@font-face{{font-family:Instrument;src:url('file://{FONTS}/InstrumentSans.ttf')}}
+@font-face{{font-family:InstrumentBody;src:url('file://{FONTS}/InstrumentSans.ttf')}}
+body{{margin:0;padding:40px;background:#eceae6;font:15px/1.45 InstrumentBody,sans-serif;color:{INK}}}
+h1{{font:500 34px Instrument,sans-serif;margin:0 0 4px}} .sub{{color:#52606b;margin:0 0 26px}}
+h2{{font:500 21px Instrument,sans-serif;margin:30px 0 12px}} figure{{margin:0}} figcaption{{font-size:12px;color:#52606b;margin-top:6px;word-break:break-all}}"""
 
 
 def shoot(html, out, width):
@@ -117,12 +117,12 @@ def mockups():
 .phones{{display:flex;gap:12px}} .phone{{width:128px;height:236px;border-radius:24px;padding:26px 10px;box-sizing:border-box}}
 .grid{{display:grid;grid-template-columns:repeat(4,24px);justify-content:space-between;gap:12px 4px}} .app{{display:flex;flex-direction:column;align-items:center;gap:3px}}
 .ic{{width:24px;height:24px;border-radius:6px;display:block}} .app span{{font-size:7px}}
-.slide{{width:100%;height:240px;background:{CREAM};padding:22px 26px;box-sizing:border-box}} .sl-title{{font:500 26px/1.15 Fraunces,serif;margin-top:34px}}
+.slide{{width:100%;height:240px;background:{CREAM};padding:22px 26px;box-sizing:border-box}} .sl-title{{font:500 26px/1.15 Instrument,sans-serif;margin-top:34px}}
 .sl-rule{{width:48px;height:4px;background:{TERRA};margin:14px 0 10px}} .sl-sub{{font-size:13px;color:#52606b}}
 .poster{{width:200px;height:290px;background:{INK};color:{CREAM};padding:18px;box-sizing:border-box;display:flex;flex-direction:column;gap:7px}}
-.ps-kick{{font-size:9px;color:#e39a74;margin-top:6px}} .ps-title{{font:500 22px/1.1 Fraunces,serif}} .ps-img{{flex:1;background-size:cover;background-position:60% 50%;margin:4px -18px}} .ps-foot{{font-size:9px}}
+.ps-kick{{font-size:9px;color:#e39a74;margin-top:6px}} .ps-title{{font:500 22px/1.1 Instrument,sans-serif}} .ps-img{{flex:1;background-size:cover;background-position:60% 50%;margin:4px -18px}} .ps-foot{{font-size:9px}}
 .badge{{width:180px;height:260px;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.15);display:flex;flex-direction:column;align-items:center}}
-.bd-top{{width:100%;background:{INK};padding:34px 0 18px;display:flex;justify-content:center}} .bd-name{{font:500 21px Fraunces,serif;margin-top:28px}}
+.bd-top{{width:100%;background:{INK};padding:34px 0 18px;display:flex;justify-content:center}} .bd-name{{font:500 21px Instrument,sans-serif;margin-top:28px}}
 .bd-role{{font-size:12px;color:#7f8a91}} .bd-strip{{margin-top:auto;width:100%;height:12px;background:{TERRA}}}
 .stickers{{display:flex;gap:16px}} .stk{{background:#fff;padding:7px;box-shadow:0 3px 9px rgba(0,0,0,.18);line-height:0}} .r1{{transform:rotate(-6deg)}} .r2{{transform:rotate(4deg)}}
 .ci,.ci img{{border-radius:50%}} .mail{{width:100%;font-size:13px}} .mail p{{margin:4px 0}} .sig{{margin-top:12px;padding-top:10px;border-top:1px solid #eee}}

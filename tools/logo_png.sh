@@ -53,10 +53,10 @@ for c in night cream; do
     render $SVG/sira-tile-$c-small.svg $PNG/sira-tile-$c-small-16.png 16 16
 done
 
-# Shared styles for the link-preview image and the banner: the site's cream, ink, and fonts.
-STYLE="@font-face{font-family:Fraunces;src:url('file://$FONTS/Fraunces.ttf')}
-@font-face{font-family:InterTight;src:url('file://$FONTS/InterTight.ttf')}
-body{margin:0;background:#f7f0e6;color:#22313d;font-family:InterTight,sans-serif;overflow:hidden}
+# Shared styles for the link-preview image: the site's white page, ink text, and Instrument Sans.
+STYLE="@font-face{font-family:Instrument;src:url('file://$FONTS/InstrumentSans.ttf')}
+@font-face{font-family:InstrumentBody;src:url('file://$FONTS/InstrumentSans.ttf')}
+body{margin:0;background:#ffffff;color:#22313d;font-family:InstrumentBody,sans-serif;overflow:hidden}
 .art{position:absolute;top:0;right:0;height:100%;background:url('file://$ROOT/images/factories-at-asnieres-2000.jpg') 50% 55%/cover;
 -webkit-mask-image:linear-gradient(to right,transparent,#000 38%),linear-gradient(to bottom,transparent,#000 10%,#000 90%,transparent);
 -webkit-mask-composite:source-in;mask-composite:intersect}"
@@ -66,13 +66,13 @@ html=$(mktemp -t og).html
 print -r -- "<!doctype html><html><head><style>$STYLE
 .l{position:absolute;left:76px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center}
 .kick{color:#a9532f;font-size:22px;font-weight:500;margin:52px 0 14px}
-h1{font:500 72px/1.06 Fraunces,serif;margin:0;letter-spacing:-.01em}
+h1{font:500 66px/1.08 Instrument,sans-serif;margin:0;letter-spacing:-.02em}
 p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 .url{position:absolute;left:76px;bottom:52px;font-size:20px;font-weight:500}</style></head><body style=\"width:1200px;height:630px\">
 <div class=\"art\" style=\"width:640px\"></div>
 <div class=\"l\"><img src=\"file://$SVG/sira-logo-horizontal-soft.svg\" style=\"height:58px;align-self:flex-start\">
-<div class=\"kick\">Fellowship &middot; Workshop &middot; Course</div><h1>Societal Impacts Research on AI</h1>
-<p>A pathway for social scientists into AI safety, starting with a 12-week mentored research fellowship.</p></div>
+<div class=\"kick\">Research &middot; Fellowship &middot; Workshop</div><h1>Societal Impacts Research on AI</h1>
+<p>Studying the societal impacts of advanced AI, before and after AGI.</p></div>
 <div class=\"url\">sira-project.org</div></body></html>" > $html
 shot $html $PNG/og-image.png 1200 630
 rm -f $html

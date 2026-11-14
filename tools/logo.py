@@ -18,8 +18,8 @@ Each letter has its own colour, sampled from the hero painting, Van Gogh's Facto
 set for dark backgrounds and one-colour ink and cream versions for places colour can't go.
 
 Writes brand/svg/: the mark, the tile (the mark on a square, for icons), the mark beside the
-name, beside the full name, and stacked above it. Text is converted to outlines from Fraunces
-and Inter Tight (SIL Open Font License), downloaded to tools/.cache/fonts. Run
+name, beside the full name, and stacked above it. Text is converted to outlines from Instrument
+Sans, the website's typeface (SIL Open Font License), downloaded to tools/.cache/fonts. Run
 tools/logo_png.sh afterwards for PNGs and icons.
 """
 import pathlib
@@ -48,8 +48,7 @@ INK, CREAM, NIGHT = "#22313d", "#f7f0e6", "#16222b"
 SOFT = ["#5f8a6c", "#c9a227", "#b8502f", "#3e6787"]        # sage, wheat, roof, slate (light grounds)
 SOFT_DARK = ["#9fc4a6", "#e8c65a", "#ec8d68", "#8fb3d1"]   # the same, lighter, for dark grounds
 FONTS = {
-    "Fraunces.ttf": "https://github.com/google/fonts/raw/main/ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf",
-    "InterTight.ttf": "https://github.com/google/fonts/raw/main/ofl/intertight/InterTight%5Bwght%5D.ttf",
+    "InstrumentSans.ttf": "https://github.com/google/fonts/raw/main/ofl/instrumentsans/InstrumentSans%5Bwdth,wght%5D.ttf",
 }
 
 
@@ -118,9 +117,9 @@ def main():
     assert decode(rects) == NAME, decode(rects)
     print(f"Checked the mark: it decodes to {decode(rects)} ({' '.join(ITU[c] for c in NAME)})")
 
-    serif = font("Fraunces.ttf", {"opsz": 72, "wght": 500, "SOFT": 0, "WONK": 0})
-    sans = font("InterTight.ttf", {"wght": 500})
-    word_d, word_w, cap = text_path(serif, NAME, 100, tracking=0.03)
+    word = font("InstrumentSans.ttf", {"wght": 600, "wdth": 100})  # as the site's header wordmark
+    sans = font("InstrumentSans.ttf", {"wght": 500, "wdth": 100})
+    word_d, word_w, cap = text_path(word, NAME, 100, tracking=0.01)
     caps_d, caps_w, caps_cap = text_path(sans, NAME, 40, tracking=0.6)
     l1_d, l1_w, l_cap = text_path(sans, "Societal Impacts", 38)
     l2_d, l2_w, _ = text_path(sans, "Research on AI", 38)
