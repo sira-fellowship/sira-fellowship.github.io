@@ -3365,3 +3365,9 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .home .project-band .feature-body { grid-template-columns: 1fr; gap: 1.5rem; }
   .home .project-band .feature-body > p, .home .project-band .feature-actions { grid-column: 1; grid-row: auto; }
 }
+
+/* Stat marks: one small square in each logo colour (was alternating dashes and dots). */
+.project-page .stats > div::before,
+.project-band .stats > div::before,
+.project-page .stats > div:nth-child(n)::before,
+.project-band .stats > div:nth-child(n)::before { width: 0.5rem; height: 0.5rem; }
