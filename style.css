@@ -3120,3 +3120,7 @@ body { font-size: var(--t-body); line-height: 1.56; }
 .wordmark { transition: opacity 0.2s ease; }
 .wordmark:hover, .wordmark:focus-visible { opacity: 0.7; }
 @media (prefers-reduced-motion: reduce) { .wordmark { transition: none; } }
+
+/* Inner-page titles after metr.org/about: 52px medium title, 18px subtitle. */
+.about-hero h1, .profile-main h1 { font-size: clamp(2.5rem, 5vw, 3.25rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+.about-hero p { font-size: var(--t-body); line-height: 1.56; }
