@@ -78,3 +78,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         track.style.setProperty('--orgs-duration', (track.scrollWidth / 2 / pxPerSecond) + 's');
     });
 }
+
+// FAQs: opening one question closes any other open question in the same list.
+document.addEventListener('toggle', (event) => {
+    const opened = event.target;
+    if (!(opened instanceof HTMLDetailsElement) || !opened.open) return;
+    opened.parentElement.querySelectorAll(':scope > details[open]').forEach((other) => {
+        if (other !== opened) other.open = false;
+    });
+}, true);
