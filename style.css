@@ -3319,3 +3319,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .person.wrap { max-width: calc(53rem + 6rem); margin: 0 auto; padding-top: 6rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); justify-content: center; gap: 3rem; }
 .section .person-head h1 { margin: 0; font-size: var(--t-section); font-weight: 500; line-height: 1.25; letter-spacing: 0; }
 @media (max-width: 900px) { .person.wrap { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; } }
+
+/* Home page: no dash before section headings. */
+.home .section h2::before { content: none; }
