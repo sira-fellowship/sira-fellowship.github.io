@@ -71,7 +71,7 @@ p{font-size:25px;line-height:1.4;color:#52606b;margin:22px 0 0}
 .url{position:absolute;left:76px;bottom:52px;font-size:20px;font-weight:500}</style></head><body style=\"width:1200px;height:630px\">
 <div class=\"art\" style=\"width:640px\"></div>
 <div class=\"l\"><img src=\"file://$SVG/sira-logo-horizontal-soft.svg\" style=\"height:58px;align-self:flex-start\">
-<div class=\"kick\">Research &middot; Fellowship &middot; Workshop</div><h1>Societal Impacts Research on AI</h1>
+<div class=\"kick\">Research &middot; Fellowship</div><h1>Societal Impacts Research on AI</h1>
 <p>Studying the societal impacts of advanced AI, before and after AGI</p></div>
 <div class=\"url\">sira-project.org</div></body></html>" > $html
 shot $html $PNG/og-image.png 1200 630
