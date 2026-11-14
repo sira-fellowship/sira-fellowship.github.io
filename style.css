@@ -3270,3 +3270,7 @@ body { font-size: var(--t-body); line-height: 1.56; }
 @media (max-width: 900px) { #team .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) { #team.section { grid-template-columns: 1fr; gap: 1.5rem; } }
 #team.section > h2::before { content: none; }
+/* Team: name, title and icons left-aligned under the photo. */
+.team li, .team-card { align-items: flex-start; text-align: left; }
+.team-links { justify-content: flex-start; }
+.team-card img { max-width: none; }
