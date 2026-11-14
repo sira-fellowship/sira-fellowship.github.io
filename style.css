@@ -3199,3 +3199,15 @@ body { font-size: var(--t-body); line-height: 1.56; }
   .nav > a, .nav-menu-button, .nav-menu-button svg, .nav-drop, .nav .nav-drop a { transition: none; }
 }
 .nav .nav-drop strong { font-weight: 500; } .nav .nav-drop span { font-weight: 400; letter-spacing: 0.02em; text-transform: none; font-size: var(--t-small); }
+
+/* Wider desktop layout after metr.org (2026-11): 1320px container with 3rem gutters,
+   two-column rows at roughly 1:2 like METR's About page, and reading text capped near 49rem. */
+.wrap { max-width: 1320px; padding-left: 3rem; padding-right: 3rem; }
+.footer-grid { max-width: 1320px; }
+.rows .row, .about-points li { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 2.5rem; }
+.rows .row p, .about-points .about-body { max-width: 49rem; }
+.section-lede, .section > p, .page-text, .section > p.page-text, .feature-body > p, .intro p { max-width: 49rem; }
+@media (max-width: 720px) {
+  .wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .rows .row, .about-points li { grid-template-columns: 1fr; gap: 0.75rem; }
+}
