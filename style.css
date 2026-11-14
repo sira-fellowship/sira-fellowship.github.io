@@ -3287,3 +3287,6 @@ body { font-size: var(--t-body); line-height: 1.56; }
 /* Team: names stay dark on hover; titles always in the accent colour. */
 .team-card:hover .team-name { color: inherit; }
 #team .team li > .team-role { color: var(--accent); }
+/* Team: hovering the photo or name fades the name slightly. */
+.team-card .team-name { transition: opacity 0.3s ease; }
+.team-card:hover .team-name, .team-card:focus-visible .team-name { opacity: 0.65; }
