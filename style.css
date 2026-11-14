@@ -3386,3 +3386,21 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .stream-topics strong { color: var(--text-2); font-weight: 600; }
 #research .sub-h { margin-top: 2.5rem; }
 #research .sub-h:first-of-type { margin-top: 2rem; }
+
+/* Fellowship "How it works": early-career vs senior comparison table. */
+.compare-wrap { overflow-x: auto; margin-top: 1.25rem; max-width: 64rem; }
+.compare { width: 100%; border-collapse: collapse; font-size: var(--t-body); line-height: 1.5; }
+.compare th, .compare td { text-align: left; vertical-align: top; padding: 1rem 1.5rem 1rem 0; border-bottom: 1px solid var(--rule); }
+.compare thead th { font-size: var(--t-title); font-weight: 500; color: var(--text); padding-top: 0; }
+.compare tbody th { width: 9rem; font-size: var(--t-label); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); padding-top: 1.2rem; }
+.compare td { color: var(--text-2); width: calc(50% - 4.5rem); }
+#program .sub-h { margin-top: 2.5rem; }
+@media (max-width: 720px) {
+  .compare thead { display: none; }
+  .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+  .compare tr { border-bottom: 1px solid var(--rule); padding: 0.75rem 0; }
+  .compare th, .compare td { border: 0; padding: 0.2rem 0; }
+  .compare td::before { display: block; font-size: var(--t-fine); color: var(--accent); }
+  .compare td:nth-of-type(1)::before { content: "Early-career"; }
+  .compare td:nth-of-type(2)::before { content: "Senior"; }
+}
