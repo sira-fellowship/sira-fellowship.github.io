@@ -3032,3 +3032,75 @@ h1, .feature-head h2, .landing-logo span { letter-spacing: -0.02em; }
 /* About page sizes, matched to metr.org/about: 36px headings, 18px body. */
 .about-points h2 { font-size: 2.25rem; line-height: 1.4; font-weight: 500; }
 .about-points p { font-size: 1.125rem; line-height: 1.56; }
+
+/* ------------------------------------------------------------------
+   Type scale after metr.org (2026-11). One family (Instrument Sans).
+   Display 44px / 400 · Section 36px / 500 · Sub-section 28px / 500
+   Title 20px / 500 · Lead 20px / 400 · Body 18px / 400 · UI 16px / 500
+   Small 15px · Label 14px uppercase · Fine 13px
+   ------------------------------------------------------------------ */
+:root {
+  --t-display: clamp(2.25rem, 4.5vw, 2.75rem);
+  --t-section: clamp(1.75rem, 3.5vw, 2.25rem);
+  --t-subsection: 1.75rem;
+  --t-title: 1.25rem;
+  --t-lead: 1.25rem;
+  --t-body: 1.125rem;
+  --t-ui: 1rem;
+  --t-small: 0.9375rem;
+  --t-label: 0.875rem;
+  --t-fine: 0.8125rem;
+}
+body { font-size: var(--t-body); line-height: 1.56; }
+
+/* Display: page titles */
+.about-hero h1, .feature-head h2, .profile-main h1 {
+  font-size: var(--t-display); font-weight: 400; line-height: 1.05; letter-spacing: -0.03em;
+}
+
+/* Section headings */
+.section h2, .about-points h2 { font-size: var(--t-section); font-weight: 500; line-height: 1.4; letter-spacing: 0; }
+.profile-more h2, .bio-text h3, .section .tm-head h3 { font-size: var(--t-subsection); font-weight: 500; line-height: 1.4; }
+
+/* Titles: cards, rows, names */
+.section h3, .idea h3, .cards.matching .card h3, .mentor-name, .team-name, .example .q {
+  font-size: var(--t-title); font-weight: 500; line-height: 1.3;
+}
+
+/* Lead text */
+.about-hero p, .feature-head p, .intro p, .landing-line, .cta-strip p, .section-lede, .section > p.section-lede,
+.page-text, .section > p.page-text, .profile-role, .voice blockquote {
+  font-size: var(--t-lead); line-height: 1.5;
+}
+
+/* Body */
+.section > p, .rows p, .card p, .offer li, .questions li, .timeline p, .faq details p, .faq .pairs li,
+.idea p, .feature-body > p, .profile-body p, .profile-body li, .about-points p, .tm-head p, .example p:last-child,
+.fit li, .track-facts dd, .bio-text p, .key-points li, .growth-note, .faq summary {
+  font-size: var(--t-body); line-height: 1.56;
+}
+
+/* UI: navigation, buttons, links, inputs */
+.nav, .text-link, button.text-link, .hero-button, .cta-button, .landing-button, .idea-more,
+.mentor-search, .mentor-discipline, .db-controls input[type="search"], .db-controls select, .db-download,
+.profile-back a, .site-header.menu-open .nav {
+  font-size: var(--t-ui);
+}
+.nav a, .hero-button, .cta-button, .landing-button { font-weight: 500; }
+
+/* Small: secondary text and captions */
+.card .card-sub, .team-role, .mentor-role, .growth figcaption, .db-meta, .db-count, .db-check, .mentor-updated,
+.mentor-count, .track-note, .profile-body .profile-note, .profile-body .profile-updated, .voice figcaption,
+.site-footer, .footer-col h2, .announce, .landing-scroll, .bio-links a, .profile-body .profile-chips li,
+.example .study, .tm-count, .section > p.table-note, .key-points li a, .timeline p {
+  font-size: var(--t-small); line-height: 1.5;
+}
+
+/* Labels: small uppercase */
+.kicker, .stats dd, .profile-cohort, .profile-body h2, .track-facts dt, .questions .tag, .timeline .phase,
+.mentor-tag, .tm-table th, .orgs-label, .nav-drop span, .mentor-badge, .mentor-hover, .tm-pill, .db-tags span {
+  font-size: var(--t-label); letter-spacing: 0.05em;
+}
+
+/* Fine print */
+.footer-legal, .landing-credit, .announce-tag { font-size: var(--t-fine); }
