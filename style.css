@@ -3290,3 +3290,28 @@ body { font-size: var(--t-body); line-height: 1.56; }
 /* Team: hovering the photo or name fades the name slightly. */
 .team-card .team-name { transition: opacity 0.3s ease; }
 .team-card:hover .team-name, .team-card:focus-visible .team-name { opacity: 0.65; }
+
+/* Team cards are now links to profile pages. */
+a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; border-bottom: 0; }
+
+/* Team profile pages, after metr.org/team/<name>: text left, photo right (kept square). */
+.person { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; align-items: center; max-width: 64rem; }
+.person-back { margin: 0 0 1.5rem; font-size: var(--t-small); }
+.person-back a { color: var(--text-3); border-bottom: 0; text-decoration: none; transition: color 0.3s ease; }
+.person-back a:hover { color: var(--text); }
+.person-head { position: relative; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.person-head::after { content: ""; position: absolute; left: 0; bottom: 0; width: 50px; height: 2px; background: var(--accent); }
+.section .person-head h2 { margin: 0; font-size: var(--t-section); }
+.section .person-head h2::before { content: none; }
+.person-head .team-role { margin: 0.25rem 0 0; font-size: var(--t-ui); color: var(--accent); }
+.person-bio p { font-size: var(--t-body); line-height: 1.56; margin: 0 0 1rem; }
+.person .team-links { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+.person .team-links a { color: #9ca3af; border-bottom: none; line-height: 0; transition: color 0.3s ease; }
+.person .team-links a:hover { color: var(--text); }
+.person-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; outline: 1px solid rgba(0,0,0,.08); outline-offset: -1px; }
+@media (max-width: 720px) {
+  .person { grid-template-columns: 1fr; gap: 2rem; }
+  .person-photo { order: -1; max-width: 22rem; }
+}
+.person { max-width: 1320px; grid-template-columns: minmax(0, 36rem) minmax(0, 26rem); justify-content: start; gap: 6rem; padding-top: 1rem; }
+@media (max-width: 900px) { .person { grid-template-columns: 1fr; gap: 2rem; } .person-photo { order: -1; max-width: 22rem; } }
