@@ -3104,3 +3104,14 @@ body { font-size: var(--t-body); line-height: 1.56; }
 
 /* Fine print */
 .footer-legal, .landing-credit, .announce-tag { font-size: var(--t-fine); }
+
+/* Header after metr.org (2026-11): taller bar, larger bold wordmark and mark, bolder nav. */
+.header-row { height: 4rem; }
+.wordmark { font-size: 1.75rem; font-weight: 600; letter-spacing: 0.01em; gap: 0.6rem; }
+.nav { gap: 1.75rem; }
+.nav a, .nav-menu-button { font-weight: 600; color: var(--text-2); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+@media (max-width: 720px) {
+  .header-row { height: 3.5rem; }
+  .wordmark { font-size: 1.4rem; }
+}
