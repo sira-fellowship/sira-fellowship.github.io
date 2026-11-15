@@ -3411,3 +3411,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .project-page .timeline li:nth-child(4) .phase { color: var(--slate-ink); }
 .project-page .timeline li:nth-child(5) { border-top-color: var(--teal); }
 .project-page .timeline li:nth-child(5) .phase { color: var(--teal-ink); }
+
+/* Team cards: size to content so cards without links keep the title right under the name. */
+.team .team-card { height: auto; }
