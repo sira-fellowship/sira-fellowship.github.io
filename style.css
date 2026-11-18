@@ -3425,3 +3425,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .faq details[open] > :not(summary) { animation: none; }
   .faq details > :not(summary), .faq summary::after { transition: none; }
 }
+
+/* Archived pages: a quiet notice at the top. */
+.archive-note { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.archive-note p { margin: 0; padding: 0.9rem 1.1rem; background: var(--note-bg); border-left: 3px solid var(--line); font-size: var(--t-small); color: var(--text-2); max-width: 49rem; }
