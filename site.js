@@ -93,7 +93,12 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     function close(d) {
         if (!d.open) return;
         if (reduce.matches || !d.animate) { d.open = false; return; }
-        var from = d.offsetHeight, to = d.querySelector('summary').offsetHeight;
+        // Closed height = the question plus the details element's own padding and borders.
+        var cs = getComputedStyle(d);
+        var to = d.querySelector('summary').offsetHeight
+            + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)
+            + parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+        var from = d.offsetHeight;
         d.classList.add('is-closing');
         animate(d, from, to, function () { d.open = false; });
     }
