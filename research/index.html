@@ -32,7 +32,13 @@
             <a class="wordmark" href="../"><svg class="mark" viewBox="0 0 140.0 110.0" aria-hidden="true" focusable="false"><path class="m0" d="M0.000 0.000h20.000v20.000h-20.000ZM40.000 0.000h20.000v20.000h-20.000ZM80.000 0.000h20.000v20.000h-20.000Z"/><path class="m1" d="M0.000 30.000h20.000v20.000h-20.000ZM40.000 30.000h20.000v20.000h-20.000Z"/><path class="m2" d="M0.000 60.000h20.000v20.000h-20.000ZM40.000 60.000h60.000v20.000h-60.000ZM120.000 60.000h20.000v20.000h-20.000Z"/><path class="m3" d="M0.000 90.000h20.000v20.000h-20.000ZM40.000 90.000h60.000v20.000h-60.000Z"/></svg><span>SIRA</span></a>
             <nav class="nav" id="main-nav" aria-label="Main">
                 <a class="nav-page" href="../about/">About</a>
-                <a class="nav-page" href="../research/" aria-current="page">Research</a>
+                <div class="nav-menu">
+                    <button class="nav-menu-button" type="button" aria-expanded="false" aria-controls="research-menu" data-current>Research <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+                    <div class="nav-drop" id="research-menu">
+                        <a href="../research/" aria-current="page"><strong>Focus areas</strong><span>What we study</span></a>
+                        <a href="../evidence/"><strong>The evidence</strong><span>Research on AI’s societal impacts</span></a>
+                    </div>
+                </div>
                 <div class="nav-menu">
                     <button class="nav-menu-button" type="button" aria-expanded="false" aria-controls="fellowship-menu">Fellowship <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
                     <div class="nav-drop" id="fellowship-menu">
@@ -115,7 +121,7 @@
 
         <section id="publications" class="section wrap">
             <h2>Publications</h2>
-            <p class="page-text">Our first publications are in progress. Researchers interested in these areas can <a href="https://airtable.com/appjnZXuP3QQHiV6X/page42OtxrDNBRN6U/form" target="_blank" rel="noopener">express interest in our research team</a> or <a href="../fellowship/">the research fellowship</a>.</p>
+            <p class="page-text">Our first publications are in progress. In the meantime, <a href="../evidence/">the evidence</a> maps existing research on AI’s societal impacts: more than 100,000 papers, with example studies and gaps. Researchers interested in these areas can <a href="https://airtable.com/appjnZXuP3QQHiV6X/page42OtxrDNBRN6U/form" target="_blank" rel="noopener">express interest in our research team</a> or <a href="../fellowship/">the research fellowship</a>.</p>
         </section>
     </main>
 
@@ -133,6 +139,7 @@
                     <h2>Resources</h2>
                     <ul>
                         <li><a href="../research/">Research</a></li>
+                        <li><a href="../evidence/">Evidence</a></li>
                         <li><a href="../fellowship/">Fellowship</a></li>
                         <li><a href="../mentors/">Mentors</a></li>
                     </ul>
