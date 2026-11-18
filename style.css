@@ -3429,3 +3429,9 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 /* Archived pages: a quiet notice at the top. */
 .archive-note { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 .archive-note p { margin: 0; padding: 0.9rem 1.1rem; background: var(--note-bg); border-left: 3px solid var(--line); font-size: var(--t-small); color: var(--text-2); max-width: 49rem; }
+
+/* Fellowship dropdown is the last nav item: open it from the right edge so it stays on screen. */
+@media (min-width: 721px) {
+  .nav-menu .nav-drop { left: auto; right: 0; transform: translate(0, -4px); }
+  .nav-menu.open .nav-drop, .nav-menu:hover .nav-drop { transform: translate(0, 0); }
+}
