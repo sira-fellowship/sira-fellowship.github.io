@@ -3414,3 +3414,14 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 
 /* Team cards: size to content so cards without links keep the title right under the name. */
 .team .team-card { height: auto; }
+
+/* FAQ: answers fade in as a question opens and out as it closes (height is animated in site.js). */
+.faq details > :not(summary) { transition: opacity 0.25s ease; }
+.faq details[open] > :not(summary) { animation: faq-reveal 0.32s ease both; }
+.faq details.is-closing > :not(summary) { opacity: 0; }
+.faq summary::after { transition: transform 0.3s ease; }
+@keyframes faq-reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .faq details[open] > :not(summary) { animation: none; }
+  .faq details > :not(summary), .faq summary::after { transition: none; }
+}

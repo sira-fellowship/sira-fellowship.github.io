@@ -72,11 +72,52 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
 }
 
-// FAQs: opening one question closes any other open question in the same list.
-document.addEventListener('toggle', (event) => {
-    const opened = event.target;
-    if (!(opened instanceof HTMLDetailsElement) || !opened.open) return;
-    opened.parentElement.querySelectorAll(':scope > details[open]').forEach((other) => {
-        if (other !== opened) other.open = false;
+// FAQs: questions open and close with a short height animation, and opening one closes any
+// other open question in the same list. Instant when the visitor prefers reduced motion.
+(function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var DURATION = 320, EASING = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
+
+    function finish(d) {
+        d.style.overflow = '';
+        d.classList.remove('is-closing');
+        d._anim = null;
+    }
+    function animate(d, from, to, done) {
+        if (d._anim) d._anim.cancel();
+        d.style.overflow = 'hidden';
+        d._anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: DURATION, easing: EASING });
+        d._anim.onfinish = function () { if (done) done(); finish(d); };
+        d._anim.oncancel = function () { finish(d); };
+    }
+    function close(d) {
+        if (!d.open) return;
+        if (reduce.matches || !d.animate) { d.open = false; return; }
+        var from = d.offsetHeight, to = d.querySelector('summary').offsetHeight;
+        d.classList.add('is-closing');
+        animate(d, from, to, function () { d.open = false; });
+    }
+    function open(d) {
+        if (d._anim) d._anim.cancel();
+        var from = d.offsetHeight;
+        d.open = true;
+        if (reduce.matches || !d.animate) return;
+        animate(d, from, d.offsetHeight);
+    }
+
+    document.querySelectorAll('.faq details').forEach(function (d) {
+        var summary = d.querySelector('summary');
+        if (!summary) return;
+        summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (d.open && !d.classList.contains('is-closing')) {
+                close(d);
+            } else {
+                d.parentElement.querySelectorAll(':scope > details[open]').forEach(function (other) {
+                    if (other !== d) close(other);
+                });
+                open(d);
+            }
+        });
     });
-}, true);
+})();
