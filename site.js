@@ -86,10 +86,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     function animate(d, from, to, done) {
         if (d._anim) d._anim.cancel();
         d.style.overflow = 'hidden';
-        // Focus areas hold much more text than an FAQ answer, so they open more slowly.
-        var slow = d.classList.contains('area');
-        d._anim = d.animate({ height: [from + 'px', to + 'px'] },
-            { duration: slow ? 650 : DURATION, easing: slow ? 'cubic-bezier(0.33, 0, 0.2, 1)' : EASING });
+        d._anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: DURATION, easing: EASING });
         d._anim.onfinish = function () { if (done) done(); finish(d); };
         d._anim.oncancel = function () { finish(d); };
     }
