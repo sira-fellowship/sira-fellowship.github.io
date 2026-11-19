@@ -115,6 +115,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         if (!summary) return;
         summary.addEventListener('click', function (e) {
             e.preventDefault();
+            // A light tap on phones that support it (Android); ignored elsewhere.
+            if (d.classList.contains('area') && navigator.vibrate && !reduce.matches) navigator.vibrate(8);
             if (d.open && !d.classList.contains('is-closing')) {
                 close(d);
             } else {
