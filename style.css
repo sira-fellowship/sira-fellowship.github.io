@@ -3499,32 +3499,34 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
    Desktop is unchanged. */
 @media (max-width: 720px) {
   :root {
-    --t-display: 2rem;        /* 32px, was 40 */
-    --t-section: 1.5rem;      /* 24px, was 28 */
-    --t-subsection: 1.375rem;
-    --t-title: 1.0625rem;     /* 17px, was 20 */
-    --t-lead: 1.0625rem;      /* 17px, was 20 */
-    --t-body: 1rem;           /* 16px, was 18 */
-    --t-ui: 0.9375rem;
-    --t-small: 0.875rem;
-    --t-label: 0.75rem;
-    --t-fine: 0.75rem;
+    --t-display: 1.75rem;     /* 28px, was 40 */
+    --t-section: 1.375rem;    /* 22px, was 28 */
+    --t-subsection: 1.25rem;
+    --t-title: 1rem;          /* 16px, was 20 */
+    --t-lead: 1rem;           /* 16px, was 20 */
+    --t-body: 0.9375rem;      /* 15px, was 18 */
+    --t-ui: 0.875rem;
+    --t-small: 0.8125rem;
+    --t-label: 0.6875rem;
+    --t-fine: 0.6875rem;
   }
-  .section { padding-top: 3.5rem; padding-bottom: 1.5rem; }
+  .section { padding-top: 3rem; padding-bottom: 1.25rem; }
   .section h2 { margin-bottom: 0.9rem; }
-  .about-hero { padding-top: 2.75rem; }
+  .about-hero { padding-top: 2.25rem; }
   .rows { margin-top: 1.5rem; }
-  .rows .row { padding: 1.25rem 0; gap: 0.5rem; }
+  .rows .row { padding: 1.1rem 0; gap: 0.4rem; }
   .areas { margin-top: 1.5rem; }
-  .area summary { padding: 1.25rem 0; }
+  .area summary { padding: 1.1rem 0; }
   .area-summary { margin-top: 0.4rem; }
   .area-detail-body { padding-bottom: 1.25rem; }
   .about-points li { padding-top: 1rem; padding-bottom: 1rem; }
   .card { padding-top: 1.25rem; padding-bottom: 1.25rem; }
   .faq summary { padding-top: 0.7rem; padding-bottom: 0.7rem; }
   .stats { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-  .stats dt { font-size: 1.5rem; }
+  .stats dt { font-size: 1.375rem; }
   .site-footer { margin-top: 3rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
   .person { gap: 1.5rem; }
-  .person-photo { max-width: 13rem; }
+  .person-photo { max-width: 12rem; }
+  .menu-toggle { margin-left: auto; margin-right: -0.4rem; }
+  .about-hero h1, .profile-main h1 { font-size: var(--t-display); }
 }
