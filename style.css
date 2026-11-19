@@ -3494,3 +3494,37 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .area[open] .area-chevron { border-color: var(--accent); }
 .area-detail h4 { color: var(--accent); }
 .area-detail li::before { background: var(--accent); }
+
+/* Phones: a smaller type scale and tighter vertical spacing, so pages feel less oversized.
+   Desktop is unchanged. */
+@media (max-width: 720px) {
+  :root {
+    --t-display: 2rem;        /* 32px, was 40 */
+    --t-section: 1.5rem;      /* 24px, was 28 */
+    --t-subsection: 1.375rem;
+    --t-title: 1.0625rem;     /* 17px, was 20 */
+    --t-lead: 1.0625rem;      /* 17px, was 20 */
+    --t-body: 1rem;           /* 16px, was 18 */
+    --t-ui: 0.9375rem;
+    --t-small: 0.875rem;
+    --t-label: 0.75rem;
+    --t-fine: 0.75rem;
+  }
+  .section { padding-top: 3.5rem; padding-bottom: 1.5rem; }
+  .section h2 { margin-bottom: 0.9rem; }
+  .about-hero { padding-top: 2.75rem; }
+  .rows { margin-top: 1.5rem; }
+  .rows .row { padding: 1.25rem 0; gap: 0.5rem; }
+  .areas { margin-top: 1.5rem; }
+  .area summary { padding: 1.25rem 0; }
+  .area-summary { margin-top: 0.4rem; }
+  .area-detail-body { padding-bottom: 1.25rem; }
+  .about-points li { padding-top: 1rem; padding-bottom: 1rem; }
+  .card { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+  .faq summary { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  .stats { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .stats dt { font-size: 1.5rem; }
+  .site-footer { margin-top: 3rem; padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .person { gap: 1.5rem; }
+  .person-photo { max-width: 13rem; }
+}
