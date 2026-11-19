@@ -3448,29 +3448,49 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 /* Donate page: space around the donate button. */
 #give .hero-actions { margin: 1.5rem 0; }
 
-/* Research focus areas: an "Explore this area" toggle under each description (animated in site.js). */
-.areas .area-body { min-width: 0; }
-.areas details.area-more { padding: 0; margin-top: 0.85rem; }
-.area-more summary {
-  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: var(--t-ui); font-weight: 500; color: var(--accent);
+/* Research focus areas: expandable entries (after Project Tailwind's initiatives list); animated in site.js. */
+.areas { margin-top: 2.5rem; border-top: 1px solid var(--rule); }
+.areas details.area { padding: 0; border-bottom: 1px solid var(--rule); }
+.area summary {
+  cursor: pointer; list-style: none; display: grid; grid-template-columns: 1.25rem 1.75rem minmax(0, 1fr);
+  align-items: start; gap: 0 0.75rem; padding: 1.5rem 0;
 }
-.area-more summary::-webkit-details-marker { display: none; }
-.area-more summary::after { content: "+"; font-weight: 400; transition: transform 0.3s ease; }
-.area-more[open] summary::after { content: "\2212"; }
-.area-more summary:hover { opacity: 0.8; }
-.area-detail { padding: 0.75rem 0 0.25rem; max-width: 49rem; }
+.area summary::-webkit-details-marker { display: none; }
+.area-chevron {
+  width: 0.55rem; height: 0.55rem; margin-top: 0.5rem; justify-self: center;
+  border-right: 1.5px solid var(--text-4); border-bottom: 1.5px solid var(--text-4);
+  transform: rotate(45deg); transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.area[open] .area-chevron { transform: translateY(0.25rem) rotate(-135deg); border-color: var(--accent); }
+.area-num { font-size: var(--t-label); color: var(--text-4); padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.area-head { display: block; }
+.area-head h3 { font-size: var(--t-title); font-weight: 500; margin: 0; }
+.area-summary { display: block; margin-top: 0.35rem; font-size: var(--t-body); line-height: 1.56; color: var(--text-3); max-width: 49rem; }
+.area summary:hover h3 { opacity: 0.75; }
+.area-detail { padding: 0 0 2rem calc(1.25rem + 1.75rem + 1.5rem); max-width: calc(49rem + 4.5rem); }
 .area-detail h4 {
-  font-size: var(--t-label); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--text-4); margin: 1.25rem 0 0.4rem;
+  font-size: var(--t-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-2, var(--text)); margin: 1.75rem 0 0.6rem;
 }
 .area-detail h4:first-child { margin-top: 0.25rem; }
-.area-detail ul { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.35rem; }
-.area-detail li { font-size: var(--t-body); line-height: 1.56; color: var(--text-3); }
-.area-more > :not(summary) { transition: opacity 0.25s ease; }
-.area-more[open] > :not(summary) { animation: faq-reveal 0.32s ease both; }
-.area-more.is-closing > :not(summary) { opacity: 0; }
+.area-detail p { font-size: var(--t-body); line-height: 1.6; color: var(--text-3); margin: 0 0 0.75rem; }
+.area-detail ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.area-detail li {
+  position: relative; padding-left: 1.25rem; font-size: var(--t-body); line-height: 1.6; color: var(--text-3);
+}
+.area-detail li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em; width: 0.4rem; height: 0.4rem; background: var(--text);
+}
+.area-detail li strong { color: var(--text); font-weight: 600; }
+.area > :not(summary) { transition: opacity 0.25s ease; }
+.area[open] > :not(summary) { animation: faq-reveal 0.32s ease both; }
+.area.is-closing > :not(summary) { opacity: 0; }
+@media (max-width: 720px) {
+  .area summary { grid-template-columns: 1rem minmax(0, 1fr); }
+  .area-num { display: none; }
+  .area-detail { padding-left: 1.75rem; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .area-more[open] > :not(summary) { animation: none; }
-  .area-more > :not(summary) { transition: none; }
+  .area[open] > :not(summary) { animation: none; }
+  .area > :not(summary), .area-chevron { transition: none; }
 }
