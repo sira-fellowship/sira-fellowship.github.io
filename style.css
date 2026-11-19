@@ -3490,15 +3490,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .area > :not(summary), .area-chevron { transition: none; }
 }
 
-/* Focus areas: one colour per area, used only for the chevron, section labels, and bullets. */
-.areas details.area:nth-child(1) { --area: var(--sky);   --area-ink: var(--sky-ink); }
-.areas details.area:nth-child(2) { --area: var(--ochre); --area-ink: var(--ochre-ink); }
-.areas details.area:nth-child(3) { --area: var(--plum);  --area-ink: var(--plum-ink); }
-.areas details.area:nth-child(4) { --area: var(--rose);  --area-ink: var(--rose-ink); }
-.areas details.area:nth-child(5) { --area: var(--roof);  --area-ink: var(--roof-ink); }
-.areas details.area:nth-child(6) { --area: var(--slate); --area-ink: var(--slate-ink); }
-.areas details.area:nth-child(7) { --area: var(--olive); --area-ink: var(--olive-ink); }
-.areas details.area:nth-child(8) { --area: var(--teal);  --area-ink: var(--teal-ink); }
-.area[open] .area-chevron { border-color: var(--area); }
+/* Focus areas: terracotta for the open chevron, section labels, and bullets. */
+.area[open] .area-chevron { border-color: var(--accent); }
 .area-detail h4 { color: var(--accent); }
-.area-detail li::before { background: var(--area); }
+.area-detail li::before { background: var(--accent); }
