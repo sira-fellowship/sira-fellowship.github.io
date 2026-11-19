@@ -3490,7 +3490,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .area > :not(summary), .area-chevron { transition: none; }
 }
 
-/* Focus areas: one colour per area, hover feedback, and a staggered reveal. */
+/* Focus areas: one colour per area, used only for the chevron, section labels, and bullets. */
 .areas details.area:nth-child(1) { --area: var(--sky);   --area-ink: var(--sky-ink); }
 .areas details.area:nth-child(2) { --area: var(--ochre); --area-ink: var(--ochre-ink); }
 .areas details.area:nth-child(3) { --area: var(--plum);  --area-ink: var(--plum-ink); }
@@ -3499,39 +3499,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .areas details.area:nth-child(6) { --area: var(--slate); --area-ink: var(--slate-ink); }
 .areas details.area:nth-child(7) { --area: var(--olive); --area-ink: var(--olive-ink); }
 .areas details.area:nth-child(8) { --area: var(--teal);  --area-ink: var(--teal-ink); }
-.areas details.area { position: relative; transition: background-color 0.3s ease; }
-.areas details.area::before {
-  content: ""; position: absolute; left: -1rem; top: 0; bottom: 0; width: 3px;
-  background: var(--area); transform: scaleY(0); transform-origin: top; transition: transform 0.35s ease;
-}
-.areas details.area[open]::before { transform: scaleY(1); }
-.areas details.area { isolation: isolate; }
-.areas details.area::after {
-  content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -1rem; right: -1rem;
-  background: color-mix(in srgb, var(--area) 6%, transparent); opacity: 0; transition: opacity 0.3s ease;
-}
-.areas details.area:hover::after { opacity: 0.6; }
-.areas details.area[open]::after { opacity: 1; }
-.area summary { transition: padding 0.3s ease; }
-.area summary:hover .area-chevron { border-color: var(--area); transform: translateY(0.12rem) rotate(45deg); }
-.area[open] .area-chevron, .area[open] summary:hover .area-chevron { border-color: var(--area); transform: translateY(0.25rem) rotate(-135deg); }
-.area summary:active .area-title { transform: scale(0.99); }
-.area-title { transition: transform 0.15s ease; }
+.area[open] .area-chevron { border-color: var(--area); }
 .area-detail h4 { color: var(--area-ink); }
 .area-detail li::before { background: var(--area); }
-.area[open] .area-detail-body > *, .area[open] .area-detail-body li { animation: area-rise 0.4s ease both; }
-.area[open] .area-detail-body > :nth-child(2) { animation-delay: 0.04s; }
-.area[open] .area-detail-body > :nth-child(3) { animation-delay: 0.08s; }
-.area[open] .area-detail-body > :nth-child(4) { animation-delay: 0.12s; }
-.area[open] .area-detail-body li:nth-child(1) { animation-delay: 0.16s; }
-.area[open] .area-detail-body li:nth-child(2) { animation-delay: 0.20s; }
-.area[open] .area-detail-body li:nth-child(3) { animation-delay: 0.24s; }
-.area[open] .area-detail-body li:nth-child(4) { animation-delay: 0.28s; }
-.area[open] .area-detail-body li:nth-child(5) { animation-delay: 0.32s; }
-.area[open] .area-detail-body > :nth-child(n+5) { animation-delay: 0.36s; }
-@keyframes area-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-@media (max-width: 720px) { .areas details.area::before, .areas details.area::after { left: -0.6rem; } .areas details.area::after { right: -0.6rem; } }
-@media (prefers-reduced-motion: reduce) {
-  .area[open] .area-detail-body > *, .area[open] .area-detail-body li { animation: none; }
-  .areas details.area::before, .area-title { transition: none; }
-}
