@@ -110,7 +110,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         animate(d, from, d.offsetHeight);
     }
 
-    document.querySelectorAll('.faq details').forEach(function (d) {
+    document.querySelectorAll('.faq details, details.area-more').forEach(function (d) {
         var summary = d.querySelector('summary');
         if (!summary) return;
         summary.addEventListener('click', function (e) {
