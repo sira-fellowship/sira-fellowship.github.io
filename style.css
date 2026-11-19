@@ -3478,7 +3478,7 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .area-detail li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 0.4rem; height: 0.4rem; background: var(--text); }
 .area-detail li strong { color: var(--text); font-weight: 600; }
 .area > :not(summary) { transition: opacity 0.25s ease; }
-.area[open] > :not(summary) { animation: faq-reveal 0.32s ease both; }
+.area[open] > :not(summary) { animation: faq-reveal 0.45s ease both; }
 .area.is-closing > :not(summary) { opacity: 0; }
 @media (max-width: 720px) {
   .area summary, .area-detail { grid-template-columns: minmax(0, 1fr); }
