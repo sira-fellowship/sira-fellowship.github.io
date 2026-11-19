@@ -3444,3 +3444,6 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
    then two short paragraphs. */
 .intro-statement h2 { max-width: 56rem; text-wrap: balance; }
 .intro-statement p { font-size: var(--t-lead); line-height: 1.55; color: var(--text-2); max-width: 49rem; margin: 0 0 1rem; }
+
+/* Donate page: space around the donate button. */
+#give .hero-actions { margin: 1.5rem 0; }
