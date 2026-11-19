@@ -3530,3 +3530,42 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
   .menu-toggle { margin-left: auto; margin-right: -0.4rem; }
   .about-hero h1, .profile-main h1 { font-size: var(--t-display); }
 }
+
+/* Phone menu: a full-screen panel in the logo's sage green (after metr.org).
+   Research and Fellowship become small labels with their pages listed under them. */
+@media (max-width: 720px) {
+  .site-header.menu-open { z-index: 100; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .site-header.menu-open .nav {
+    position: fixed; inset: 0; z-index: 1; height: 100vh; height: 100dvh; max-height: none;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0;
+    padding: 5rem 2.25rem 3rem; margin: 0; overflow-y: auto;
+    background: #5f8a6c; border: 0; box-shadow: none;
+    font-size: 1.375rem; animation: menu-fade 0.25s ease both;
+  }
+  .site-header.menu-open .nav-menu { order: 1; width: 100%; }
+  .site-header.menu-open .nav > a { order: 2; }
+  .site-header.menu-open .nav-menu + .nav-menu { margin-top: 1.25rem; }
+  .site-header.menu-open .nav > .nav-menu:last-of-type { margin-bottom: 1.25rem; }
+  .site-header.menu-open .nav-menu::before { content: none; }
+  .site-header.menu-open .nav-menu-button {
+    display: block; pointer-events: none; background: none; border: 0; padding: 0 0 0.35rem;
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .site-header.menu-open .nav-menu-button svg { display: none; }
+  .site-header.menu-open .nav a,
+  .site-header.menu-open .nav .nav-drop a {
+    display: block; padding: 0.5rem 0; border: 0; background: none;
+    color: #fff; font-size: 1.375rem; font-weight: 400; line-height: 1.3;
+  }
+  .site-header.menu-open .nav .nav-drop a { padding-left: 1.25rem; }
+  .site-header.menu-open .nav .nav-drop strong { font-weight: 400; }
+  .site-header.menu-open .nav .nav-drop span { display: none; }
+  .site-header.menu-open .nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 1px; }
+  .site-header.menu-open .nav a:active { opacity: 0.7; }
+  .site-header.menu-open .menu-toggle { position: fixed; top: 0.66rem; right: 1.1rem; margin: 0; z-index: 2; color: #fff; }
+  .site-header.menu-open .wordmark { visibility: hidden; }
+  html.menu-locked, html.menu-locked body { overflow: hidden; }
+}
+@keyframes menu-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .site-header.menu-open .nav { animation: none; } }

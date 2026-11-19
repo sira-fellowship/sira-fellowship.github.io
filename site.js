@@ -8,6 +8,7 @@
     if (!header || !toggle) return;
     function set(open) {
         header.classList.toggle('menu-open', open);
+        document.documentElement.classList.toggle('menu-locked', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
     }
