@@ -76,7 +76,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 // other open question in the same list. Instant when the visitor prefers reduced motion.
 (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var DURATION = 320, EASING = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
+    var DURATION = 470, EASING = 'cubic-bezier(0.2, 0.7, 0.2, 1)';
 
     function finish(d) {
         d.style.overflow = '';
@@ -86,9 +86,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     function animate(d, from, to, done) {
         if (d._anim) d._anim.cancel();
         d.style.overflow = 'hidden';
-        // Focus areas hold more text than an FAQ answer, so they open a little more slowly.
-        d._anim = d.animate({ height: [from + 'px', to + 'px'] },
-            { duration: d.classList.contains('area') ? 470 : DURATION, easing: EASING });
+        d._anim = d.animate({ height: [from + 'px', to + 'px'] }, { duration: DURATION, easing: EASING });
         d._anim.onfinish = function () { if (done) done(); finish(d); };
         d._anim.oncancel = function () { finish(d); };
     }
