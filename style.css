@@ -3500,5 +3500,5 @@ a.team-card, a.team-card:hover { color: var(--text); text-decoration: none; bord
 .areas details.area:nth-child(7) { --area: var(--olive); --area-ink: var(--olive-ink); }
 .areas details.area:nth-child(8) { --area: var(--teal);  --area-ink: var(--teal-ink); }
 .area[open] .area-chevron { border-color: var(--area); }
-.area-detail h4 { color: var(--area-ink); }
+.area-detail h4 { color: var(--accent); }
 .area-detail li::before { background: var(--area); }
