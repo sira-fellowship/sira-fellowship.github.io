@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SIRA Style Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  :root{
+    --ink:#22313d; --text2:#52606b; --rule:#e8ebef; --cream:#f7f0e6; --night:#16222b;
+    --sage:#5f8a6c; --wheat:#c9a227; --roof:#b8502f; --slate:#3e6787; --accent:#a9532f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Instrument Sans",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:297mm;height:210mm;padding:16mm 18mm 14mm;page-break-after:always;position:relative;overflow:hidden}
+  .page:last-child{page-break-after:auto}
+  .band{position:absolute;left:0;right:0;top:0;height:5mm;background:linear-gradient(90deg,var(--sage),var(--wheat))}
+  .foot{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;font-size:8.5pt;color:var(--text2)}
+  h1{font-size:30pt;font-weight:600;margin:0 0 3mm;letter-spacing:-0.01em}
+  h2{font-size:17pt;font-weight:600;margin:0 0 5mm}
+  h3{font-size:10.5pt;font-weight:600;margin:0 0 2mm;text-transform:uppercase;letter-spacing:.08em;color:var(--text2)}
+  p,li{font-size:10.5pt;line-height:1.45;margin:0 0 2mm}
+  ul{margin:0;padding-left:5mm}
+  .lead{font-size:13pt;color:var(--text2);max-width:190mm}
+  .grid{display:grid;gap:7mm}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .card{border:1px solid var(--rule);border-radius:3mm;padding:5mm}
+  .swatch{border-radius:3mm;overflow:hidden;border:1px solid var(--rule)}
+  .swatch .c{height:16mm}
+  .swatch .t{padding:3mm 4mm;font-size:9.5pt;line-height:1.5}
+  .swatch b{font-size:11pt}
+  .mono{font-family:ui-monospace,Menlo,monospace;font-size:9pt}
+  .logo-box{height:38mm;display:flex;align-items:center;justify-content:center;border-radius:3mm;margin-bottom:3mm}
+  .logo-box img{max-height:24mm;max-width:85%}
+  .light{background:#fff;border:1px solid var(--rule)}
+  .dark{background:var(--night)}
+  .slide{aspect-ratio:16/9;border-radius:2mm;border:1px solid var(--rule);position:relative;overflow:hidden;padding:4mm 5mm}
+  .slide .st{font-weight:600;font-size:12pt;line-height:1.2}
+  .slide .sb{font-size:7.5pt;color:var(--text2);margin-top:2mm;line-height:1.4}
+  .slide .lg{position:absolute;right:4mm;bottom:3mm;height:4mm}
+  .do{color:var(--sage);font-weight:600}
+  .dont{color:var(--roof);font-weight:600}
+  .typerow{display:flex;align-items:baseline;gap:6mm;border-bottom:1px solid var(--rule);padding:1.8mm 0}
+  .typerow .lab{width:42mm;font-size:9pt;color:var(--text2)}
+  a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: cover + logo -->
+<section class="page">
+  <div class="band"></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:4mm">
+    <div>
+      <h1>SIRA Style Guide</h1>
+      <p class="lead">For slides, documents and anything else that carries the SIRA name. One typeface, one ink colour, four accent colours taken from the logo.</p>
+    </div>
+    <img src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-mark-soft.svg" style="height:30mm">
+  </div>
+
+  <h2 style="margin-top:9mm">Logo</h2>
+  <div class="grid g3">
+    <div>
+      <div class="logo-box light"><img src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-full-soft.svg"></div>
+      <h3>Full logo</h3>
+      <p>Title slides, cover pages, letterheads. Spells out "Societal Impacts Research on AI".</p>
+    </div>
+    <div>
+      <div class="logo-box light"><img src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-horizontal-soft.svg" style="max-height:15mm"></div>
+      <h3>Horizontal logo</h3>
+      <p>The everyday version: content slides (small, bottom corner), headers, email.</p>
+    </div>
+    <div>
+      <div class="logo-box dark"><img src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-horizontal-dark.svg" style="max-height:15mm"></div>
+      <h3>On dark backgrounds</h3>
+      <p>Use the <b>-dark</b> files (lighter colours, cream text) on night or other dark grounds.</p>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:7mm">
+    <div class="card">
+      <h3>The mark</h3>
+      <p>The four rows spell S-I-R-A in Morse code, one colour per letter. The telegraph was one of the first technologies to reshape society in real time.</p>
+    </div>
+    <div class="card">
+      <p><span class="do">Do</span> keep clear space around the logo of at least one dot's height. Use the <b>-soft</b> files on light backgrounds and <b>-dark</b> on dark ones.</p>
+      <p><span class="dont">Don't</span> stretch, rotate, recolour, outline or reorder the mark, or rebuild it from shapes.</p>
+    </div>
+  </div>
+  <div class="foot"><span>SIRA · Societal Impacts Research on AI</span><span>sira-project.org</span></div>
+</section>
+
+<!-- PAGE 2: colour + type -->
+<section class="page">
+  <div class="band"></div>
+  <h2 style="margin-top:4mm">Colour</h2>
+  <div class="grid g4">
+    <div class="swatch"><div class="c" style="background:var(--sage)"></div><div class="t"><b>Sage</b><br><span class="mono">#5F8A6C</span><br>On dark: <span class="mono">#9FC4A6</span></div></div>
+    <div class="swatch"><div class="c" style="background:var(--wheat)"></div><div class="t"><b>Wheat</b><br><span class="mono">#C9A227</span><br>On dark: <span class="mono">#E8C65A</span></div></div>
+    <div class="swatch"><div class="c" style="background:var(--roof)"></div><div class="t"><b>Roof</b><br><span class="mono">#B8502F</span><br>On dark: <span class="mono">#EC8D68</span></div></div>
+    <div class="swatch"><div class="c" style="background:var(--slate)"></div><div class="t"><b>Slate</b><br><span class="mono">#3E6787</span><br>On dark: <span class="mono">#8FB3D1</span></div></div>
+  </div>
+  <div class="grid g4" style="margin-top:5mm">
+    <div class="swatch"><div class="c" style="background:var(--ink);height:14mm"></div><div class="t"><b>Ink</b> <span class="mono">#22313D</span><br>All text and headings</div></div>
+    <div class="swatch"><div class="c" style="background:#fff;height:14mm;border-bottom:1px solid var(--rule)"></div><div class="t"><b>White</b> <span class="mono">#FFFFFF</span><br>Default background</div></div>
+    <div class="swatch"><div class="c" style="background:var(--cream);height:14mm"></div><div class="t"><b>Cream</b> <span class="mono">#F7F0E6</span><br>Soft background, section slides</div></div>
+    <div class="swatch"><div class="c" style="background:var(--night);height:14mm"></div><div class="t"><b>Night</b> <span class="mono">#16222B</span><br>Dark slides and covers</div></div>
+  </div>
+  <p style="margin-top:4mm;font-size:9.5pt;color:var(--text2)">Secondary text: <span class="mono">#52606B</span>. Links and buttons: terracotta <span class="mono">#A9532F</span>. For text in an accent colour on white, use the darker versions so it stays readable: sage <span class="mono">#446B51</span>, wheat <span class="mono">#7D6210</span>, roof <span class="mono">#9A4325</span>, slate <span class="mono">#345A78</span>. In charts, use the accents in the order sage, slate, roof, wheat.</p>
+
+  <h2 style="margin-top:5mm">Typography</h2>
+  <div class="grid" style="grid-template-columns:1.6fr 1fr">
+    <div>
+      <div class="typerow"><span class="lab">Slide title · 600 (SemiBold)</span><span style="font-size:24pt;font-weight:600">How AI is changing society</span></div>
+      <div class="typerow"><span class="lab">Subheading · 500 (Medium)</span><span style="font-size:15pt;font-weight:500">Work, beliefs, institutions and power</span></div>
+      <div class="typerow"><span class="lab">Body · 400 (Regular)</span><span style="font-size:11pt">Rigorous research on these changes, early enough to steer them.</span></div>
+      <div class="typerow"><span class="lab">Label · 600, spaced caps</span><span style="font-size:9pt;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text2)">Focus area</span></div>
+    </div>
+    <div class="card">
+      <h3>Instrument Sans</h3>
+      <p>The only typeface. Free from Google Fonts (<a href="https://fonts.google.com/specimen/Instrument+Sans">fonts.google.com/specimen/Instrument+Sans</a>).</p>
+      <p><b>Google Slides:</b> Font menu → More fonts → search "Instrument Sans".</p>
+      <p><b>PowerPoint / Keynote:</b> download and install it first. If that isn't possible, use Helvetica or Arial.</p>
+    </div>
+  </div>
+  <div class="foot"><span>SIRA Style Guide</span><span>2</span></div>
+</section>
+
+<!-- PAGE 3: slides + files -->
+<section class="page">
+  <div class="band"></div>
+  <h2 style="margin-top:4mm">Slides</h2>
+  <div class="grid g3">
+    <div>
+      <div class="slide" style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+        <img src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-full-soft.svg" style="height:8mm;max-width:85%;margin-bottom:3mm">
+        <div class="st">Talk title goes here</div>
+        <div class="sb">Speaker · Event · Date</div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:2mm;background:linear-gradient(90deg,var(--sage),var(--wheat))"></div>
+      </div>
+      <h3 style="margin-top:3mm">Title slide</h3>
+      <p>White background, full logo, one sage-to-wheat strip at the edge.</p>
+    </div>
+    <div>
+      <div class="slide" style="background:#fff">
+        <div class="st">One idea per slide</div>
+        <div class="sb">Short sentences in ink. Use one accent colour to highlight the key point, <span style="color:#9a4325;font-weight:600">like this</span>.</div>
+        <div style="display:flex;gap:2mm;margin-top:3mm;align-items:flex-end;height:14mm">
+          <div style="width:7mm;height:60%;background:var(--sage)"></div><div style="width:7mm;height:85%;background:var(--slate)"></div><div style="width:7mm;height:45%;background:var(--roof)"></div><div style="width:7mm;height:70%;background:var(--wheat)"></div>
+        </div>
+        <img class="lg" src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-horizontal-soft.svg">
+      </div>
+      <h3 style="margin-top:3mm">Content slide</h3>
+      <p>Left-aligned title, generous white space, small horizontal logo bottom right.</p>
+    </div>
+    <div>
+      <div class="slide" style="background:var(--night);color:#ebe6dd;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:7pt;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9fc4a6">Section 2</div>
+        <div class="st" style="margin-top:1mm">Section divider</div>
+        <img class="lg" src="/Users/leo/Developer/sira-fellowship.github.io/brand/svg/sira-logo-horizontal-dark.svg">
+      </div>
+      <h3 style="margin-top:3mm">Section slide</h3>
+      <p>Night (or cream) background to break up sections. Use the -dark logo on night.</p>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:7mm">
+    <div class="card">
+      <h3>Rules of thumb</h3>
+      <ul>
+        <li>16:9, white background by default.</li>
+        <li>Ink for text; accents for emphasis, charts and small details, not big blocks of colour.</li>
+        <li>Sentence case for titles ("How AI is changing work", not "How AI Is Changing Work").</li>
+        <li>Write "SIRA"; spell it out once on the title slide only.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Logo files (download)</h3>
+      <p>PNG, transparent background: <a href="https://sira-project.org/brand/png/sira-logo-full-soft.png">full</a> · <a href="https://sira-project.org/brand/png/sira-logo-horizontal-soft.png">horizontal</a> · <a href="https://sira-project.org/brand/png/sira-logo-horizontal-dark.png">horizontal, dark bg</a> · <a href="https://sira-project.org/brand/png/sira-mark-soft-1024.png">mark only</a></p>
+      <p><b>Every logo file in one download</b> (SVG and PNG, all colourways): <a href="https://sira-project.org/brand/sira-logos.zip">sira-project.org/brand/sira-logos.zip</a></p>
+      <p>Questions: <a href="mailto:emilio@sira-project.org">emilio@sira-project.org</a></p>
+    </div>
+  </div>
+  <div class="foot"><span>SIRA Style Guide</span><span>3</span></div>
+</section>
+</body>
+</html>

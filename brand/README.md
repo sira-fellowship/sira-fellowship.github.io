@@ -51,7 +51,7 @@ The roof colour sits close to the site's terracotta, so the logo and buttons rea
 | `../favicon.ico`, `../favicon.svg`, `../apple-touch-icon.png` | Browser and phone icons used by the website: the night tile. |
 | `email-signature.html` | Email signature with the logo. Open it in a browser, copy the white box, and paste it into Gmail's signature settings. |
 | `contact-sheet.png`, `mockups.png` | Every file at a glance, and the logo in use. |
-| `sira-style-guide.pdf` | Three-page style guide for collaborators: logo use, colours, type, slide layouts. Public at sira-project.org/brand/sira-style-guide.pdf. Source: `sira-style-guide.html` in Claude's scratchpad (rebuild with headless Chrome). |
+| `sira-style-guide.pdf` | Three-page style guide for collaborators: logo use, colours, type, slide layouts. Public at sira-project.org/brand/sira-style-guide.pdf. Source: `tools/style-guide.html`; print it to PDF with headless Chrome. |
 | `sira-logos.zip` | Every SVG and PNG in `svg/` and `png/`, plus this README, in one download. Rebuild after changing the logo: `cd brand && zip -qr -X sira-logos.zip svg png README.md -x '*.DS_Store'`. |
 
 Lockup colourways: `soft` (colour mark, ink text; the name is historical, the colours are Van Gogh) for light backgrounds, `dark` (light colours, cream text) for dark backgrounds, `ink` and `cream` for one colour. Prefer the SVGs. Text is converted to outlines in Instrument Sans, the website's typeface: "SIRA" at weight 600, as in the site header, and the spaced capitals and full name at 500. It is under the SIL Open Font License.
